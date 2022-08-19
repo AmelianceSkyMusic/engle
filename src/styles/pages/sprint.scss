@@ -1,0 +1,12 @@
+@use "../globals/" as *;
+
+.page__sprint {
+	.main {
+		background-color: yellowgreen;
+		.container {
+			padding-top: calc(var(--col-gap) / 2);
+			padding-bottom: calc(var(--col-gap) / 2);
+			flex-direction: column;
+		}
+	}
+}

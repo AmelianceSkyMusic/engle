@@ -1,0 +1,13 @@
+@use "../globals/" as *;
+
+.navigation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.navigation__menu {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: calc(var(--col-gap));
+	}
+}

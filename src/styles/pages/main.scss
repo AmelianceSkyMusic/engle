@@ -1,0 +1,12 @@
+@use "../globals/" as *;
+
+.page__main {
+	.main {
+		background-color: blueviolet;
+		.container {
+			padding-top: calc(var(--col-gap) / 2);
+			padding-bottom: calc(var(--col-gap) / 2);
+			flex-direction: column;
+		}
+	}
+}
