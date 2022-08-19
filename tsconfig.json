@@ -23,5 +23,5 @@
   "include": [
     "src"
   ],
-  "exclude": ["-asm-*", "_legacy*", "*._legacy*", "_backup*", "*._backup*"]
+  "exclude": ["node_modules", "-asm-*", "_legacy*", "*._legacy*", "_backup*", "*._backup*"]
 }
