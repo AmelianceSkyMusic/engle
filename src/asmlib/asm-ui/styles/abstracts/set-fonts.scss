@@ -58,7 +58,7 @@
 	// ^------------------------ typography elements ------------------------
 
 	// font-family, font-size, font-weight, line-height, letter-spacing
-	@include setTypoElem(h1, $font-family__primary, 88px, $font-weight__black, 120%, 0);
+	@include setTypoElem(h1, $font-family__primary, 64px, $font-weight__black, 120%, 0);
 
 	@include setTypoElem(h2, $font-family__primary, 48px, $font-weight__bold, 120%, 0);
 
@@ -93,6 +93,7 @@
 	@include setTypoElem(input, $font-family__secondary, 16px, $font-weight__medium, 135%, 0);
 
 	@media (max-width: $screen-lg) {
+		@include setTypoElem(h1, $font-family__primary, 48px, $font-weight__black, 120%, 0);
 	}
 }
 
