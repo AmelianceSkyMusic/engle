@@ -1,0 +1,69 @@
+@use "../globals/" as *;
+
+.footer {
+	background: var(--color--bg-2);
+	.container {
+		@media (max-width: $screen-md) {
+			padding-bottom: var(--col-gap);
+		}
+	}
+}
+
+.footer {
+	.footer__github-logo {
+		display: flex;
+		align-items: center;
+		justify-content: start;
+
+		@media (max-width: $screen-xs) {
+			justify-content: end;
+		}
+
+		.github-logo {
+			// @include imgLinkSVG("github-logo.svg", 68px, 24px);
+			// @media (max-width: $screen-md) {
+			@include imgLinkSVG("../../assets/svg/github-logo.svg", 34px, 12px);
+			//   }
+		}
+	}
+
+	.footer__names {
+		gap: var(--col-gap);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		// text-align: center;
+
+		@media (max-width: $screen-xs) {
+			order: -1;
+			padding-bottom: var(--col-gap);
+		}
+
+		.link {
+			font-size: 10px;
+		}
+
+		a:active,
+		a:hover,
+		a {
+			text-decoration: none;
+		}
+	}
+
+	.footer__rsschool-logo {
+		display: flex;
+		justify-content: end;
+		align-items: center;
+
+		@media (max-width: $screen-xs) {
+			justify-content: start;
+		}
+
+		.rsschool-logo {
+			// @include imgLinkSVG("rsschool-logo.svg", 68px, 24px);
+			// @media (max-width: $screen-md) {
+			@include imgLinkSVG("../../assets/svg/rsschool-logo.svg", 34px, 12px);
+			//   }
+		}
+	}
+}

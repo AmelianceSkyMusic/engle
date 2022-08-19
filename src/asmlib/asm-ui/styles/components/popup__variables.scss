@@ -1,0 +1,15 @@
+// >----------------------------------------------------------------<
+// >                            VARIBLES                            <
+// >----------------------------------------------------------------<
+
+:root {
+
+    --popup--padding__outer: 32px;
+    --popup--padding__inner: 32px;
+    --popup--border-radius: 16px;
+    --popup--color__bg: var(--color-bg-0);
+    --popup--animation__duration: 0.3s;
+    --popup--animation__time-type: ease-in-out;
+    --popup--animation__delay: 0;
+    --popup--z-index: 10000;
+}

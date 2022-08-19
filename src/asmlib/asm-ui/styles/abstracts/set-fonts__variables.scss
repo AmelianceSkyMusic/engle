@@ -1,0 +1,28 @@
+// >----------------------------------------------------------------<
+// >                           VARIBLES                             <
+// >----------------------------------------------------------------<
+$font-path: "../../assets/fonts/";
+
+$font-primary__path: $font-path + "primary/";
+$font-secondary__path: $font-path + "secondary/";
+// $font-tertiary__path: $font-path+"Noto/static/NotoSansMono/";
+
+$font-primary__family-name: "Playfair Display";
+$font-secondary__family-name: "Lato";
+// $font-tertiary__family-name: "Noto";
+
+// ^------------------------ fonts varibles ------------------------
+
+$font-family__primary: "Playfair Display", serif;
+$font-family__secondary: "Lato", system-ui;
+// $font-family__tertiary:        "Noto", monospace;
+
+$font-weight__black: 900;
+$font-weight__extra-bold: 800;
+$font-weight__bold: 700;
+$font-weight__semi-bold: 600;
+$font-weight__medium: 500;
+$font-weight__regular: 400;
+$font-weight__light: 300;
+$font-weight__extra-light: 200;
+$font-weight__thin: 100;

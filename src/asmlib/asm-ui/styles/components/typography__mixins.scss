@@ -1,0 +1,10 @@
+// >----------------------------------------------------------------<
+// >                            MIXINS                              <
+// >----------------------------------------------------------------<
+
+@mixin setFontColor($font__color, $font__color_inverse) {
+	color: $font__color;
+	&.inversed {
+		color: $font__color_inverse;
+	}
+}

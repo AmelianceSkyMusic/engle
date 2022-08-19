@@ -1,0 +1,12 @@
+@use "../globals/" as *;
+
+.page__audiocall {
+	.main {
+		background-color: blue;
+		.container {
+			padding-top: calc(var(--col-gap) / 2);
+			padding-bottom: calc(var(--col-gap) / 2);
+			flex-direction: column;
+		}
+	}
+}

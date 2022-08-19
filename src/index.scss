@@ -1,4 +1,8 @@
+@use "./asmlib/asm-ui/styles/globals/" as *;
+@use "./asmlib/asm-ui/styles/" as *;
+@use "./styles/" as *;
+
 #root {
 	gap: 16px;
-	background-color: red;
+	background-color: var(--color--bg-1);
 }
