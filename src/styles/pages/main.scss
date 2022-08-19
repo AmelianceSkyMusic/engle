@@ -1,7 +1,16 @@
 @use "../globals/" as *;
 
 .page__main {
+	.header {
+		position: relative;
+		z-index: 1;
+	}
 	.main {
+		position: relative;
+		z-index: 0;
+		bottom: 64px;
+		padding-top: 64px;
+		margin-bottom: -64px;
 		.container {
 			padding-top: calc(var(--col-gap) / 2);
 			padding-bottom: calc(var(--col-gap) / 2);
@@ -17,18 +26,25 @@
 				}
 				@media(max-width: $screen-lg) {
 					align-items: center;
-					padding-top: calc(var(--col-gap) * 2);;
 				}
 			}
-			.illustration-container {
+			.main-decoration-container {
 				display: flex;
 				justify-content: end;
 				padding-top: calc(var(--col-gap) * 1.3);
 				padding-right: calc(var(--col-gap) * 2);
-				.illustration {
+				.main-decoration {
 					@include bgImgSVGStatic("../../assets/svg/img--thinking-man.svg", 374px, 538px);
 				}
 			}
+		}
+		.half-circle {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: -1;
+			@include bgImgSVGStatic("../../assets/illustrations/img--half-circle.png", 55%, 100%);
+			background-size: cover;
 		}
 	}
 }
