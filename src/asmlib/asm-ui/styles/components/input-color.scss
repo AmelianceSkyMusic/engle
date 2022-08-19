@@ -1,0 +1,40 @@
+@use "input-color__variables" as *;
+
+
+input[type="color"] {
+	// box-sizing: border-box;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	border: none;
+	width: var(--input-color__width);
+	height: var(--input-color__height);
+	cursor: pointer;
+	padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-moz-color-swatch-wrapper {
+	padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+	border-radius: var(--input-color__border-radius);
+	border-width: var(--input-color__border-width);
+	border-style: var(--input-color__border-style);
+	border-color: var(--input-color__border-color);
+}
+input[type="color"]::-moz-color-swatch {
+	border-radius: var(--input-color__border-radius);
+	border-width: var(--input-color__border-width);
+	border-style: var(--input-color__border-style);
+	border-color: var(--input-color__border-color);
+}
+
+// input[type="color"]::-moz-focus-inner { // TODO: NEED TEST
+// 	border: 0;
+// 	padding: 0;
+// }

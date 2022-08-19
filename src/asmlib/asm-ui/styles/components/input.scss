@@ -1,0 +1,22 @@
+input {
+	border-radius: 8px;
+	background: var(--color-bg-0);
+	padding: 0px 12px;
+	height: 32px;
+	border: 2px solid var(--color--el-1);
+	line-height: 100%;
+	&:focus {
+		outline: none !important;
+	}
+}
+// input[type="text"] {
+// 	border-radius: 8px;
+// 	background: var(--color-bg-0);
+// 	padding: 8px auto;
+// 	height: 32px;
+// 	border: 2px solid var(--color--el-1);
+// 	line-height: 100%;
+// 	&:focus {
+// 		outline: none !important;
+// 	}
+// }

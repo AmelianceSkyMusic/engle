@@ -1,0 +1,46 @@
+@use "link__variables" as *;
+
+.link {
+	color: var(--color__link);
+	&.inversed {
+		color: var(--color__link-inversed);
+	}
+	// text-decoration: none;
+	@media (hover: hover) {
+		&:hover {
+			transition: color var(--time-1) var(--transition-type-2);
+			color: var(--color__link_hover);
+			&.inversed {
+				color: var(--color__link-inversed_hover);
+			}
+		}
+	}
+	&:active {
+		color: var(--color__link_active);
+		transition: 0s;
+		&.inversed {
+			color: var(--color__link-inversed_active);
+		}
+	}
+
+	&:disabled,
+	&.disabled,
+	&[data-is-disabled="true"] {
+		color: var(--color__link_disabled);
+		opacity: 60%;
+		cursor: not-allowed;
+		pointer-events: none;
+		&.inversed {
+			color: var(--color__link-inversed_disabled);
+		}
+	}
+	// &.inverse {
+	//     color: var(--color__ov_inverse);
+	// @media (hover: hover) {
+	//     &:hover {
+	//         transition: all var(--time__medium) var(--animation__standart);
+	//         color: var(--color__link-hover);
+	//     }
+	// }
+	// }
+}

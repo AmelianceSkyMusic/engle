@@ -1,0 +1,46 @@
+@use "../_globals/" as *;
+@use "scroll__variables" as *;
+
+.scroll {
+	&::-webkit-scrollbar {
+		width: 12px;
+		height: 12px;
+		background-color: var(--scroll-color--track);
+		@media (max-width: $screen-sm) {
+            & {
+				width: 6px;
+				height: 6px;
+            }
+        }
+	}
+	&::-webkit-scrollbar-track {
+		background: var(--scroll-color--track);
+	}
+	&::-webkit-scrollbar-thumb {
+		background: var(--scroll-color--thumb);
+		border-radius: var(--scroll-radius--border);
+		border: 1px solid var(--scroll-color--track);
+	}
+}
+
+.scroll-transparent {
+	&::-webkit-scrollbar {
+		width: 12px;
+		height: 12px;
+		background-color: none;
+		@media (max-width: $screen-sm) {
+            & {
+				width: 6px;
+				height: 6px;
+            }
+        }
+	}
+	&::-webkit-scrollbar-track {
+		background: var(--scroll-color--track);
+	}
+	&::-webkit-scrollbar-thumb {
+		background: none;
+		border-radius: var(--scroll-radius--border);
+		border: 1px solid none;
+	}
+}
