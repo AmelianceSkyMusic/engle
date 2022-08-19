@@ -10,10 +10,10 @@ export function Navigation() {
 
 	return (
 		<nav className="navigation row">
-			<div className="navigation__logo col-1">
-				<h3 className="h3">Engle</h3>
+			<div className="navigation__logo col-2">
+				<a href="/" className="logo">{}</a>
 			</div>
-			<nav className="navigation__menu col-11">
+			<nav className="navigation__menu col-10">
 				<Link className="link" to="/">Главная</Link>
 				<Link className="link" to="/textbook">Учебник</Link>
 				<Link className="link" to="/audiocall">«Аудиовызов»</Link>
