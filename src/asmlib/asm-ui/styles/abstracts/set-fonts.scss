@@ -60,7 +60,7 @@
 	// font-family, font-size, font-weight, line-height, letter-spacing
 	@include setTypoElem(h1, $font-family__primary, 88px, $font-weight__black, 120%, 0);
 
-	@include setTypoElem(h2, $font-family__primary, 48px, $font-weight__bold, 120%, 0);
+	@include setTypoElem(h2, $font-family__primary, 64px, $font-weight__black, 120%, 0);
 
 	@include setTypoElem(h3, $font-family__secondary, 36px, $font-weight__bold, 120%, 0);
 

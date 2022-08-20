@@ -1,12 +1,35 @@
 @use "../globals/" as *;
 
+
 .page__login {
 	.main {
-		background-color: red;
 		.container {
 			padding-top: calc(var(--col-gap) / 2);
-			padding-bottom: calc(var(--col-gap) / 2);
-			flex-direction: column;
+			padding-bottom: calc(var(--col-gap) * 2);
+			.login {
+				display: flex;
+				flex-direction: column;
+				padding-top: calc(var(--col-gap) * 2.7);
+				padding-left: calc(var(--col-gap) * 2.2);;
+				&__heading {
+					margin-bottom: calc(var(--col-gap) * 2);
+				}
+				.log-reg__form {
+					margin-bottom: calc(var(--col-gap) * 2.2);
+				}
+				@media(max-width: $screen-lg) {
+					align-items: center;
+					padding-left: 0;
+				}
+			}
+			.mascot-container {
+				padding-top: var(--col-gap);
+				padding-right: calc(var(--col-gap) * 3.1);
+				.mascot {
+					margin-left: auto;
+					@include bgImgSVGStatic("../../assets/svg/img--magic-man.svg", 279px, 540px);
+				}
+			}
 		}
 	}
 }
