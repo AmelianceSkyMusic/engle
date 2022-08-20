@@ -43,7 +43,7 @@
 			top: 0px;
 			left: 0px;
 			z-index: -1;
-			@include bgImgSVGStatic("../../assets/illustrations/img--half-circle.png", 55%, 100%);
+			@include bgImgSVGStatic("../../assets/svg/img--half-circle.svg", 55%, 100%);
 			background-size: cover;
 		}
 	}
