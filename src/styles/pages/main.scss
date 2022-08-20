@@ -42,11 +42,13 @@
 		.half-circle {
 			position: absolute;
 			top: -542px;
-			left: 0px;
+			left: -387px;
 			z-index: -1;
-			@include bgImgSVGStatic("../../assets/svg/img--half-circle.svg", 774px, 1828px);
+			@include bgImgSVGStatic("../../assets/svg/img--half-circle.svg", 100%, 1828px);
+			background-position: center;
 			@media(max-width: $screen-lg) {
 				transform: rotate(90deg);
+				left: 0;
 				top: -702px;
 			}
 		}
