@@ -15,5 +15,12 @@ export interface IWord {
     textExampleTranslate: string
 }
 
+export interface IAuthentication {
+    message:	string,
+    token:	string,
+    refreshToken:	string,
+    userId:	string,
+    name:	string
 
+}
 
