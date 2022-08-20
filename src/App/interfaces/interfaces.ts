@@ -40,3 +40,7 @@ export interface IStatistic {
     optional: {}
 }
 
+export interface ISetting {
+    wordsPerDay: number,
+    optional: {}
+}
