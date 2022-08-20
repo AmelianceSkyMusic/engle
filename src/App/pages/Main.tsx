@@ -7,9 +7,9 @@ export function Main() {
 		<div className="page__container page__main">
 			<Header />
 			<main className="main">
-				<div className="half-circle" />
-				<div className="container row">
-					<div className="description col-6 col-lg-12">
+				<div className="main__half-circle" />
+				<section className="hero container row">
+					<div className="hero__description col-6 col-lg-12">
 						<h1 className="h1">
 							Изучай инглиш легко и сложно
 						</h1>
@@ -19,10 +19,13 @@ export function Main() {
 							но мы подумали, что на практике вы поймете намного больше.
 						</p>
 					</div>
-					<div className="col-6 col-lg-12 main-decoration-container">
-						<div className="main-decoration" />
+					<div className="hero__mascot col-6 col-lg-12">
+						<div className="hero__mascot-image" />
 					</div>
-				</div>
+					<div className="hero__scroll-down col-12">
+						<div className="hero__scroll-down-button" />
+					</div>
+				</section>
 			</main>
 			<Footer />
 		</div>
