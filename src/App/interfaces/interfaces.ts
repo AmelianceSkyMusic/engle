@@ -21,6 +21,10 @@ export interface IAuthentication {
     refreshToken:	string,
     userId:	string,
     name:	string
-
 }
 
+export interface IUser {
+    name:	string,
+    email:	string,
+    password:	string
+}
