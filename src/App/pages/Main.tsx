@@ -23,7 +23,9 @@ export function Main() {
 						<div className="hero__mascot-image" />
 					</div>
 					<div className="hero__scroll-down col-12">
-						<div className="hero__scroll-down-button" />
+						<a href="#next-block" className="hero__scroll-down-button">
+							<div className="hero__scroll-down-button-img" />
+						</a>
 					</div>
 				</section>
 			</main>

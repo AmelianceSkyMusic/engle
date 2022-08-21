@@ -18,11 +18,10 @@
 		&__half-circle {
 			position: absolute;
 			top: -542px;
-			left: -387px;
+			left: -300px;
 			z-index: -1;
 			@include bgImgSVGStatic("../../assets/svg/img--half-circle.svg", 100%, 1828px);
 			background-position: center;
-
 			@media(max-width: $screen-lg) {
 				transform: rotate(90deg);
 				left: 0;
@@ -61,14 +60,24 @@
 		padding-right: calc(var(--col-gap) * 2);
 		&-image {
 			@include bgImgSVGStatic("../../assets/svg/img--thinking-man.svg", 374px, 538px);
+			@media(max-width: $screen-lg) {
+				width: 323px;
+				height: 464px;
+			}
 		}
 	}
 	&__scroll-down {
 		&-button {
-			cursor: pointer;
+			display: block;
+			width: 51px;
+			height: 31px;
 			margin-left: auto;
 			margin-right: auto;
-			@include bgImgSVGStatic("../../assets/svg/img--scroll-down.svg", 30px, 10px);
+			padding: 8px;
+			cursor: pointer;
+			&-img {
+				@include bgImgSVGStatic("../../assets/svg/img--scroll-down.svg", 35px, 15px);
+			}
 		}
 	}
 }
