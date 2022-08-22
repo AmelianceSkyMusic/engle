@@ -20,11 +20,11 @@ export function Main() {
 						</p>
 					</div>
 					<div className="hero__mascot col-6 col-lg-12">
-						<div className="hero__mascot-image" />
+						<div className="hero__mascot-img" />
 					</div>
 					<div className="hero__scroll-down col-12">
 						<a href="#next-block" className="hero__scroll-down-button">
-							<div className="hero__scroll-down-button-img" />
+							<div className="hero__scroll-down-img" />
 						</a>
 					</div>
 				</section>
