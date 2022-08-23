@@ -7,7 +7,7 @@ import { Header } from '../components/layouts/Header';
 export function Main() {
 	return (
 		<div className="page-container page-main">
-			<div className="decoration page-main__decoration" />
+			<div className="decoration decoration_type1" />
 			<Header />
 			<main className="main">
 				<section className="hero container row">
@@ -21,8 +21,8 @@ export function Main() {
 							но мы подумали, что на практике вы поймете намного больше.
 						</p>
 					</div>
-					<div className="hero__mascot col-6 col-lg-12">
-						<div className="hero__mascot-img" />
+					<div className="thinker-mascot col-6 col-lg-12">
+						<div className="thinker-mascot__img" />
 					</div>
 					<div className="hero__scroll-down col-12">
 						<a href="#next-block" className="hero__scroll-down-button">

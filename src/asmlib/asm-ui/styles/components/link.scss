@@ -2,6 +2,15 @@
 
 .link {
 	color: var(--color__link);
+	color: inherit;
+	font: inherit;
+	font-weight: 700;
+	text-decoration: none;
+	&_underlined {
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+	
 	&.inversed {
 		color: var(--color__link-inversed);
 	}

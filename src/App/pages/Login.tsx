@@ -10,8 +10,8 @@ import { InputPassword } from '../components/inputs/InputPassword';
 export function Login() {
 	return (
 		<div className="page-container page-login">
-			<div className="decoration page-login__decoration" />
-			<Header {...{ logoOnly: true }} />
+			<div className="decoration decoration_type2" />
+			<Header />
 			<main className="main">
 				<div className="container row">
 					<div className="login col-6 col-lg-12">
@@ -24,11 +24,11 @@ export function Login() {
 						<p className="p2">
 							Нет аккаунта? Вы можете
 							{' '}
-							<Link to="/registration">зарегистрироваться</Link>
+							<Link className="link link_underlined" to="/registration">зарегистрироваться</Link>
 						</p>
 					</div>
-					<div className="mascot-container col-6 col-lg-12">
-						<div className="mascot-img" />
+					<div className="wizard-mascot col-6 col-lg-12">
+						<div className="wizard-mascot__img" />
 					</div>
 				</div>
 			</main>
