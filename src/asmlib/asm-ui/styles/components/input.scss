@@ -4,8 +4,13 @@ input {
 	width: 384px;
 	padding: 8px 10px;
 	font-size: 18px;
+	background: transparent;
 	&:focus {
 		outline: none !important;
+	}
+	&::placeholder {
+		color: inherit;
+		opacity: 50%;
 	}
 }
 // input[type="text"] {
