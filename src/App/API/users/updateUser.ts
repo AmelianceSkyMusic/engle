@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 import { BASE_URL } from '../Base_url';
+import { IUser } from '../../interfaces/interfaces';
 
-export const updateUser = async (userId: string, mail: string, pass: string, token: string) => {
+export const updateUser = async (userId: string, mail: string, pass: string): Promise<IUser> => {
+	const token = `${sessionStorage.getItem('token')}`;
 	const res = await axios({
 		method: 'put',
 		url: `${BASE_URL}users/${userId}`,
@@ -16,5 +18,5 @@ export const updateUser = async (userId: string, mail: string, pass: string, tok
 			password: `${pass}`,
 		},
 	});
-	return res;
+	return res.data;
 };

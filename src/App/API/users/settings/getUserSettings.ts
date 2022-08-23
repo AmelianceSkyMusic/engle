@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 import { BASE_URL } from '../../Base_url';
+import { ISetting } from '../../../interfaces/interfaces';
 
-export const getUserSettings = async (userId: string) => {
+export const getUserSettings = async (userId: string):Promise<ISetting> => {
 	const token = `${sessionStorage.getItem('token')}`;
 	const res = await axios.get(`${BASE_URL}users/${userId}/settings`, {
 		headers: {
@@ -11,5 +12,5 @@ export const getUserSettings = async (userId: string) => {
 			'Content-Type': 'application/json',
 		},
 	});
-	return res;
+	return res.data;
 };

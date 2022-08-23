@@ -22,7 +22,7 @@ import { getUserStatistics } from './users/statistic/getUserStatistic';
 import { updateUserStatistics } from './users/statistic/updateUserStatistic';
 
 import { getUserAggregateWords } from './users/aggregatedWords/getUserAggregateWords';
-import { getUserAggregateWordsByID } from './users/aggregatedWords/getUserAggregateWordsByID';
+import { getUserAggWordsByID } from './users/aggregatedWords/getUserAggregateWordsByID';
 
 export default {
 	getWords,
@@ -49,5 +49,5 @@ export default {
 	updateUserStatistics,
 
 	getUserAggregateWords,
-	getUserAggregateWordsByID,
+	getUserAggWordsByID,
 };

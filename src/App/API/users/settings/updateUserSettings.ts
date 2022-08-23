@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 import { BASE_URL } from '../../Base_url';
+import { ISetting } from '../../../interfaces/interfaces';
 
-export const updateUserSettings = async (userId: string, limit: number) => {
+export const updateUserSettings = async (userId: string, limit: number):Promise<ISetting> => {
 	const token = `${sessionStorage.getItem('token')}`;
 	const res = await axios({
 		method: 'put',
@@ -17,5 +18,5 @@ export const updateUserSettings = async (userId: string, limit: number) => {
 			optional: {},
 		},
 	});
-	return res;
+	return res.data;
 };

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { BASE_URL } from '../Base_url';
 
-export const deleteUser = async (userId: string, token: string) => {
+export const deleteUser = async (userId: string, token: string):Promise<string> => {
 	const res = await axios({
 		method: 'delete',
 		url: `${BASE_URL}users/${userId}`,
@@ -12,5 +12,5 @@ export const deleteUser = async (userId: string, token: string) => {
 			Authorization: `Bearer ${token}`,
 		},
 	});
-	return res;
+	return res.data;
 };
