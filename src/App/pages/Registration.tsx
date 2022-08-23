@@ -5,7 +5,7 @@ import { Header } from '../components/layouts/Header';
 
 export function Registration() {
 	return (
-		<div className="page__container page__registration">
+		<div className="page-container page-registration">
 			<Header />
 			<main className="main">
 				<div className="container row">

@@ -1,0 +1,7 @@
+@use "../globals/" as *;
+.decoration {
+  position: absolute;
+  z-index: -1;
+  @include bgImgSVGStatic("../../assets/svg/img--half-circle.svg", 100%, 1828px);
+  background-position: center;
+}

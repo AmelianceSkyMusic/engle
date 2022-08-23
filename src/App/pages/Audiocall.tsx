@@ -5,7 +5,7 @@ import { Header } from '../components/layouts/Header';
 
 export function Audiocall() {
 	return (
-		<div className="page__container page__audiocall">
+		<div className="page-container page-audiocall">
 			<Header />
 			<main className="main">
 				<div className="container row">

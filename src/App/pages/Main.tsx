@@ -1,13 +1,15 @@
 import '../../styles/pages/main.scss';
+import '../../styles/entities/decoration.scss';
+
 import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
 
 export function Main() {
 	return (
-		<div className="page__container page__main">
+		<div className="page-container page-main">
+			<div className="decoration page-main__decoration" />
 			<Header />
 			<main className="main">
-				<div className="main__half-circle" />
 				<section className="hero container row">
 					<div className="hero__description col-6 col-lg-12">
 						<h1 className="h1">

@@ -5,7 +5,7 @@ import { Header } from '../components/layouts/Header';
 
 export function Sprint() {
 	return (
-		<div className="page__container page__sprint">
+		<div className="page-container page-sprint">
 			<Header />
 			<main className="main">
 				<div className="container row">
