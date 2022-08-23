@@ -24,7 +24,7 @@ export function Login() {
 						<p className="p2">
 							Нет аккаунта? Вы можете
 							{' '}
-							<Link to="/register">зарегистрироваться</Link>
+							<Link to="/registration">зарегистрироваться</Link>
 						</p>
 					</div>
 					<div className="mascot-container col-6 col-lg-12">
