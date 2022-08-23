@@ -1,10 +1,10 @@
-import { Navigation } from '../Navigation';
+import { Navigation, NavigationProps } from '../Navigation';
 
-export function Header() {
+export function Header({ logoOnly }: NavigationProps) {
 	return (
 		<header className="header">
 			<div className="container">
-				<Navigation />
+				<Navigation {... { logoOnly }} />
 			</div>
 		</header>
 	);

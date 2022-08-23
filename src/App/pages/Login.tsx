@@ -10,7 +10,7 @@ import { InputPassword } from '../components/inputs/InputPassword';
 export function Login() {
 	return (
 		<div className="page__container page__login">
-			<Header />
+			<Header {...{ logoOnly: true }} />
 			<main className="main">
 				<div className="main__decoration" />
 				<div className="container row">
