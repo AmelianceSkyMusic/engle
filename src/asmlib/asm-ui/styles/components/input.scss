@@ -1,3 +1,5 @@
+@use "../_globals/" as *;
+
 input {
 	border: none;
 	border-bottom: 3px solid #000;
@@ -11,6 +13,9 @@ input {
 	&::placeholder {
 		color: inherit;
 		opacity: 50%;
+	}
+	@media(max-width: $screen-xs) {
+		width: 300px;
 	}
 }
 // input[type="text"] {

@@ -28,7 +28,7 @@ export function Login() {
 						</p>
 					</div>
 					<div className="mascot-container col-6 col-lg-12">
-						<div className="mascot" />
+						<div className="mascot-img" />
 					</div>
 				</div>
 			</main>
