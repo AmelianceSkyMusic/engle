@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BASE_URL } from '../../Base_url';
+import { BASE_URL } from '../../consts';
 import { IUserWord } from '../../../interfaces/interfaces';
 
 export const getUserAggWordsByID = async (userId: string, wordId: string):Promise<IUserWord> => {

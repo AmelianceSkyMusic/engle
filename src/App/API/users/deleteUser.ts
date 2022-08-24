@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BASE_URL } from '../Base_url';
+import { BASE_URL } from '../consts';
 
 export const deleteUser = async (userId: string, token: string):Promise<string> => {
 	const res = await axios({

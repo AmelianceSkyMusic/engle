@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BASE_URL } from '../Base_url';
+import { BASE_URL } from '../consts';
 import { IAuthentication as IAuthen } from '../../interfaces/interfaces';
 
 export const getNewUserToken = async (userId: string, refreshToken: string):Promise<IAuthen> => {

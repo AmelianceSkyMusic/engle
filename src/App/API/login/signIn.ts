@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BASE_URL } from '../Base_url';
+import { BASE_URL } from '../consts';
 
 export const signIn = async (mail: string, pass: string) => {
 	const res = await axios.post(`${BASE_URL}signin`, {

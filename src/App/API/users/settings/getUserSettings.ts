@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { BASE_URL } from '../../Base_url';
+import { BASE_URL } from '../../consts';
 import { ISetting } from '../../../interfaces/interfaces';
 
 export const getUserSettings = async (userId: string):Promise<ISetting> => {
