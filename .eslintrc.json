@@ -33,7 +33,7 @@
 		"linebreak-style": [ "error", "unix" ],
 		"quotes": [ "error", "single" ],
 		"semi": [ "error", "always" ],
-		"max-lines-per-function": ["error", 50],
+		"max-lines-per-function": ["error", 100],
 		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
 		"import/prefer-default-export": "off",
 		"react/jsx-filename-extension": [2 , {
