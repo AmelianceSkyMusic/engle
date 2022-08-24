@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-import { BASE_URL } from '../Base_url';
+import { BASE_URL } from '../consts';
 import { IWord } from '../../interfaces/interfaces';
 
-export const getWords = async (groupCount: number, pageCount: number):Promise<IWord[]> => {
-	const res = await axios.get(`${BASE_URL}words?group=${groupCount}&page=${pageCount}`, {
+export const getWords = async (groupNumber: number, pageNumber: number):Promise<IWord[]> => {
+	const res = await axios.get(`${BASE_URL}words?group=${groupNumber}&page=${pageNumber}`, {
 		headers: {
 			Accept: 'application/json',
 		},
