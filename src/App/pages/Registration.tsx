@@ -14,7 +14,7 @@ export function Registration() {
 			<main className="main">
 				<div className="container row">
 					<div className="register col-6 col-lg-12">
-						<h1 className="register__heading h2">
+						<h1 className="register__heading h1">
 							Регистрация
 						</h1>
 						<form action="" className="register__log-reg-form log-reg-form">

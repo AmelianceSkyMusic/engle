@@ -15,7 +15,7 @@ export function Login() {
 			<main className="main">
 				<div className="container row">
 					<div className="login col-6 col-lg-12">
-						<h2 className="login__heading h2">Вход</h2>
+						<h1 className="login__heading h1">Вход</h1>
 						<form action="" className="login__log-reg-form log-reg-form">
 							<InputEmail />
 							<InputPassword />
