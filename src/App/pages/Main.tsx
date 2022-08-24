@@ -1,5 +1,6 @@
 import '../../styles/pages/main.scss';
 import '../../styles/entities/decoration.scss';
+import '../../styles/entities/mascots.scss';
 
 import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
@@ -21,8 +22,8 @@ export function Main() {
 							но мы подумали, что на практике вы поймете намного больше.
 						</p>
 					</div>
-					<div className="thinker-mascot col-6 col-lg-12">
-						<div className="thinker-mascot__img" />
+					<div className="mascot page-main__mascot col-6 col-lg-12">
+						<div className="mascot__img mascot__img_thinker" />
 					</div>
 					<div className="hero__scroll-down col-12">
 						<a href="#next-block" className="hero__scroll-down-button">

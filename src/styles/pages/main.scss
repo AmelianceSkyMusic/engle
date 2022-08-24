@@ -13,6 +13,11 @@
 		margin-bottom: -72px;
 		min-height: 100vh;
 	}
+
+	&__mascot {
+		padding-top: calc(var(--col-gap) * 1.3);
+		padding-right: calc(var(--col-gap) * 2);
+	}
 }
 
 .hero {
@@ -49,20 +54,5 @@
 	}
 	&__scroll-down-img {
 		@include bgImgSVGStatic("../../assets/svg/img--scroll-down.svg", 35px, 15px);
-	}
-}
-
-.thinker-mascot {
-	display: flex;
-	justify-content: end;
-	padding-top: calc(var(--col-gap) * 1.3);
-	padding-right: calc(var(--col-gap) * 2);
-	&__img {
-		@include bgImgSVGStatic("../../assets/svg/img--thinking-man.svg", 374px, 538px);
-
-		@media(max-width: $screen-lg) {
-			width: 323px;
-			height: 464px;
-		}
 	}
 }

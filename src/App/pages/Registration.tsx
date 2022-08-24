@@ -38,8 +38,8 @@ export function Registration() {
 							<Link className="link link_underlined" to="/login">войти</Link>
 						</p>
 					</div>
-					<div className="mailman-mascot col-6 col-lg-12">
-						<div className="mailman-mascot__img" />
+					<div className="mascot page-registration__mascot col-6 col-lg-12">
+						<div className="mascot__img mascot__img_mailman" />
 					</div>
 				</div>
 			</main>

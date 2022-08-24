@@ -7,6 +7,11 @@
 			padding-bottom: calc(var(--col-gap) / 2);
 		}
 	}
+
+	&__mascot {
+		margin-top: calc(var(--col-gap) * 0.5);
+		padding-right: calc(var(--col-gap) * 2);
+	}
 }
 
 .register {
@@ -23,20 +28,4 @@
 		margin-bottom: calc(var(--col-gap) * 1.6);
 	}
 
-}
-
-.mailman-mascot {
-	margin-top: calc(var(--col-gap) * 0.5);
-	padding-right: calc(var(--col-gap) * 2);
-
-	&__img {
-		margin-left: auto;
-		@include bgImgSVGStatic("../../assets/svg/img--postman.svg", 420px, 550px);
-		max-width: 100%;
-		max-height: 100%;
-	}
-	@media(max-width: $screen-lg) {
-		width: 336px;
-		height: 440px;
-	}
 }

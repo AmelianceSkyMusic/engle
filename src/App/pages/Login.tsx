@@ -27,8 +27,8 @@ export function Login() {
 							<Link className="link link_underlined" to="/registration">зарегистрироваться</Link>
 						</p>
 					</div>
-					<div className="wizard-mascot col-6 col-lg-12">
-						<div className="wizard-mascot__img" />
+					<div className="mascot page-login__mascot col-6 col-lg-12">
+						<div className="mascot__img mascot__img_wizard" />
 					</div>
 				</div>
 			</main>
