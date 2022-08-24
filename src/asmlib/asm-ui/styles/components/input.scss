@@ -1,12 +1,21 @@
+@use "../_globals/" as *;
+
 input {
-	border-radius: 8px;
-	background: var(--color-bg-0);
-	padding: 0px 12px;
-	height: 32px;
-	border: 2px solid var(--color--el-1);
-	line-height: 100%;
+	border: none;
+	border-bottom: 3px solid #000;
+	width: 384px;
+	padding: 8px 10px;
+	font-size: 18px;
+	background: transparent;
 	&:focus {
 		outline: none !important;
+	}
+	&::placeholder {
+		color: inherit;
+		opacity: 50%;
+	}
+	@media(max-width: $screen-xs) {
+		width: 300px;
 	}
 }
 // input[type="text"] {

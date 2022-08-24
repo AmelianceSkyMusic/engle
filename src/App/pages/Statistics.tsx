@@ -5,7 +5,7 @@ import { Header } from '../components/layouts/Header';
 
 export function Statistics() {
 	return (
-		<div className="page__container page__statistics">
+		<div className="page-container page-statistics">
 			<Header />
 			<main className="main">
 				<div className="container row">

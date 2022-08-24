@@ -5,7 +5,7 @@ import { Header } from '../components/layouts/Header';
 
 export function Textbook() {
 	return (
-		<div className="page__container page__textbook">
+		<div className="page-container page-textbook">
 			<Header />
 			<main className="main">
 				<div className="container row">
