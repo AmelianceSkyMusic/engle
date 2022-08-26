@@ -8,7 +8,5 @@ export const signIn = async (mail: string, pass: string):Promise<IAuthentication
 		email: `${mail}`,
 		password: `${pass}`,
 	});
-	sessionStorage.setItem('refreshToken', `${res.data.refreshToken}`);
-	sessionStorage.setItem('token', `${res.data.token}`);
 	return res.data;
 };
