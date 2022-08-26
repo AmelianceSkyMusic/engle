@@ -16,7 +16,7 @@ function createNewAxiosToLogin(mail: string, pass: string) {
 			localStorage.setItem('refreshToken', `${response.refreshToken}`);
 			localStorage.setItem('token', `${response.token}`);
 		})
-		.catch((err) => alert(err.response));
+		.catch((err) => alert(err.response.data));
 }
 
 export function Login() {
