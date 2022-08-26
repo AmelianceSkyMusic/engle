@@ -21,7 +21,7 @@ export function WordCard({ word }: WordCardProps) {
 				</div>
 				<div className="word-card__panel-row">
 					<div className="word-card__label" />
-					<button type="button" className="word-card__popup-btn">more</button>
+					<button type="button" className="icon click icon--corner-down-right">{}</button>
 				</div>
 			</div>
 		</li>
