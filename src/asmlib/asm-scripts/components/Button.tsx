@@ -19,11 +19,11 @@ export function Button({
 
 	return (
 		<button type="button" className={buttonClassAndType} onClick={callback} disabled={disabled}>
-			{ (iconClassName.length === 0 && icon && iconPosition === 'left') && <span className="icon left icon--arrow-left" /> }
+			{ (iconClassName.length === 0 && icon && iconPosition === 'left') && <span className={`icon left ${icon}`} /> }
 			{ iconClassName.length > 0
 				? <span className={iconClassName} />
 				: <span className="label">{children}</span>}
-			{ (iconClassName.length === 0 && icon && iconPosition === 'right') && <span className="icon right icon--arrow-right" /> }
+			{ (iconClassName.length === 0 && icon && iconPosition === 'right') && <span className={`icon right ${icon}`} /> }
 		</button>
 	);
 }
