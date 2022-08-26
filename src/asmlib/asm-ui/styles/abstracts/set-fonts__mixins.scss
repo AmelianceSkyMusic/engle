@@ -16,6 +16,8 @@
 	font-weight: $font-weight;
 	letter-spacing: $letter-spacing;
 	font-style: $font-style;
+	margin: 0;
+	padding: 0;
 }
 
 @mixin setTypoElem(

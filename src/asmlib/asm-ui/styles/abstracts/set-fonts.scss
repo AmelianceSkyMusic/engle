@@ -83,7 +83,9 @@
 	// @include setTypoElem(ct, $font-family__secondary, px, $font-weight__bold, 100%, 0);
 
 	@include setTypoElem(button, $font-family__secondary, 18px, $font-weight__bold, 135%, 0);
-	// @include setTypoElem(button-sm, $font-family__secondary, 12px, $font-weight__bold, 100%, 0);
+	@include setTypoElem(button-sm, $font-family__secondary, 14px, $font-weight__bold, 130%, 0);
+	@include setTypoElem(button-icon, $font-family__secondary, 18px, $font-weight__bold, 135%, 0);
+	@include setTypoElem(button-icon-sm, $font-family__secondary, 14px, $font-weight__bold, 130%, 0);
 	// @include setTypoElem(button-lg, $font-family__secondary, 16px, $font-weight__bold, 100%, 0);
 
 	// @include setTypoElem(ov, $font-family__secondary, px, $font-weight__bold, 100%, 0);
@@ -115,7 +117,9 @@ $setTypo-elements: (
 	// p3,
 	// ct,
 	button,
-	// button-sm,
+	button-sm,
+	button-icon,
+	button-icon-sm,
 	// button-lg,
 	// ov,
 	link,
