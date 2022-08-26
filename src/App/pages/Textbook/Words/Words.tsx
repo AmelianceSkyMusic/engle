@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import API from '../../../API';
 import { WordCard } from './WordCard';
-import { IWord } from '../../../interfaces/interfaces';
+import { IWord } from '../../../types/interfaces';
 
 export function Words() {
 	const [words, setWords] = useState<IWord[]>();

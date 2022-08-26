@@ -1,4 +1,4 @@
-import { IWord } from '../../../interfaces/interfaces';
+import { IWord } from '../../../types/interfaces';
 import { BASE_URL } from '../../../API/consts';
 
 interface WordCardProps {
