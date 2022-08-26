@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ThemeButton } from './ThemeButton';
+import { ThemeButton } from '../../asmlib/asm-scripts/components/ThemeButton';
 
 export interface NavigationProps {
 	logoOnly?: boolean;
