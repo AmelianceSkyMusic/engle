@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { BASE_URL } from '../consts';
-import { IUser } from '../../interfaces/interfaces';
+import { IUser } from '../../types/interfaces';
 
 export const updateUser = async (userId: string, mail: string, pass: string): Promise<IUser> => {
 	const token = `${sessionStorage.getItem('token')}`;
