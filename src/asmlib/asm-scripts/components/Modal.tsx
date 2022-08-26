@@ -43,7 +43,6 @@ export function Modal({
 			setOpen(false);
 		});
 	}
-	console.log(mainButton.icon);
 
 	let mainButtonLabel = mainButton.text ?? 'Close';
 	let mainButtonClass: 'button' | 'button-icon' = 'button';
