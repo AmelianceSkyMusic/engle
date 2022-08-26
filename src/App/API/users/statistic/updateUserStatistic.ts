@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { BASE_URL } from '../../consts';
-import { IStatistic } from '../../../interfaces/interfaces';
+import { IStatistic } from '../../../types/interfaces';
 
 export const updateUserStatistics = async (userId: string, limit: number):Promise<IStatistic> => {
 	const token = `${sessionStorage.getItem('token')}`;

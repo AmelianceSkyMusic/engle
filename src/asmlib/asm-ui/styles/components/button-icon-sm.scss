@@ -1,5 +1,8 @@
 .button-icon-sm {
-	width: 20px;
-	height: 20px;
-	line-height: 0;
+	width: 34px;
+	height: 34px;
+	& .icon {
+		height: 18px;
+		width: 18px;
+	}
 }

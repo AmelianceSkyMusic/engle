@@ -1,17 +1,15 @@
 @use "button__variables" as *;
 
-.button,
-.button-sm {
+.button-icon,
+.button-icon-sm {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	align-self: start;
-	// text-align: center;
-	// vertical-align: middle;
-	padding: 0 16px;
+	width: 40px;
 	height: 40px;
 	color: var(--color__button);
-	background-color: var(--background__button);
+	background: var(--background__button);
 	border: none;
 	border-radius: 1000px;
 	cursor: pointer;
@@ -23,55 +21,43 @@
 		height: 24px;
 	}
 
-	& .icon.left,
-	& .icon-sm.left,
-	& .icon.right,
-	& .icon-sm.right {
+	& .icon.center,
+	& .icon-sm.center {
 		background-color: var(--color__button);
-	}
-
-	& .icon.right {
-		margin-left: 4px;
-		margin-right: -2px;
-	}
-
-	& .icon.left {
-		margin-left: -2px;
-		margin-right: 4px;
 	}
 
 	@media (hover: hover) {
 		&:hover {
 			color: var(--color__button_hover);
-			background-color: var(--background__button_hover);
+			background: var(--background__button_hover);
 			transition: color var(--time-1) var(--transition-type-2);
 		}
 	}
 	&:active {
 		color: var(--color__button_active);
-		background-color: var(--background__button_active);
+		background: var(--background__button_active);
 		transition: 0s;
 	}
 
 	&:disabled,
 	&.disabled,
 	&[data-is-disabled="true"] {
-		opacity: 60%;
+		color: var(--color__button_disabled);
+		background: var(--background__button_disabled);
+		opacity: 40%;
 		cursor: not-allowed;
 		pointer-events: none;
 	}
 }
 
-.button.secondary,
-.button-sm.secondary {
+.button-icon.secondary,
+.button-icon-sm.secondary {
 	color: var(--color__button-secondary);
 	background: none;
 	border: 2px solid var(--border__button-secondary);
 
-	& .icon.left,
-	& .icon-sm.left,
-	& .icon.right,
-	& .icon-sm.right {
+	& .icon.center,
+	& .icon-sm.center {
 		background-color: var(--color__button-secondary);
 	}
 
@@ -79,10 +65,9 @@
 		&:hover {
 			color: var(--color__button-secondary_hover);
 			border: 2px solid var(--border__button-secondary_hover);
-			& .icon.left,
-			& .icon-sm.left,
-			& .icon.right,
-			& .icon-sm.right {
+
+			& .icon.center,
+			& .icon-sm.center {
 				background-color: var(--border__button-secondary_hover);
 			}
 		}
@@ -90,10 +75,9 @@
 	&:active {
 		color: var(--color__button-secondary_active);
 		border: 2px solid var(--border__button-secondary_active);
-		& .icon.left,
-		& .icon-sm.left,
-		& .icon.right,
-		& .icon-sm.right {
+
+		& .icon.center,
+		& .icon-sm.center {
 			background-color: var(--border__button-secondary_active);
 		}
 	}
