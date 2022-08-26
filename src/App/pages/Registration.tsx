@@ -8,10 +8,10 @@ import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
 import API from '../API';
 
-function createNewAxiosToCreateNewUser(name:string, mail: string, pass: string) {
-	API.createNewUser(name, mail, pass)
-		.then((response) => API.signIn(response.data.email, response.data.password))
+async function createNewAxiosToCreateNewUser(name:string, mail: string, pass: string) {
+	await API.createNewUser(name, mail, pass)
 		.catch((err) => alert(err.response.data));
+	await API.signIn(mail, pass).catch((err) => alert(err.response.data));
 }
 
 export function Registration() {
