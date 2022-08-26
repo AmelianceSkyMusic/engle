@@ -1,9 +1,16 @@
 @use "../globals/" as *;
 
-$iconsSet: (icon--arrow-right, icon--arrow-left, icon--x-circle, icon--menu);
+$iconsSet: (
+	icon--arrow-right,
+	icon--arrow-left,
+	icon--x-circle,
+	icon--menu,
+	icon--corner-down-right,
+	icon--corner-up-left
+);
 
 @each $icon in $iconsSet {
 	.#{$icon} {
-		@include setIcon($icon + ".svg");
+		@include addIcon($icon + ".svg");
 	}
 } ;
