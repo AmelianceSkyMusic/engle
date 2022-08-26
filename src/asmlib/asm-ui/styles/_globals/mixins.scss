@@ -14,6 +14,11 @@
 	mask-image: url($img);
 }
 
+@mixin setIcon($img) {
+	mask-image: url("../../assets/svg/" + $img);
+	-webkit-mask-image: url("../../assets/svg/" + $img);
+}
+
 @mixin imgLinkSVG($img, $w: auto, $h: auto) {
 	width: $w;
 	height: $h;
