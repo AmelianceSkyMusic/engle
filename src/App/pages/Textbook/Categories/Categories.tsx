@@ -3,7 +3,7 @@ import { Category, Levels, Names } from './Category';
 export function Categories() {
 	return (
 		<div className="categories">
-			<h2 className="categories__heading h2">Категории</h2>
+			<h2 className="page-textbook__heading h2">Категории</h2>
 			<ul className="categories__list row">
 				<div className="categories__column col-3 col-xx-4 col-lg-6 col-md-12">
 					<Category {...{ level: Levels.A1, name: Names.A1 }} />
