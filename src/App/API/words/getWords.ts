@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { BASE_URL } from '../consts';
-import { IWord } from '../../interfaces/interfaces';
+import { IWord } from '../../types/interfaces';
 
 export const getWords = async (groupNumber: number, pageNumber: number):Promise<IWord[]> => {
 	const res = await axios.get(`${BASE_URL}words?group=${groupNumber}&page=${pageNumber}`, {
