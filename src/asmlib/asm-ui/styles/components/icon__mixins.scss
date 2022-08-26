@@ -1,0 +1,30 @@
+// @use "../_global" as *;
+// // >----------------------------------------------------------------<
+// // >                            MIXINS                              <
+// // >----------------------------------------------------------------<
+
+// @mixin maskIconSVG($img, $icon-color, $icon-color_hover, $path: "") {
+// 	// image.svg
+// 	background: $icon-color;
+// 	mask-repeat: no-repeat;
+// 	-webkit-mask-repeat: no-repeat;
+// 	mask-image: url($path-assets + "svg/" + $img);
+// 	-webkit-mask-image: url($path-assets + "svg/" + $img);
+// 	// @media (hover: hover) {
+// 	//     &:hover {
+// 	//         cursor: pointer;
+// 	//         // transition: all var(--icon--animation__duration) var(--icon--animation__time-type);
+// 	//         background: $icon-color_hover;
+// 	//     }
+// 	// }
+// 	// &.static {
+// 	//     @media (hover: hover) {
+// 	//         &:hover {
+// 	//             transition: none;
+// 	//             background: $icon-color;
+// 	//             cursor: default;
+// 	//             appearance: none;
+// 	//         }
+// 	//     }
+// 	// }
+// }

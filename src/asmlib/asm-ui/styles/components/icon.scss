@@ -1,0 +1,25 @@
+@use "../_globals/" as *;
+@use "icon__variables" as *;
+
+.icon,
+.icon-sm {
+	width: 24px;
+	height: 24px;
+	color: var(--icon__color);
+	user-select: none;
+	background-color: var(--icon__color);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	&.link {
+		cursor: pointer;
+		&:disabled,
+		&.disabled,
+		&[data-is-disabled="true"] {
+			opacity: 60%;
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
+}

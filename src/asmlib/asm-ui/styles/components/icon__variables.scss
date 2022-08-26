@@ -1,0 +1,16 @@
+// >----------------------------------------------------------------<
+// >                            VARIBLES                            <
+// >----------------------------------------------------------------<
+:root {
+	--icon__width: 24px;
+	--icon__height: var(--icon__width);
+
+	--icon-sm__width: 18px;
+	--icon-sm__height: var(--icon__width);
+
+	--icon__color: var(--color--f1-1);
+	--icon__color_hover: var(--color--f1-2);
+
+	--icon-inverted__color: var(--color--f2-1);
+	--icon-inverted__color_hover: var(--color--f2-2);
+}
