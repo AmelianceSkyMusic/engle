@@ -14,7 +14,7 @@
 	mask-image: url($img);
 }
 
-@mixin addIcon($img) {
+@mixin useIcon($img) {
 	mask-image: url("../../assets/svg/" + $img);
 	-webkit-mask-image: url("../../assets/svg/" + $img);
 }

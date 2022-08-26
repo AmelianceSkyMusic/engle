@@ -11,6 +11,6 @@ $iconsSet: (
 
 @each $icon in $iconsSet {
 	.#{$icon} {
-		@include addIcon($icon + ".svg");
+		@include useIcon($icon + ".svg");
 	}
 } ;
