@@ -7,11 +7,13 @@ interface IModal {
 			text?: string;
 			callback?: { () : void } | null;
 			icon?: string;
+			iconPosition?: 'left' | 'right';
 		};
 	secondButton?: {
 			text?: string;
 			callback: { () : void } | null;
 			icon?: string;
+			iconPosition?: 'left' | 'right';
 		};
 	children: JSX.Element;
 	heading?: string;
@@ -41,6 +43,7 @@ export function Modal({
 			setOpen(false);
 		});
 	}
+	console.log(mainButton.icon);
 
 	let mainButtonLabel = mainButton.text ?? 'Close';
 	let mainButtonClass: 'button' | 'button-icon' = 'button';
@@ -91,6 +94,7 @@ export function Modal({
 								{(!heading && type === 'warn') && 'ВНИМАНИЕ!'}
 								{(!heading && type === 'info') && 'ІНФОРМАЦИЯ!'}
 								{(!heading && type === 'success') && 'УСПЕХ!'}
+								{heading && heading}
 							</h4>
 						</div>
 					)}
@@ -100,18 +104,21 @@ export function Modal({
 				{isButtons
 				&& (
 					<div className="modal__button">
-						<Button
-							buttonClass={secondButtonClass}
-							icon={secondButton.icon}
-							iconPosition="left"
-							type="secondary"
-							callback={() => secondButtonHandler()}
-						>
-							{socondButtonLabel}
-						</Button>
+						{secondButton.callback && (
+							<Button
+								buttonClass={secondButtonClass}
+								icon={secondButton.icon}
+								iconPosition={secondButton.iconPosition === 'right' ? 'right' : 'left'}
+								type="secondary"
+								callback={() => secondButtonHandler()}
+							>
+								{socondButtonLabel}
+							</Button>
+						)}
 						<Button
 							buttonClass={mainButtonClass}
 							icon={mainButton.icon}
+							iconPosition={secondButton.iconPosition === 'right' ? 'right' : 'left'}
 							callback={() => mainButtonHandler()}
 						>
 							{mainButtonLabel}
