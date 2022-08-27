@@ -8,7 +8,8 @@ $iconsSet: (
 	icon--corner-down-right,
 	icon--corner-up-left,
 	icon--sun,
-	icon--moon
+	icon--moon,
+	icon--sound,
 );
 
 @each $icon in $iconsSet {

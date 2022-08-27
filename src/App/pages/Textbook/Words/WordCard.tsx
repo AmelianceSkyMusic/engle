@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IWord } from '../../../types/interfaces';
 import { BASE_URL } from '../../../API/consts';
 import { Modal } from '../../../../asmlib/asm-ui/components/Modal';
+import { Button } from '../../../../asmlib/asm-ui/components/Button';
 
 interface WordCardProps {
   word: IWord;
@@ -53,7 +54,10 @@ export function WordCard({ word }: WordCardProps) {
 									<div className="word-modal__main-info">
 										<h3 className="word-modal__word h3">{word.word}</h3>
 										<p className="word-modal__translation p1">{word.wordTranslate}</p>
-										<p className="word-modal__transcription p1">{word.transcription}</p>
+										<div className="word-modal__pronounce">
+											<p className="word-modal__transcription p1">{word.transcription}</p>
+											<button type="button" className="word-modal__sound icon click icon--sound">{}</button>
+										</div>
 									</div>
 									<div className="word-modal__explanations">
 										<h4 className="h4">Значение</h4>
