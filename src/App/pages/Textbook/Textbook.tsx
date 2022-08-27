@@ -8,6 +8,8 @@ import { Words } from './Words';
 export function Textbook() {
 	return (
 		<div className="page-container page-textbook">
+			<div className="decoration decoration_type3" />
+			<div className="decoration decoration_type4" />
 			<Header />
 			<main className="main">
 				<div className="container row">
