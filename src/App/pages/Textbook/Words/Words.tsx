@@ -28,7 +28,7 @@ export function Words() {
 					buttonClass="button-icon"
 					icon="icon--arrow-left"
 				>
-					placeholder
+					prev
 				</Button>
 				<p className="words__page-counter p1">10 / 30</p>
 				<Button
@@ -37,7 +37,7 @@ export function Words() {
 					buttonClass="button-icon"
 					icon="icon--arrow-right"
 				>
-					placeholder
+					next
 				</Button>
 			</div>
 		</div>
