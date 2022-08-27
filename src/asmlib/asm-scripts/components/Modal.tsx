@@ -91,7 +91,7 @@ export function Modal({
 								{(!heading && type === 'alert') && 'УВЕДОМНЕЛИЕ!'}
 								{(!heading && type === 'error') && 'ОШИБКА!'}
 								{(!heading && type === 'warn') && 'ВНИМАНИЕ!'}
-								{(!heading && type === 'info') && 'ІНФОРМАЦИЯ!'}
+								{(!heading && type === 'info') && 'ИНФОРМАЦИЯ!'}
 								{(!heading && type === 'success') && 'УСПЕХ!'}
 								{heading && heading}
 							</h4>
