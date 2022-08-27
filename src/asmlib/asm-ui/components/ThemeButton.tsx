@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { addChangeThemeListener } from '../../asm-ui/scripts';
+import { addChangeThemeListener } from '../scripts';
 
 export function ThemeButton() {
 	const [theme, setTheme] = useState('dark');
