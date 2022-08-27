@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import API from '../../../API';
 import { WordCard } from './WordCard';
 import { IWord } from '../../../types/interfaces';
+import { Button } from '../../../../asmlib/asm-ui/components/Button';
 
 export function Words() {
 	const [words, setWords] = useState<IWord[]>();
@@ -20,6 +21,25 @@ export function Words() {
 			<ul className="words__list">
 				{words?.map((word) => <WordCard word={word} key={word.id} />)}
 			</ul>
+			<div className="words__pagination">
+				<Button
+					callback={() => console.log('prev page')}
+					type="secondary"
+					buttonClass="button-icon"
+					icon="icon--arrow-left"
+				>
+					placeholder
+				</Button>
+				<p className="words__page-counter p1">10 / 30</p>
+				<Button
+					callback={() => console.log('next page')}
+					type="secondary"
+					buttonClass="button-icon"
+					icon="icon--arrow-right"
+				>
+					placeholder
+				</Button>
+			</div>
 		</div>
 	);
 }

@@ -88,5 +88,13 @@
 		justify-content: center;
 		flex-wrap: wrap;
 		gap: var(--col-gap);
+		margin-bottom: var(--col-gap);
+	}
+
+	&__pagination {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		column-gap: 18px;
 	}
 }
