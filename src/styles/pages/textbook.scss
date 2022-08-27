@@ -89,36 +89,3 @@
 		gap: var(--col-gap);
 	}
 }
-
-.word-card {
-	width: 217px;
-	padding: 16px;
-	box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1);
-	border-radius: 32px;
-
-	&__img {
-		height: 116px;
-		min-width: 100%;
-		margin-bottom: 19px;
-		border-radius: 16px;
-	}
-
-	&__panel {
-		display: flex;
-		flex-direction: column;
-		row-gap: 16px;
-		&-row {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-	}
-
-	&__label {
-		visibility: hidden;
-		width: 24px;
-		height: 24px;
-		background-color: red;
-		border-radius: 100%;
-	}
-}
