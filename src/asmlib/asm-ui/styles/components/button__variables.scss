@@ -8,4 +8,14 @@
 	--background__button_hover: var(--color--el-2);
 	--background__button_active: var(--color--el-0);
 	--background__button_disabled: var(--color--el-1);
+
+	--color__button-secondary: var(--color--f1-1);
+	--color__button-secondary_hover: var(--color--f1-2);
+	--color__button-secondary_active: var(--color--f1-0);
+	--color__button-secondary_disabled: var(--color--f1-1);
+
+	--border__button-secondary: var(--color--f1-1);
+	--border__button-secondary_hover: var(--color--f1-2);
+	--border__button-secondary_active: var(--color--f1-0);
+	--border__button-secondary_disabled: var(--color--f1-1);
 }

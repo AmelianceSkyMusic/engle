@@ -1,6 +1,6 @@
 html[data-theme="dark"] {
-	--color--0: rgba(255, 255, 255, 1);
-	--color--1: rgba(0, 0, 0, 1);
+	--color--0: rgba(0, 0, 0, 1);
+	--color--1: rgba(255, 255, 255, 1);
 
 	--color--a1-0: rgba(0, 0, 0, 1);
 	--color--a1-1: rgba(0, 0, 0, 1);
@@ -23,18 +23,18 @@ html[data-theme="dark"] {
 	--color--a5-2: rgba(255, 153, 153, 1);
 
 	--color--bg-0: rgba(102, 204, 255, 1);
-	--color--bg-1: rgba(0, 0, 0, 1);
-	--color--bg-2: rgba(255, 255, 255, 1);
+	--color--bg-1: rgb(15, 88, 124);
+	--color--bg-2: rgba(0, 0, 0, 1);
 
 	--color--el-0: rgba(255, 255, 255, 1);
 	--color--el-1: rgba(255, 255, 255, 1);
 	--color--el-2: rgba(240, 240, 240, 1);
 
-	--color--f1-0: rgba(0, 0, 0, 1);
-	--color--f1-1: rgba(0, 0, 0, 1);
-	--color--f1-2: rgba(25, 25, 25, 1);
+	--color--f1-0: rgba(255, 255, 255, 1);
+	--color--f1-1: rgba(255, 255, 255, 1);
+	--color--f1-2: rgba(255, 255, 255, 1);
 
-	--color--f2-0: rgba(255, 255, 255, 1);
-	--color--f2-1: rgba(255, 255, 255, 1);
-	--color--f2-2: rgba(255, 255, 255, 1);
+	--color--f2-0: rgba(0, 0, 0, 1);
+	--color--f2-1: rgba(0, 0, 0, 1);
+	--color--f2-2: rgba(25, 25, 25, 1);
 }

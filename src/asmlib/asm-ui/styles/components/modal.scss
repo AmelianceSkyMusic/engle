@@ -1,0 +1,154 @@
+@use "../_globals/" as *;
+@use "modal__variables" as *;
+
+.modal {
+	position: fixed;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(80%);
+	min-width: 10vw;
+	min-height: 10vh;
+	max-width: 80vw;
+	max-height: 80vh;
+
+	&.large {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		transform: scale(80%);
+		animation-name: hide-modal;
+	}
+
+	&.medium {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		transform: scale(80%);
+		animation-name: hide-modal;
+		max-width: 50vw;
+		max-height: 50vh;
+	}
+
+	z-index: 101000;
+
+	display: flex;
+	height: auto;
+	width: auto;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	gap: var(--col-gap);
+	opacity: 100%;
+	background-color: var(--color--bg-1);
+
+	border-radius: var(--col-gap);
+	padding: var(--col-gap);
+	@extend %box-shadow--default;
+
+	.modal__heading {
+		width: 100%;
+		display: flex;
+		padding: calc(var(--col-gap) / 4) calc(var(--col-gap));
+		justify-content: center;
+		align-items: center;
+		border-radius: calc(var(--col-gap) - (var(--col-gap) / 2));
+		&.alert {
+			background-color: var(--color--a1-1);
+			.heading {
+				color: var(--color--f2-1);
+			}
+		}
+		&.error {
+			background-color: var(--color--a5-0);
+			.heading {
+				color: var(--color--f2-1);
+			}
+		}
+		&.warn {
+			background-color: var(--color--a4-0);
+			.heading {
+				color: var(--color--f2-1);
+			}
+		}
+		&.info {
+			background-color: var(--color--a2-0);
+		}
+		&.success {
+			background-color: var(--color--a3-0);
+		}
+	}
+	.modal__content {
+		overflow-x: hidden;
+	}
+
+	.modal__button {
+		display: flex;
+		gap: var(--col-gap);
+		justify-content: center;
+		align-items: center;
+	}
+	animation-name: hide-modal-large;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+	transition: transform var(--modal--animation__duration) var(--modal--animation__time-type),
+		opacity var(--modal--animation__duration) var(--modal--animation__delay);
+
+	&.show {
+		transform: translate(-50%, -50%) scale(100%);
+		animation-name: show-modal-large;
+		animation-duration: 0.3s;
+		animation-fill-mode: forwards;
+		&.large,
+		&.medium {
+			animation-name: show-modal;
+			transform: scale(100%);
+		}
+	}
+}
+
+@keyframes show-modal {
+	from {
+		opacity: 0;
+		transform: scale(80%);
+	}
+	to {
+		opacity: 100%;
+		transform: scale(100%);
+	}
+}
+@keyframes hide-modal {
+	from {
+		opacity: 100%;
+		transform: scale(100%);
+	}
+	to {
+		opacity: 0;
+		transform: scale(80%);
+	}
+}
+
+@keyframes show-modal-large {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(80%);
+	}
+	to {
+		opacity: 100%;
+		transform: translate(-50%, -50%) scale(100%);
+	}
+}
+@keyframes hide-modal-large {
+	from {
+		opacity: 100%;
+		transform: translate(-50%, -50%) scale(100%);
+	}
+	to {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(80%);
+	}
+}

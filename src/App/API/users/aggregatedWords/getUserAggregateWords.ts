@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { BASE_URL } from '../../consts';
-import { IWord } from '../../../interfaces/interfaces';
+import { IWord } from '../../../types/interfaces';
 
 export const getUserAggregateWords = async (userId: string):Promise<IWord> => {
 	const token = `${sessionStorage.getItem('token')}`;
