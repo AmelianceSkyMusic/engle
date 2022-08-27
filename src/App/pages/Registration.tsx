@@ -14,11 +14,53 @@ async function createNewAxiosToCreateNewUser(name:string, mail: string, pass: st
 	await API.signIn(mail, pass).catch((err) => alert(err.response.data));
 }
 
+const useInput = (initialValue: string) => {
+	const [value, setValue] = useState(initialValue);
+	const [isDirty, setDirty] = useState(false);
+
+	const onChange = (e: React.SyntheticEvent<EventTarget>) => {
+		setValue((e.target as HTMLInputElement).value);
+	};
+
+	const onBlur = () => {
+		setDirty(true);
+	};
+
+	return {
+		value,
+		onChange,
+		onBlur,
+	};
+};
+
 export function Registration() {
 	const [state, setState] = useState({
 		isName: '', isEMail: '', isPassword: '', isPasswordConfirm: '',
 	});
-
+	const [emailDirty, setEmailDirty] = useState(false);
+	const [passwordDirty, setPasswordDirty] = useState(false);
+	const [emailError, setEmailError] = useState('Емейл не может бить пустим');
+	const [passwordError, setPasswordError] = useState('Пароль не может бить пустим');
+	const onBlurHandler = (e: React.SyntheticEvent<EventTarget>) => {
+		const input = (e.target as HTMLInputElement).name;
+		switch (input) {
+		case 'email':
+			// setState({ ...state, isEMail: value });
+			break;
+		case 'name':
+			// setState({ ...state, isName: value });
+			break;
+		case 'password':
+			// setState({ ...state, isName: value });
+			break;
+		case 'password-confirm':
+			// setState({ ...state, isName: value });
+			break;
+		default:
+			console.log('unknown option');
+			break;
+		}
+	};
 	const handleChangeForm = (e: React.SyntheticEvent<EventTarget>) => {
 		const input = (e.target as HTMLInputElement).name;
 		const { value } = e.target as HTMLInputElement;
@@ -40,7 +82,6 @@ export function Registration() {
 			break;
 		}
 	};
-
 	const onSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
 		console.log(state);
@@ -60,7 +101,7 @@ export function Registration() {
 						<h1 className="register__heading h1">
 							Регистрация
 						</h1>
-						<form action="" className="register__log-reg-form log-reg-form" onSubmit={onSubmit} onChange={handleChangeForm}>
+						<form action="" className="register__log-reg-form log-reg-form" onSubmit={onSubmit} onChange={handleChangeForm} noValidate>
 							<label htmlFor="name">
 								<p className="p2">Имя*:</p>
 								<input required name="name" type="text" placeholder="Введите имя" autoComplete="off" />
