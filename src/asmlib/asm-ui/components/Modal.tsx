@@ -87,7 +87,7 @@ export function Modal({
 					&& (
 						<div className={headingTypeClass}>
 							<h3 className="h3 heading">
-								{(!heading && type === 'alert') && 'УВЕДОМНЕЛИЕ!'}
+								{(!heading && type === 'alert') && 'УВЕДОМЛЕНИЕ!'}
 								{(!heading && type === 'error') && 'ОШИБКА!'}
 								{(!heading && type === 'warn') && 'ВНИМАНИЕ!'}
 								{(!heading && type === 'info') && 'ИНФОРМАЦИЯ!'}
