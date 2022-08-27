@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { addChangeThemeListener } from '../../asmlib/asm-ui/scripts';
+import { addChangeThemeListener } from '../scripts';
 
 export function ThemeButton() {
 	const [theme, setTheme] = useState('dark');
@@ -7,13 +7,14 @@ export function ThemeButton() {
 		const themeButton$ = document.querySelector('.theme-button') as HTMLButtonElement;
 		addChangeThemeListener(themeButton$, 'light');
 	});
+
 	return (
 		<button
 			type="button"
-			className="button button-icon theme-button"
+			className={theme === 'dark' ? 'icon click icon--sun theme-button' : 'icon click icon--moon theme-button'}
 			onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 		>
-			{ theme === 'light' ? '☼' : '☽' }
+			{}
 		</button>
 	);
 }
