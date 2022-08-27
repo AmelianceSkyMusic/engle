@@ -9,6 +9,8 @@
 	transform: translate(-50%, -50%) scale(80%);
 	min-width: 10vw;
 	min-height: 10vh;
+	max-width: 80vw;
+	max-height: 80vh;
 
 	&.large {
 		top: 0;
@@ -20,13 +22,23 @@
 		animation-name: hide-modal;
 	}
 
+	&.medium {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		transform: scale(80%);
+		animation-name: hide-modal;
+		max-width: 50vw;
+		max-height: 50vh;
+	}
+
 	z-index: 101000;
 
 	display: flex;
 	height: auto;
 	width: auto;
-	max-width: 80vw;
-	max-height: 80vh;
 	justify-content: space-between;
 	align-items: center;
 	flex-direction: column;
@@ -41,27 +53,33 @@
 	.modal__heading {
 		width: 100%;
 		display: flex;
-		padding: calc(var(--col-gap) / 4);
+		padding: calc(var(--col-gap) / 4) calc(var(--col-gap));
 		justify-content: center;
 		align-items: center;
 		border-radius: calc(var(--col-gap) - (var(--col-gap) / 2));
 		&.alert {
 			background-color: var(--color--a1-1);
-			.h4 {
+			.heading {
 				color: var(--color--f2-1);
 			}
 		}
 		&.error {
-			background-color: var(--color--a5-1);
+			background-color: var(--color--a5-0);
+			.heading {
+				color: var(--color--f2-1);
+			}
 		}
 		&.warn {
-			background-color: var(--color--a4-1);
+			background-color: var(--color--a4-0);
+			.heading {
+				color: var(--color--f2-1);
+			}
 		}
 		&.info {
-			background-color: var(--color--a2-1);
+			background-color: var(--color--a2-0);
 		}
 		&.success {
-			background-color: var(--color--a3-1);
+			background-color: var(--color--a3-0);
 		}
 	}
 	.modal__content {
@@ -85,7 +103,8 @@
 		animation-name: show-modal-large;
 		animation-duration: 0.3s;
 		animation-fill-mode: forwards;
-		&.large {
+		&.large,
+		&.medium {
 			animation-name: show-modal;
 			transform: scale(100%);
 		}
