@@ -1,0 +1,14 @@
+// >----------------------------------------------------------------<
+// >                            VARIBLES                            <
+// >----------------------------------------------------------------<
+
+:root {
+	--modal--padding__outer: 32px;
+	--modal--padding__inner: 32px;
+	--modal--border-radius: 16px;
+	--modal--color__bg: var(--color--bg-0);
+	--modal--animation__duration: 0.1s;
+	--modal--animation__time-type: ease-in-out;
+	--modal--animation__delay: 0;
+	--modal--z-index: 10100;
+}

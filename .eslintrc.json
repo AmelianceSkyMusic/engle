@@ -33,7 +33,6 @@
 		"linebreak-style": [ "error", "unix" ],
 		"quotes": [ "error", "single" ],
 		"semi": [ "error", "always" ],
-		"max-lines-per-function": ["error", 100],
 		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
 		"import/prefer-default-export": "off",
 		"react/jsx-filename-extension": [2 , {
@@ -51,7 +50,8 @@
 		],
 		"@typescript-eslint/member-delimiter-style": "error",
 		"no-shadow": "off",
-  	"@typescript-eslint/no-shadow": ["error"]
+  	"@typescript-eslint/no-shadow": ["error"],
+		"react/require-default-props": ["off"]
 	},
 	"settings": {
 		"import/resolver": {
