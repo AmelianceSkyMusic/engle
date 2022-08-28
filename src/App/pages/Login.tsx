@@ -47,6 +47,13 @@ export function Login() {
 			setSuccessMessage('Вы успешно авторизовались');
 			localStorage.setItem('refreshToken', `${loginUser.refreshToken}`);
 			localStorage.setItem('token', `${loginUser.token}`);
+			const user = {
+				userId: `${loginUser.userId}`,
+				userName: `${loginUser.name}`,
+				userEmail: `${email}`,
+				isLogged: true,
+			};
+			localStorage.setItem('user', JSON.stringify(user));
 			// 	// зміна в редаксі поля логіну
 			// 	// запис отриманих токенів
 		}
