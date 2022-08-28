@@ -48,10 +48,8 @@
 				"tsx": "never"
 			}
 		],
-		"@typescript-eslint/member-delimiter-style": "error",
-		"no-shadow": "off",
-  	"@typescript-eslint/no-shadow": ["error"],
-		"react/require-default-props": ["off"],"no-restricted-syntax": [
+		"react/require-default-props": ["off"],
+		"no-restricted-syntax": [
 			"error",
 			{
 					"selector": "FunctionExpression",
@@ -61,7 +59,23 @@
 					"selector": "CallExpression[callee.name='setTimeout'][arguments.length!=2]",
 					"message": "setTimeout must always be invoked with two arguments."
 			}
-	]
+	],
+	  // typescript rules
+	  "@typescript-eslint/member-delimiter-style": "error",
+	  "@typescript-eslint/type-annotation-spacing": "warn",
+	  "space-infix-ops": "off",
+	  "@typescript-eslint/space-infix-ops": "warn",
+	  "no-shadow": "off",
+	  "@typescript-eslint/no-shadow": ["error"],
+	  "space-before-blocks": "off",
+		 "@typescript-eslint/space-before-blocks": "warn",
+	  "object-curly-spacing": "off",
+		 "@typescript-eslint/object-curly-spacing": ["warn", "always"],
+		 "@typescript-eslint/naming-convention": [ "warn",
+		 { "selector": "interface", "format": ["PascalCase"], "custom": { "regex": "^I[A-Z]", "match": true } },
+		 { "selector": "enum", "format": ["PascalCase"], "custom": { "regex": "^E[A-Z]", "match": true } },
+		 { "selector": "typeLike", "format": ["PascalCase"], "custom": { "regex": "^T[A-Z]", "match": true } }
+	  ]
 	},
 	
 	"settings": {
