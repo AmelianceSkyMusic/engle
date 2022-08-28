@@ -21,7 +21,7 @@ export function Registration() {
 	const [ErrorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
 
-	async function createNewAxiosToCreateNewUser(nameVal:string, mailVal: string, passVal: string) {
+	async function createNewAxiosToCreateNewUser(nameVal: string, mailVal: string, passVal: string) {
 		const createUser = await API.createNewUser(nameVal, mailVal, passVal)
 			.catch((err) => {
 				setError(true);
@@ -97,25 +97,25 @@ export function Registration() {
 							<label htmlFor="name">
 								<p className="p2">Имя*:</p>
 								<input value={name.value} onChange={(e) => name.onChange(e)} onBlur={() => name.onBlur()} name="name" type="text" placeholder="Введите имя" autoComplete="off" />
-								{(name.isDirty && name.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите имя, поле не может бить пустим</p>}
+								{(name.isDirty && name.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите имя, поле не может бить пустым</p>}
 							</label>
 							<label htmlFor="email">
 								<p className="p2">E-mail*:</p>
 								<input value={mail.value} onChange={(e) => mail.onChange(e)} onBlur={() => mail.onBlur()} name="email" type="email" placeholder="Введите электронную почту" />
-								{(mail.isDirty && mail.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите почту, поле не может бить пустим</p>}
+								{(mail.isDirty && mail.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите почту, поле не может бить пустым</p>}
 								{(mail.isDirty && mail.emailError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Некорректная почта, проверьте свои данные</p>}
 							</label>
 							<label htmlFor="password">
 								<p className="p2">Пароль*:</p>
 								<input onChange={(e) => password.onChange(e)} onBlur={() => password.onBlur()} value={password.value} name="password" type="password" placeholder="Введите пароль" />
-								{(password.isDirty && password.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите пароль, поле не может бить пустим</p>}
-								{(password.isDirty && password.minLengthError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Не валидная длина пароля</p>}
+								{(password.isDirty && password.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите пароль, поле не может бить пустым</p>}
+								{(password.isDirty && password.minLengthError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Пароль слишком короткий</p>}
 							</label>
 							<label htmlFor="password-confirm">
 								<p className="p2">Подтвердите пароль*:</p>
 								<input onChange={(e) => passwordConfirm.onChange(e)} onBlur={() => passwordConfirm.onBlur()} value={passwordConfirm.value} name="password-confirm" type="password" placeholder="Введите пароль ещё раз" />
-								{(passwordConfirm.isDirty && passwordConfirm.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите пароль, поле не может бить пустим</p>}
-								{(passwordConfirm.isDirty && passwordConfirm.minLengthError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Не валидная длина пароля</p>}
+								{(passwordConfirm.isDirty && passwordConfirm.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите пароль, поле не может бить пустым</p>}
+								{(passwordConfirm.isDirty && passwordConfirm.minLengthError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Пароль слишком короткий</p>}
 								{(passwordConfirm.isDirty && passwordConfirm.passwordMatch) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Пароли не совпадают</p>}
 							</label>
 							<button disabled={!mail.inputValid || !password.inputValid || !name.inputValid || !passwordConfirm.inputValid} type="submit" className="button">

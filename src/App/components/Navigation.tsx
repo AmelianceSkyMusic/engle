@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { ThemeButton } from '../../asmlib/asm-ui/components/ThemeButton';
 
-export interface NavigationProps {
+export interface INavigationProps {
 	logoOnly?: boolean;
 }
 
-export function Navigation({ logoOnly }: NavigationProps) {
+export function Navigation({ logoOnly }: INavigationProps) {
 	const navigate = useNavigate();
 	function handleClick(path: string) {
 		navigate(path);

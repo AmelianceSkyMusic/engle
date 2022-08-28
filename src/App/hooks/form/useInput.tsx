@@ -3,8 +3,8 @@ import { useValidation } from './useValidation';
 
 const useInput = (
 	initialValue: string,
-	validations:{[key:string]: string|number|boolean},
-	pass?:string,
+	validations: { [key: string]: string | number | boolean },
+	pass?: string,
 ) => {
 	const [value, setValue] = useState(initialValue);
 	const [isDirty, setDirty] = useState(false);

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useValidation = (
 	value: string,
-	validations:{[key:string]: string|number|boolean},
+	validations: { [key: string]: string | number | boolean },
 	pass?: string,
 ) => {
 	const [isEmpty, setEmpty] = useState(true);
@@ -15,20 +15,30 @@ export const useValidation = (
 		function validat() {
 			for (const validation in validations) {
 				if (validation === 'minLength') {
-					// eslint-disable-next-line no-unused-expressions
-					value.length < ((validations[validation]) as number) ? setMinLengthError(true)
-						: setMinLengthError(false);
+					if (value.length < (validations[validation])) {
+						setMinLengthError(true);
+					} else {
+						setMinLengthError(false);
+					}
 				} else if (validation === 'isEmpty') {
-					// eslint-disable-next-line no-unused-expressions
-					value ? setEmpty(false) : setEmpty(true);
+					if (value) {
+						setEmpty(false);
+					} else {
+						setEmpty(true);
+					}
 				} else if (validation === 'isEmail') {
-					// eslint-disable-next-line no-useless-escape
 					const re = /\S+@\S+\.\S+/;
-					// eslint-disable-next-line no-unused-expressions
-					re.test(String(value).toLowerCase()) ? setEmailError(false) : setEmailError(true);
+					if (re.test(String(value).toLowerCase())) {
+						setEmailError(false);
+					} else {
+						setEmailError(true);
+					}
 				}	else if (validation === 'isPasswordMatch') {
-					// eslint-disable-next-line no-unused-expressions
-					Object.is(value, pass) ? setPasswordMatch(false) : setPasswordMatch(true);
+					if (Object.is(value, pass)) {
+						setPasswordMatch(false);
+					} else {
+						setPasswordMatch(true);
+					}
 				}
 			}
 		}
