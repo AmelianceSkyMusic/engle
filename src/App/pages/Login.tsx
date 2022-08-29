@@ -54,8 +54,7 @@ export function Login() {
 				isLogged: true,
 			};
 			localStorage.setItem('user', JSON.stringify(user));
-			// 	// зміна в редаксі поля логіну
-			// 	// запис отриманих токенів
+			// 	// замінити запис юзера на зміну в редаксі полів
 		}
 	}
 
@@ -74,7 +73,7 @@ export function Login() {
 						{error && (
 							<Modal setOpen={openModalError} type="error" heading="Error">
 								<>
-									<h4 className="h4">Ошибка при попытке регистрации</h4>
+									<h4 className="h4">Ошибка при попытке авторизации</h4>
 									<p className="p1">{ErrorMessage}</p>
 								</>
 							</Modal>
@@ -95,7 +94,7 @@ export function Login() {
 								<p className="p2">Пароль*:</p>
 								<input onChange={(e) => password.onChange(e)} onBlur={() => password.onBlur()} value={password.value} name="password" type="password" placeholder="Введите пароль" />
 								{(password.isDirty && password.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите пароль, поле не может бить пустым</p>}
-								{(password.isDirty && password.minLengthError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Не валидная длина пароля</p>}
+								{(password.isDirty && password.minLengthError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Пароль слишком короткий</p>}
 							</label>
 							<button disabled={!mail.inputValid || !password.inputValid} type="submit" className="button">Войти</button>
 						</form>
