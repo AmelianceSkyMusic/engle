@@ -5,13 +5,13 @@ interface IModal {
 	type?: 'alert' | 'info' | 'success' | 'error' | 'warn';
 	mainButton?: {
 			text?: string;
-			callback?: { () : void } | null;
+			callback?: { (): void } | null;
 			icon?: string;
 			iconPosition?: 'left' | 'right';
 		};
 	secondButton?: {
 			text?: string;
-			callback: { () : void } | null;
+			callback: { (): void } | null;
 			icon?: string;
 			iconPosition?: 'left' | 'right';
 		};
