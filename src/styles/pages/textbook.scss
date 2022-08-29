@@ -17,7 +17,6 @@
 }
 
 .categories {
-	margin-bottom: calc(var(--col-gap) * 2);
 	&__list {
 		gap: var(--col-gap);
 	}
@@ -97,4 +96,40 @@
 		align-items: center;
 		column-gap: 18px;
 	}
+}
+
+.games {
+	&__list {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: var(--col-gap);
+	}
+}
+
+.game {
+	max-width: 592px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: calc(var(--col-gap) / 2);
+	background-color: var(--color--bg-1);
+	padding: 16px;
+	border-radius: 32px;
+	box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1);
+	&__image {
+		max-width: 280px;
+		max-height: 280px;
+		border-radius: 16px;
+	}
+	&__info {
+		display: flex;
+		flex-direction: column;
+		row-gap: calc(var(--col-gap) / 2);
+	}
+}
+
+.categories,
+.words,
+.games {
+	margin-bottom: calc(var(--col-gap) * 2);
 }
