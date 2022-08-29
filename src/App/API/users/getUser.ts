@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../consts';
 import { IUser } from '../../types/interfaces';
 
-export const getUser = async (userId: string):Promise<IUser> => {
+export const getUser = async (userId: string): Promise<IUser> => {
 	const token = `${sessionStorage.getItem('token')}`;
 	const res = await axios.get(`${BASE_URL}users/${userId}`, {
 		headers: {
