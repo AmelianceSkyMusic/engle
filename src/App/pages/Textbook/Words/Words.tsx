@@ -1,21 +1,26 @@
 import { useEffect } from 'react';
 import { WordCard } from './WordCard';
 import { Button } from '../../../../asmlib/asm-ui/components/Button';
+import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
+
 import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
 import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
-import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
+import { getNextPageAction } from '../../../store/reducers/words/actions/getNextPageAction';
+import { getPrevPageAction } from '../../../store/reducers/words/actions/getPrevPageAction';
 
 export function Words() {
 	const {
-		isLoading, userPageWord, groupNumber, pageNumber,
+		isLoading,
+		userPageWord,
+		groupNumber,
+		pageNumber,
+		pagesPerGroup,
 	} = useTypedSelector((state) => state.words);
 	const dispatch = useTypedDispatch();
 
 	useEffect(() => {
 		dispatch(getWordsAction(groupNumber, pageNumber));
-		console.log(groupNumber);
-		console.log(pageNumber);
 	}, [dispatch, groupNumber, pageNumber]);
 	return (
 		<div className="words">
@@ -27,16 +32,20 @@ export function Words() {
 			</ul>
 			<div className="words__pagination">
 				<Button
-					callback={() => console.log('prev page')}
+					callback={() => dispatch(getPrevPageAction(pageNumber))}
 					type="secondary"
 					buttonClass="button-icon"
 					icon="icon--arrow-left"
 				>
 					prev
 				</Button>
-				<p className="words__page-counter p1">10 / 30</p>
+				<p className="words__page-counter p1">
+					{pageNumber + 1}
+					{' / '}
+					{pagesPerGroup}
+				</p>
 				<Button
-					callback={() => console.log('next page')}
+					callback={() => dispatch(getNextPageAction(pageNumber, pagesPerGroup - 1))}
 					type="secondary"
 					buttonClass="button-icon"
 					icon="icon--arrow-right"
