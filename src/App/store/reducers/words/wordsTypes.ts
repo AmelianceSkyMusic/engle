@@ -20,9 +20,7 @@ export enum EWordsActionTypes {
 	GET_WORDS_SUCCESS = 'GET_WORDS_SUCCESS',
 	GET_WORDS_ERROR = 'GET_WORDS_ERROR',
 
-	SET_WORDS_GROUP_NUMBER = 'SET_WORDS_GROUP_NUMBER',
-	SET_WORDS_PAGE_NUMBER = 'SET_WORDS_PAGE_NUMBER',
-
+	SET_GROUP_NUMBER = 'SET_GROUP_NUMBER',
 	GET_PREV_PAGE = 'GET_PREV_PAGE',
 	GET_NEXT_PAGE = 'GET_NEXT_PAGE',
 
@@ -48,7 +46,7 @@ interface IGetWordsError {
 }
 
 interface ISetWordsGroupNumber {
-	type: EWordsActionTypes.SET_WORDS_GROUP_NUMBER;
+	type: EWordsActionTypes.SET_GROUP_NUMBER;
 	payload: number;
 }
 interface IPrevPage {

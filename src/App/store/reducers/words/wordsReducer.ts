@@ -34,7 +34,7 @@ export function wordsReducer(
 		error: action.payload,
 	};
 
-	case EWordsActionTypes.SET_WORDS_GROUP_NUMBER: return {
+	case EWordsActionTypes.SET_GROUP_NUMBER: return {
 		...state,
 		groupNumber: action.payload,
 	};
