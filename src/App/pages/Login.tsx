@@ -53,7 +53,6 @@ export function Login() {
 				userEmail: `${email}`,
 				isLogged: true,
 			};
-			console.log('я вошел');
 			localStorage.setItem('user', JSON.stringify(user));
 			// 	// замінити запис юзера на зміну в редаксі полів
 		}

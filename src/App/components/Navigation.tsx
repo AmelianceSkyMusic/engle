@@ -9,6 +9,13 @@ export interface INavigationProps {
 	logoOnly?: boolean;
 }
 
+function logOut() {
+	console.log('я ушел');
+	localStorage.removeItem('user');
+	localStorage.removeItem('refreshToken');
+	localStorage.removeItem('token');
+}
+
 export function Navigation({ logoOnly }: INavigationProps) {
 	const navigate = useNavigate();
 	function handleClick(path: string) {
@@ -32,7 +39,7 @@ export function Navigation({ logoOnly }: INavigationProps) {
 						<Link className="link" to="/audiocall">«Аудиовызов»</Link>
 						<Link className="link" to="/sprint">«Спринт»</Link>
 						<Link className="link" to="/statistics">Статистика</Link>
-						<Button type="secondary" callback={() => console.log('я пошел')}>Выйти</Button>
+						<Button type="secondary" callback={() => logOut()}>Выйти</Button>
 						<Button callback={() => handleClick('/login')}>Войти</Button>
 						<ThemeButton />
 					</nav>
