@@ -1,5 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '../../asmlib/asm-ui/components/Button';
 import { ThemeButton } from '../../asmlib/asm-ui/components/ThemeButton';
+import { useTypedDispatch } from '../store/hooks/useTypedDispatch';
+import { useTypedSelector } from '../store/hooks/useTypedSelector';
+import { getUserIsLogged } from '../store/reducers/user/actions/getUserIsLogged';
 
 export interface INavigationProps {
 	logoOnly?: boolean;
@@ -10,6 +14,11 @@ export function Navigation({ logoOnly }: INavigationProps) {
 	function handleClick(path: string) {
 		navigate(path);
 	}
+	const dispatch = useTypedDispatch();
+	// dispatch(getUserIsLogged());
+	const { isLogged } = useTypedSelector((state) => state.user);
+	console.log(isLogged);
+
 	return (
 		<nav className="navigation row">
 			<div className="navigation__logo col-2">
@@ -23,9 +32,8 @@ export function Navigation({ logoOnly }: INavigationProps) {
 						<Link className="link" to="/audiocall">«Аудиовызов»</Link>
 						<Link className="link" to="/sprint">«Спринт»</Link>
 						<Link className="link" to="/statistics">Статистика</Link>
-						<button type="button" className="button" onClick={() => handleClick('/login')}>
-							Login
-						</button>
+						<Button type="secondary" callback={() => console.log('я пошел')}>Выйти</Button>
+						<Button callback={() => handleClick('/login')}>Войти</Button>
 						<ThemeButton />
 					</nav>
 				)}
