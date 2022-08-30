@@ -1,25 +1,25 @@
-import { useEffect, useState } from 'react';
-import API from '../../../API';
+import { useEffect } from 'react';
 import { WordCard } from './WordCard';
-import { IWord } from '../../../types/interfaces';
 import { Button } from '../../../../asmlib/asm-ui/components/Button';
+import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
+import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
+import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
 
 export function Words() {
-	const [words, setWords] = useState<IWord[]>();
+	const { userPageWord, groupNumber, pageNumber } = useTypedSelector((state) => state.words);
+	const dispatch = useTypedDispatch();
 
-	async function getWords() {
-		const response = await API.getWords(1, 1);
-		setWords(response);
-	}
 	useEffect(() => {
-		getWords();
-	});
+		dispatch(getWordsAction(groupNumber, pageNumber));
+		console.log(groupNumber);
+		console.log(pageNumber);
+	}, [dispatch, groupNumber, pageNumber]);
 
 	return (
 		<div className="words">
 			<h2 className="page-textbook__heading h2">Слова</h2>
 			<ul className="words__list">
-				{words?.map((word) => <WordCard word={word} key={word.id} />)}
+				{userPageWord?.map((word) => <WordCard word={word} key={word.id} />)}
 			</ul>
 			<div className="words__pagination">
 				<Button
