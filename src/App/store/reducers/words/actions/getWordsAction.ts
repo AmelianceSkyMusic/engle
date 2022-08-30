@@ -4,6 +4,7 @@ import {
 import { ThunkAction } from 'redux-thunk';
 import API from '../../../../API';
 import { IUserPageWords } from '../../../../types/interfaces';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { TRootState } from '../../rootReducer';
 import { EWordsActionTypes, TWordActions } from '../wordsTypes';
 
@@ -19,8 +20,15 @@ export function getWordsAction(
 	return async function noName(dispatch: Dispatch<TWordActions>) {
 		try {
 			dispatch({ type: EWordsActionTypes.GET_WORDS });
-			const user = JSON.parse(localStorage.getItem('user') as string);
-			const { userId, isLogged } = user;
+
+			let isLogged = false;
+			let userId = '';
+
+			if (localStorage.getItem('user') !== null) {
+				const user = JSON.parse(localStorage.getItem('user') as string);
+				isLogged = user.isLogged;
+				userId = user.userId;
+			}
 
 			const words = await API.getWords(groupNumber, pageNumber);
 
