@@ -20,10 +20,6 @@ export enum EWordsActionTypes {
 	GET_WORDS_SUCCESS = 'GET_WORDS_SUCCESS',
 	GET_WORDS_ERROR = 'GET_WORDS_ERROR',
 
-	// GET_USER_AGGREGATE_WORDS = 'GET_USER_AGGREGATE_WORDS',
-	// GET_USER_AGGREGATE_WORDS_SUCCESS = 'GET_USER_AGGREGATE_WORDS_SUCCESS',
-	// GET_USER_AGGREGATE_WORDS_ERROR = 'GET_USER_AGGREGATE_WORDS_ERROR',
-
 	SET_WORDS_GROUP_NUMBER = 'SET_WORDS_GROUP_NUMBER',
 	SET_WORDS_PAGE_NUMBER = 'SET_WORDS_PAGE_NUMBER',
 
@@ -51,33 +47,16 @@ interface IGetWordsError {
 	payload: string;
 }
 
-// interface IGetUserAggregateWords {
-// 	type: EWordsActionTypes.GET_USER_AGGREGATE_WORDS;
-// }
-// interface IGetUserAggregateWordsSuccess {
-// 	type: EWordsActionTypes.GET_USER_AGGREGATE_WORDS_SUCCESS;
-// 	payload: IAggregateUserWords[];
-// }
-// interface IGetUserAggregateWordsError {
-// 	type: EWordsActionTypes.GET_USER_AGGREGATE_WORDS_ERROR;
-// 	payload: string;
-// }
-
+interface ISetWordsGroupNumber {
+	type: EWordsActionTypes.SET_WORDS_GROUP_NUMBER;
+	payload: number;
+}
 interface IPrevPage {
 	type: EWordsActionTypes.GET_PREV_PAGE;
 	payload: number;
 }
 interface INextPage {
 	type: EWordsActionTypes.GET_NEXT_PAGE;
-	payload: number;
-}
-
-interface ISetWordsGroupNumber {
-	type: EWordsActionTypes.SET_WORDS_GROUP_NUMBER;
-	payload: number;
-}
-interface ISetWordsPageNumber {
-	type: EWordsActionTypes.SET_WORDS_PAGE_NUMBER;
 	payload: number;
 }
 
@@ -101,15 +80,9 @@ export type TWordActions =
 	IGetWordsSuccess |
 	IGetWordsError |
 
-	// IGetUserAggregateWords |
-	// IGetUserAggregateWordsSuccess |
-	// IGetUserAggregateWordsError |
-
+	ISetWordsGroupNumber |
 	INextPage |
 	IPrevPage |
-
-	ISetWordsGroupNumber |
-	ISetWordsPageNumber |
 
 	IGetHardWords |
 	ISetWordToHard |
