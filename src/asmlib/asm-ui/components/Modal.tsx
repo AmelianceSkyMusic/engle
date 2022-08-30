@@ -5,13 +5,13 @@ interface IModal {
 	type?: 'alert' | 'info' | 'success' | 'error' | 'warn';
 	mainButton?: {
 			text?: string;
-			callback?: { () : void } | null;
+			callback?: { (): void } | null;
 			icon?: string;
 			iconPosition?: 'left' | 'right';
 		};
 	secondButton?: {
 			text?: string;
-			callback: { () : void } | null;
+			callback: { (): void } | null;
 			icon?: string;
 			iconPosition?: 'left' | 'right';
 		};
@@ -55,7 +55,7 @@ export function Modal({
 		socondButtonLabel = '';
 	}
 
-	const headingClass = heading ? type || '' : '';
+	const headingClass = type || '';
 	const headingTypeClass = `modal__heading ${headingClass}`;
 
 	function mainButtonHandler() {
@@ -87,7 +87,7 @@ export function Modal({
 					&& (
 						<div className={headingTypeClass}>
 							<h3 className="h3 heading">
-								{(!heading && type === 'alert') && 'УВЕДОМНЕЛИЕ!'}
+								{(!heading && type === 'alert') && 'УВЕДОМЛЕНИЕ!'}
 								{(!heading && type === 'error') && 'ОШИБКА!'}
 								{(!heading && type === 'warn') && 'ВНИМАНИЕ!'}
 								{(!heading && type === 'info') && 'ИНФОРМАЦИЯ!'}
