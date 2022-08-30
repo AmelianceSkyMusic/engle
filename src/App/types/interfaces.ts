@@ -47,7 +47,34 @@ export interface IUserWord {
 export interface IStatistic {
 	learnedWords: number;
 	optional: {
-		[key: string]: unknown;
+		textBook: {
+			newWords: {
+				[date: string]: string[]; // {'date': ['id', 'id'...], ...}
+			};
+			learnedWords: {
+				[date: string]: string[];
+			};
+			countNewWords: number;
+		};
+		audioCall: {
+			newWords: {
+				[date: string]: string[];
+			};
+			countNewWords: number;
+			countRight: number;
+			countWrong: number;
+			topRight: number;
+		};
+		sprint: {
+			newWords: {
+				[date: string]: string[];
+			};
+			countNewWords: number;
+			countShowedWords: number;
+			countRight: number;
+			countWrong: number;
+			topRight: number;
+		};
 	};
 }
 
