@@ -4,9 +4,12 @@ import { Button } from '../../../../asmlib/asm-ui/components/Button';
 import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
 import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
+import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
 
 export function Words() {
-	const { userPageWord, groupNumber, pageNumber } = useTypedSelector((state) => state.words);
+	const {
+		isLoading, userPageWord, groupNumber, pageNumber,
+	} = useTypedSelector((state) => state.words);
 	const dispatch = useTypedDispatch();
 
 	useEffect(() => {
@@ -14,12 +17,13 @@ export function Words() {
 		console.log(groupNumber);
 		console.log(pageNumber);
 	}, [dispatch, groupNumber, pageNumber]);
-
 	return (
 		<div className="words">
 			<h2 className="page-textbook__heading h2">Слова</h2>
 			<ul className="words__list">
-				{userPageWord?.map((word) => <WordCard word={word} key={word.id} />)}
+				{isLoading
+					? <Loader />
+					: userPageWord?.map((word) => <WordCard word={word} key={word.id} />)}
 			</ul>
 			<div className="words__pagination">
 				<Button
