@@ -47,7 +47,7 @@ export function getWordsAction(
 					return word;
 				});
 			} else {
-				userPageWords = { ...words };
+				userPageWords = [...words];
 			}
 
 			dispatch({
