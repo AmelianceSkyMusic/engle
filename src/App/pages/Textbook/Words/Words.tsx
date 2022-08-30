@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { WordCard } from './WordCard';
 import { Button } from '../../../../asmlib/asm-ui/components/Button';
 import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
-
+import { WordsModalError } from './WordsModalError';
 import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
 import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
@@ -11,19 +12,26 @@ import { getPrevPageAction } from '../../../store/reducers/words/actions/getPrev
 
 export function Words() {
 	const {
+		error,
 		isLoading,
 		userPageWord,
 		groupNumber,
 		pageNumber,
 		pagesPerGroup,
 	} = useTypedSelector((state) => state.words);
-	const dispatch = useTypedDispatch();
 
+	const dispatch = useTypedDispatch();
 	useEffect(() => {
 		dispatch(getWordsAction(groupNumber, pageNumber));
 	}, [dispatch, groupNumber, pageNumber]);
+
+	const [wordsError, setWordError] = useState(!!error);
+	useEffect(() => {
+		setWordError(!!error);
+	}, [error]);
 	return (
 		<div className="words">
+			{wordsError && <WordsModalError setOpenErrorModal={setWordError} />}
 			<h2 className="page-textbook__heading h2">Слова</h2>
 			<ul className="words__list">
 				{isLoading
