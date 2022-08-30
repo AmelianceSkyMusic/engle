@@ -55,7 +55,7 @@ export function Modal({
 		socondButtonLabel = '';
 	}
 
-	const headingClass = heading ? type || '' : '';
+	const headingClass = type || '';
 	const headingTypeClass = `modal__heading ${headingClass}`;
 
 	function mainButtonHandler() {
