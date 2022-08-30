@@ -83,14 +83,14 @@ export function Registration() {
 						{error && (
 							<Modal setOpen={openModalError} type="error" heading="Error">
 								<>
-									<h4 className="h4">Ошибка при попытке регистрации</h4>
-									<p className="p1">{ErrorMessage}</p>
+									<h4 style={{ textAlign: 'center' }} className="h4">Ошибка при попытке регистрации</h4>
+									<p style={{ textAlign: 'center' }} className="p1">{ErrorMessage}</p>
 								</>
 							</Modal>
 						)}
 						{success && (
 							<Modal setOpen={openModalSuccess} type="success" heading="Success" mainButton={{ callback: () => handleClick('/login'), text: 'К авторизации' }}>
-								<h4 className="h4">{successMessage}</h4>
+								<h4 style={{ textAlign: 'center' }} className="h4">{successMessage}</h4>
 							</Modal>
 						)}
 						<form action="" className="register__log-reg-form log-reg-form" onSubmit={onSubmit} onChange={onChangeForm} noValidate>
