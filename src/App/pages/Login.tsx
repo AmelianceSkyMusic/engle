@@ -1,7 +1,7 @@
 import '../../styles/pages/login.scss';
 import '../../styles/entities/log-reg-form.scss';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import { Footer } from '../components/layouts/Footer';
@@ -62,6 +62,10 @@ export function Login() {
 		event.preventDefault();
 		createNewAxiosToLogin(mail.value, password.value);
 	};
+	const navigate = useNavigate();
+	function handleClick(path: string) {
+		navigate(path);
+	}
 	return (
 		<div className="page-container page-login">
 			<div className="decoration decoration_type2" />
@@ -79,7 +83,7 @@ export function Login() {
 							</Modal>
 						)}
 						{success && (
-							<Modal setOpen={openModalSuccess} type="success" heading="Success">
+							<Modal setOpen={openModalSuccess} type="success" heading="Success" mainButton={{ callback: () => handleClick('/'), text: 'На главную' }}>
 								<h4 style={{ textAlign: 'center' }} className="h4">{successMessage}</h4>
 							</Modal>
 						)}
