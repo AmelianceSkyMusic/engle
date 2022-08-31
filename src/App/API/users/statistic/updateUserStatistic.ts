@@ -4,7 +4,7 @@ import { BASE_URL } from '../../consts';
 import { IStatistic } from '../../../types/interfaces';
 
 export const updateUserStatistics = async (userId: string, limit: number): Promise<IStatistic> => {
-	const token = `${sessionStorage.getItem('token')}`;
+	const token = `${localStorage.getItem('token')}`;
 	const res = await axios({
 		method: 'put',
 		url: `${BASE_URL}users/${userId}/statistics`,
@@ -15,7 +15,8 @@ export const updateUserStatistics = async (userId: string, limit: number): Promi
 		},
 		data: {
 			learnedWords: `${limit}`,
-			optional: {},
+			optional: {
+			},
 		},
 	});
 	return res.data;
