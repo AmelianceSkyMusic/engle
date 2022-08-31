@@ -37,7 +37,6 @@
 	background-color: var(--color--bg-1);
 	box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
-
 	&_big {
 		@media(min-width: calc($screen-md + 1px)) {
 			height: 100%;
@@ -55,33 +54,60 @@
 		padding: 18.5px 16.5px;
 		border-radius: 100%;
 		text-transform: uppercase;
-
-		&_1 {
-			background-color: #CCFF99;
-		}
-		&_2 {
-			background-color: #B2FF66;
-		}
-		&_3 {
-			background-color: #FFCC99;
-		}
-		&_4 {
-			background-color: #FFB266;
-		}
-		&_5 {
-			background-color: #FF9999;
-		}
-		&_6 {
-			background-color: #FF6666;
-		}
-		&_7 {
-			background-color: #FF3333;
-			font-size: 0;
-		}
 	}
 }
 
+//Вибачте за це, кращого рішення не знайшов)
+.category_0 .category__level {
+	background-color: #CCFF99;
+}
+.category_1 .category__level {
+	background-color: #B2FF66;
+}
+.category_2 .category__level {
+	background-color: #FFCC99;
+}
+.category_3 .category__level {
+	background-color: #FFB266;
+}
+.category_4 .category__level {
+	background-color: #FF9999;
+}
+.category_5 .category__level {
+	background-color: #FF6666;
+}
+.category_6 .category__level {
+	background-color: #FF3333;
+	font-size: 0;
+}
+.category_active .category__level{
+	background-color: var(--color--bg-1);
+}
+
+.category_0.category_active {
+	background-color: #CCFF99;
+}
+.category_1.category_active {
+	background-color: #B2FF66;
+}
+.category_2.category_active {
+	background-color: #FFCC99;
+}
+.category_3.category_active {
+	background-color: #FFB266;
+}
+.category_4.category_active {
+	background-color: #FF9999;
+}
+.category_5.category_active {
+	background-color: #FF6666;
+}
+.category_6.category_active {
+	background-color: #FF3333;
+}
+
 .words {
+	position: relative;
 	&__list {
 		display: flex;
 		justify-content: center;

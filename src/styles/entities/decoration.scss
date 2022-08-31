@@ -3,9 +3,10 @@
   position: absolute;
 	left: -300px;
   z-index: -1;
-  @include bgImgSVGStatic("../../assets/svg/img--half-circle.svg", 100%, 1828px);
-  background-position: center;
-
+  @include bgImgSVG("../../assets/svg/img--half-circle.svg", 100%, 1828px);
+	-webkit-mask-position: center;
+	mask-position: center;
+	background-color: var(--color--bg-0);
   &_type1 {
     top: -542px;
 		@media(max-width: $screen-lg) {
@@ -32,9 +33,32 @@
 	}
 
 	&_type4 {
-		bottom: -400px;
+		top: 0px;
+		mask-position: top center;
 		@media(max-width: $screen-sm) {
-			left: 0;
+			left: -40px;
 		}
+	}
+	
+	&_group0 {
+		background-color: var(--color--a3-2);
+	}
+	&_group1 {
+		background-color: var(--color--a3-1);
+	}
+	&_group2 {
+		background-color: var(--color--a4-2);
+	}
+	&_group3 {
+		background-color: var(--color--a4-1);
+	}
+	&_group4 {
+		background-color: var(--color--a5-2);
+	}
+	&_group5 {
+		background-color: var(--color--a5-1);
+	}
+	&_group6 {
+		background-color: var(--color--a5-0);
 	}
 }

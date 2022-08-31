@@ -29,8 +29,11 @@ export function Words() {
 	useEffect(() => {
 		setWordError(!!error);
 	}, [error]);
+
+	const decorationClasses = `decoration decoration_type4 decoration_group${groupNumber}`;
 	return (
 		<div className="words">
+			<div className={decorationClasses} />
 			{wordsError && <WordsModalError setOpenErrorModal={setWordError} />}
 			<h2 className="page-textbook__heading h2">Слова</h2>
 			<ul className="words__list">

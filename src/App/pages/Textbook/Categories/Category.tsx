@@ -1,3 +1,7 @@
+import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
+import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
+import { setGroupNumberAction } from '../../../store/reducers/words/actions/setGroupNumberAction';
+
 export enum EGroups {
   A1,
   A2,
@@ -27,14 +31,19 @@ interface ICategoryProps {
 }
 
 export function Category({ group, name, isBig }: ICategoryProps) {
-	const categoryClasses = `category ${isBig ? 'category_big' : ''}`;
-	const levelClasses = `category__level category__level_${group} h3`;
+	const { groupNumber } = useTypedSelector((state) => state.words);
+	const categoryClasses = `category
+    category_${group} 
+    ${isBig ? 'category_big' : ''} 
+    ${groupNumber === group ? 'category_active' : ''}`;
+
+	const dispatch = useTypedDispatch();
 
 	return (
-		<li className={categoryClasses}>
-			<h3 className={levelClasses}>{levels[group]}</h3>
+		<button type="button" className={categoryClasses} onClick={() => dispatch(setGroupNumberAction(group))}>
+			<h3 className="category__level h3">{levels[group]}</h3>
 			<h4 className="category__name h4">{name}</h4>
-		</li>
+		</button>
 	);
 }
 
