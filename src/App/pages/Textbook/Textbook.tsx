@@ -13,7 +13,7 @@ export function Textbook() {
 	return (
 		<div className="page-container page-textbook">
 			<div className={decorationClasses} />
-			<Header logoOnly />
+			<Header />
 			<main className="main">
 				<div className="container row">
 					<Categories />
