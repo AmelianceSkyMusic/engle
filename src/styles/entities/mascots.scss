@@ -1,31 +1,31 @@
 @use "../globals/" as *;
 
 .mascot {
-  &__img {
-    margin-left: auto;
-    &_thinker {
-      @include bgImgSVGStatic("../../assets/svg/img--thinking-man.svg", 374px, 538px);
+	&__img {
+		margin-left: auto;
+		&_thinker {
+			@include bgImgSVGStatic("../../assets/svg/img--thinking-man.svg", 374px, 538px);
 
-      @media(max-width: $screen-lg) {
-        width: 323px;
-        height: 464px;
-      }
-    }
-    &_wizard {
-      @include bgImgSVGStatic("../../assets/svg/img--magic-man.svg", 279px, 540px);
+			@media (max-width: $screen-lg) {
+				width: 323px;
+				height: 464px;
+			}
+		}
+		&_wizard {
+			@include bgImgSVGStatic("../../assets/svg/img--magic-man.svg", 279px, 540px);
 
-      @media(max-width: $screen-lg) {
-        width: 240px;
-        height: 464px;
-      }
-    }
-    &_mailman {
-      @include bgImgSVGStatic("../../assets/svg/img--postman.svg", 420px, 550px);
+			@media (max-width: $screen-lg) {
+				width: 240px;
+				height: 464px;
+			}
+		}
+		&_mailman {
+			@include bgImgSVGStatic("../../assets/svg/img--postman.svg", 420px, 550px);
 
-      @media(max-width: $screen-lg) {
-        width: 361px;
-        height: 473px;
-      }
-    }
-  }
+			@media (max-width: $screen-lg) {
+				width: 361px;
+				height: 473px;
+			}
+		}
+	}
 }
