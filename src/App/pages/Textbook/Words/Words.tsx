@@ -15,11 +15,11 @@ export function Words() {
 		error,
 		isLoading,
 		userPageWord,
+		hardWords,
 		groupNumber,
 		pageNumber,
 		pagesPerGroup,
 	} = useTypedSelector((state) => state.words);
-
 	const dispatch = useTypedDispatch();
 	useEffect(() => {
 		dispatch(getWordsAction(groupNumber, pageNumber));
@@ -30,6 +30,13 @@ export function Words() {
 		setWordError(!!error);
 	}, [error]);
 
+	function createWordCards() {
+		if (groupNumber === 6) {
+			return hardWords.map((word) => <WordCard word={word} key={word.id} />);
+		}
+		return userPageWord?.map((word) => <WordCard word={word} key={word.id} />);
+	}
+
 	const decorationClasses = `decoration decoration_type4 decoration_group${groupNumber}`;
 	return (
 		<div className="words">
@@ -39,7 +46,7 @@ export function Words() {
 			<ul className="words__list">
 				{isLoading
 					? <Loader />
-					: userPageWord?.map((word) => <WordCard word={word} key={word.id} />)}
+					: createWordCards()}
 			</ul>
 			<div className="words__pagination">
 				<Button
