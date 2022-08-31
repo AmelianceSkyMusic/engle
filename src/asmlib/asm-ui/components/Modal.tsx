@@ -15,6 +15,7 @@ interface IModal {
 			icon?: string;
 			iconPosition?: 'left' | 'right';
 		};
+	blackout?: { (): void } | null | 'disabled';
 	children: JSX.Element;
 	heading?: string;
 	isButtons?: boolean;
@@ -26,6 +27,7 @@ export function Modal({
 	children,
 	heading,
 	type,
+	blackout,
 	size = 'flex',
 	mainButton = { callback: null },
 	secondButton = { callback: null },
@@ -58,6 +60,12 @@ export function Modal({
 	const headingClass = type || '';
 	const headingTypeClass = `modal__heading ${headingClass}`;
 
+	function blackoutHandler() {
+		if (blackout === 'disabled') return;
+		if (typeof blackout === 'function') blackout();
+		closeModal();
+	}
+
 	function mainButtonHandler() {
 		if (mainButton.callback) mainButton.callback();
 		closeModal();
@@ -76,8 +84,8 @@ export function Modal({
 			<button
 				type="button"
 				className="blackout show"
-				style={{ cursor: 'pointer' }}
-				onClick={closeModal}
+				style={blackout === 'disabled' ? {} : { cursor: 'pointer' }}
+				onClick={() => blackoutHandler()}
 			>
 				{}
 
