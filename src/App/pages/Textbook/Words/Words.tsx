@@ -30,11 +30,12 @@ export function Words() {
 		setWordError(!!error);
 	}, [error]);
 
+	const isLogged = true; // поміняти на отримання з редаксу
 	function createWordCards() {
 		if (groupNumber === 6) {
-			return hardWords.map((word) => <WordCard word={word} key={word.id} />);
+			return hardWords.map((word) => <WordCard word={word} isLogged={isLogged} key={word.id} />);
 		}
-		return userPageWord?.map((word) => <WordCard word={word} key={word.id} />);
+		return userPageWord?.map((word) => <WordCard word={word} isLogged={isLogged} key={word.id} />);
 	}
 
 	const decorationClasses = `decoration decoration_type4 decoration_group${groupNumber}`;

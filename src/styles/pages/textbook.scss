@@ -47,6 +47,12 @@
 		}
 	}
 
+	&_disabled {
+		opacity: 50%;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
 	&__level {
 		width: 80px;
 		height: 80px;

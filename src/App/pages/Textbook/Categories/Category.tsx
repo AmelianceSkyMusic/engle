@@ -32,15 +32,23 @@ interface ICategoryProps {
 
 export function Category({ group, name, isBig }: ICategoryProps) {
 	const { groupNumber } = useTypedSelector((state) => state.words);
-	const categoryClasses = `category
-    category_${group} 
-    ${isBig ? 'category_big' : ''} 
-    ${groupNumber === group ? 'category_active' : ''}`;
+
+	const isLogged = true; // поміняти на отримання з редаксу
+
+	function createCategoryClasses() {
+		let classes = `category category_${group} `;
+		if (isBig) {
+			classes += 'category_big ';
+			if (!isLogged) classes += 'category_disabled ';
+		}
+		if (groupNumber === group) classes += 'category_active ';
+		return classes;
+	}
 
 	const dispatch = useTypedDispatch();
 
 	return (
-		<button type="button" className={categoryClasses} onClick={() => dispatch(setGroupNumberAction(group))}>
+		<button type="button" className={createCategoryClasses()} onClick={() => dispatch(setGroupNumberAction(group))}>
 			<h3 className="category__level h3">{levels[group]}</h3>
 			<h4 className="category__name h4">{name}</h4>
 		</button>

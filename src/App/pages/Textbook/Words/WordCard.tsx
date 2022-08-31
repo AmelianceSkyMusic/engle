@@ -3,11 +3,13 @@ import { IWord } from '../../../types/interfaces';
 import { BASE_URL } from '../../../API/consts';
 import { Modal } from '../../../../asmlib/asm-ui/components/Modal';
 import { Button } from '../../../../asmlib/asm-ui/components/Button';
+import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 
 interface WordCardProps {
   word: IWord;
+	isLogged: boolean;
 }
-export function WordCard({ word }: WordCardProps) {
+export function WordCard({ word, isLogged }: WordCardProps) {
 	const [modal, setModal] = useState(false);
 	const imgUrl = `${BASE_URL}${word.image}`;
 	return (
@@ -32,23 +34,28 @@ export function WordCard({ word }: WordCardProps) {
 							<div className="word-modal">
 								<div className="word-modal__column col-7 col-md-12">
 									<img src={imgUrl} alt={word.word} className="word-modal__image" />
-									<div className="word-modal__statistic">
-										<h4 className="h4">Статистика</h4>
-										<p className="word-modal__correct-answers p1">
-											Угадано: 8
-										</p>
-										<p className="word-modal__incorrect-answers p1">
-											Не угадано: 10
-										</p>
-									</div>
-									<div className="word-modal__controls">
-										<button type="button" className="word-modal__add-to-hard button-sm secondary">
-											Добавить в сложные
-										</button>
-										<button type="button" className="word-modal__add-to-learned button-sm secondary">
-											Добавить в изученные
-										</button>
-									</div>
+									{ isLogged
+									&& (
+										<>
+											<div className="word-modal__statistic">
+												<h4 className="h4">Статистика</h4>
+												<p className="word-modal__correct-answers p1">
+													Угадано: 8
+												</p>
+												<p className="word-modal__incorrect-answers p1">
+													Не угадано: 10
+												</p>
+											</div>
+											<div className="word-modal__controls">
+												<button type="button" className="word-modal__add-to-hard button-sm secondary">
+													Добавить в сложные
+												</button>
+												<button type="button" className="word-modal__add-to-learned button-sm secondary">
+													Добавить в изученные
+												</button>
+											</div>
+										</>
+									)}
 								</div>
 								<div className="word-modal__column col-5 col-md-12">
 									<div className="word-modal__main-info">
