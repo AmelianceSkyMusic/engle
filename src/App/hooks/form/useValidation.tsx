@@ -13,6 +13,8 @@ export const useValidation = (
 
 	useEffect(() => {
 		function validat() {
+			// TODO: DIMA FIX THIS
+			// eslint-disable-next-line no-restricted-syntax
 			for (const validation in validations) {
 				if (validation === 'minLength') {
 					if (value.length < (validations[validation])) {
