@@ -58,6 +58,9 @@ export function Login() {
 				userEmail: `${email}`,
 				isLogged: true,
 			};
+
+			localStorage.setItem('user', JSON.stringify(user));
+
 			dispatch(setUserAction(user));
 		}
 	}
