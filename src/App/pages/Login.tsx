@@ -9,6 +9,8 @@ import { Header } from '../components/layouts/Header';
 import API from '../API';
 import { useInput } from '../hooks/form/useInput';
 import { Modal } from '../../asmlib/asm-ui/components/Modal';
+import { useTypedDispatch } from '../store/hooks/useTypedDispatch';
+import { setUserAction } from '../store/reducers/user/actions/setUserAction';
 
 export function Login() {
 	const mail = useInput('', { isEmpty: true, isEmail: true });
@@ -19,6 +21,8 @@ export function Login() {
 	const [openSuccessModal, setOpenSuccessModal] = useState(success);
 	const [ErrorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
+
+	const dispatch = useTypedDispatch();
 
 	const openModalError = () => {
 		setError(false);
@@ -47,14 +51,14 @@ export function Login() {
 			setSuccessMessage('Вы успешно авторизовались');
 			localStorage.setItem('refreshToken', `${loginUser.refreshToken}`);
 			localStorage.setItem('token', `${loginUser.token}`);
+
 			const user = {
 				userId: `${loginUser.userId}`,
 				userName: `${loginUser.name}`,
 				userEmail: `${email}`,
 				isLogged: true,
 			};
-			localStorage.setItem('user', JSON.stringify(user));
-			// 	// замінити запис юзера на зміну в редаксі полів
+			dispatch(setUserAction(user));
 		}
 	}
 
@@ -69,34 +73,36 @@ export function Login() {
 	return (
 		<div className="page-container page-login">
 			<div className="decoration decoration_type2" />
-			<Header />
+			<Header isHideRegistration />
 			<main className="main">
 				<div className="container row">
 					<div className="login col-6 col-lg-12">
 						<h1 className="login__heading h1">Вход</h1>
 						{error && (
 							<Modal setOpen={openModalError} type="error" heading="Error">
-								<>
+								<div className="modal__content">
 									<h4 style={{ textAlign: 'center' }} className="h4">Ошибка при попытке авторизации</h4>
-									<p style={{ textAlign: 'center' }} className="p1">{ErrorMessage}</p>
-								</>
+									<p style={{ textAlign: 'center' }} className="p1">{`${ErrorMessage}: возможно неверный адрес электронной почты или пароль`}</p>
+								</div>
 							</Modal>
 						)}
 						{success && (
-							<Modal setOpen={openModalSuccess} type="success" heading="Success" mainButton={{ callback: () => handleClick('/'), text: 'На главную' }}>
-								<h4 style={{ textAlign: 'center' }} className="h4">{successMessage}</h4>
+							<Modal setOpen={openModalSuccess} type="success" blackout="disabled" heading="Success" mainButton={{ callback: () => handleClick('/'), text: 'На главную' }}>
+								<div className="modal__content">
+									<h4 style={{ textAlign: 'center' }} className="h4">{successMessage}</h4>
+								</div>
 							</Modal>
 						)}
 						<form action="" className="login__log-reg-form log-reg-form" onSubmit={onSubmit} noValidate>
 							<label htmlFor="email">
 								<p className="p2">E-mail*:</p>
-								<input value={mail.value} onChange={(e) => mail.onChange(e)} onBlur={() => mail.onBlur()} name="email" type="email" placeholder="Введите электронную почту" />
+								<input className="input text" value={mail.value} onChange={(e) => mail.onChange(e)} onBlur={() => mail.onBlur()} name="email" type="email" placeholder="Введите электронную почту" />
 								{(mail.isDirty && mail.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите почту, поле не может быть пустым</p>}
 								{(mail.isDirty && mail.emailError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Некорректная почта, проверьте свои данные</p>}
 							</label>
 							<label htmlFor="password">
 								<p className="p2">Пароль*:</p>
-								<input onChange={(e) => password.onChange(e)} onBlur={() => password.onBlur()} value={password.value} name="password" type="password" placeholder="Введите пароль" />
+								<input className="input text" onChange={(e) => password.onChange(e)} onBlur={() => password.onBlur()} value={password.value} name="password" type="password" placeholder="Введите пароль" />
 								{(password.isDirty && password.isEmpty) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Введите пароль, поле не может быть пустым</p>}
 								{(password.isDirty && password.minLengthError) && <p className="p2" style={{ color: 'var(--color--a5-0)' }}>Пароль слишком короткий</p>}
 							</label>

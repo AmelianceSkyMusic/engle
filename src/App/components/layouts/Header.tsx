@@ -1,10 +1,12 @@
-import { Navigation, INavigationProps } from '../Navigation';
+import { HeaderPanel, IHeaderPanelProps } from '../HeaderPanel';
 
-export function Header({ logoOnly }: INavigationProps) {
+type THeaderProps = IHeaderPanelProps
+
+export function Header({ isHideRegistration }: THeaderProps) {
 	return (
 		<header className="header">
 			<div className="container">
-				<Navigation {... { logoOnly }} />
+				<HeaderPanel isHideRegistration={isHideRegistration} />
 			</div>
 		</header>
 	);
