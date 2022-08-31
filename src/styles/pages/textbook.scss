@@ -59,25 +59,25 @@
 
 //Вибачте за це, кращого рішення не знайшов)
 .category_0 .category__level {
-	background-color: #CCFF99;
+	background-color: var(--color--a3-2);
 }
 .category_1 .category__level {
-	background-color: #B2FF66;
+	background-color: var(--color--a3-1);
 }
 .category_2 .category__level {
-	background-color: #FFCC99;
+	background-color: var(--color--a4-2);
 }
 .category_3 .category__level {
-	background-color: #FFB266;
+	background-color: var(--color--a4-1);
 }
 .category_4 .category__level {
-	background-color: #FF9999;
+	background-color: var(--color--a5-2);
 }
 .category_5 .category__level {
-	background-color: #FF6666;
+	background-color: var(--color--a5-1);
 }
 .category_6 .category__level {
-	background-color: #FF3333;
+	background-color: var(--color--a5-0);
 	font-size: 0;
 }
 .category_active .category__level{
@@ -85,25 +85,25 @@
 }
 
 .category_0.category_active {
-	background-color: #CCFF99;
+	background-color: var(--color--a3-2);
 }
 .category_1.category_active {
-	background-color: #B2FF66;
+	background-color: var(--color--a3-1);
 }
 .category_2.category_active {
-	background-color: #FFCC99;
+	background-color: var(--color--a4-2);
 }
 .category_3.category_active {
-	background-color: #FFB266;
+	background-color: var(--color--a4-1);
 }
 .category_4.category_active {
-	background-color: #FF9999;
+	background-color: var(--color--a5-2);
 }
 .category_5.category_active {
-	background-color: #FF6666;
+	background-color: var(--color--a5-1);
 }
 .category_6.category_active {
-	background-color: #FF3333;
+	background-color: var(--color--a5-0);
 }
 
 .words {
