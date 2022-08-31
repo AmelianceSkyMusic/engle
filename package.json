@@ -18,6 +18,7 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-redux": "^8.0.2",
+		"react-responsive": "^9.0.0-beta.10",
 		"react-router-dom": "^6.3.0",
 		"react-scripts": "5.0.1",
 		"redux": "^4.2.0",
@@ -31,6 +32,7 @@
 		"predeploy": "npm run build",
 		"deploy-to-gh-pages": "gh-pages -d build -e ./",
 		"start": "react-scripts start",
+		"dev": "cross-env BROWSER=none react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
@@ -51,6 +53,7 @@
 		"@redux-devtools/core": "^3.13.1",
 		"@typescript-eslint/eslint-plugin": "^5.33.1",
 		"@typescript-eslint/parser": "^5.33.1",
+		"cross-env": "^7.0.3",
 		"eslint": "^8.2.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-airbnb-typescript": "^17.0.0",
