@@ -13,7 +13,6 @@ export function WordCard({ word, isLogged }: WordCardProps) {
 	const imgUrl = `${BASE_URL}${word.image}`;
 
 	const links = [word.audio, word.audioMeaning, word.audioExample].map((src) => `${BASE_URL}${src}`);
-
 	const player = new Audio();
 	[player.src] = links;
 	player.load();
@@ -50,7 +49,17 @@ export function WordCard({ word, isLogged }: WordCardProps) {
 						{}
 					</button>
 					{modal && (
-						<Modal setOpen={setModal}>
+						<Modal
+							setOpen={setModal}
+							mainButton={
+								{
+									callback() {
+										player.pause();
+									},
+								}
+							}
+							blackout={() => player.pause()}
+						>
 							<div className="word-modal">
 								<div className="word-modal__column col-7 col-md-12">
 									<img src={imgUrl} alt={word.word} className="word-modal__image" />
