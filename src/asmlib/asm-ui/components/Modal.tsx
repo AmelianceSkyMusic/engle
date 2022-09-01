@@ -104,7 +104,7 @@ export function Modal({
 							</h3>
 						</div>
 					)}
-				<div className="modal__content scroll">
+				<div className="modal__content-container scroll">
 					{children}
 				</div>
 				{isButtons

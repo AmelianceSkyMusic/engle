@@ -23,7 +23,6 @@ export function HeaderPanel({ isHideRegistration }: IHeaderPanelProps) {
 	const { isLogged } = useTypedSelector((state) => state.user);
 
 	useEffect(() => {
-		console.log('isLogged', isLogged);
 		dispatch(getUserAction());
 	}, [dispatch, isLogged]);
 
@@ -37,8 +36,6 @@ export function HeaderPanel({ isHideRegistration }: IHeaderPanelProps) {
 	const isScreenLg = useMediaQuery({ query: '(max-width: 960px)' });
 
 	const	[showMenu, setOpenMenu] = useState(false);
-
-	console.log('isHideRegistration', isHideRegistration);
 
 	return (
 		<div className="header-panel row">
