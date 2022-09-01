@@ -12,19 +12,19 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
-		gap: calc(var(--col-gap));
+		gap: var(--col-gap);
 	}
 
 	.header-panel__buttons {
 		display: flex;
 		align-items: center;
-		gap: calc(var(--col-gap));
+		gap: var(--col-gap);
 	}
 
 	.navigation {
 		display: flex;
 		align-items: center;
-		gap: calc(var(--col-gap));
+		gap: var(--col-gap);
 		@media (max-width: $screen-lg) {
 			flex-direction: column;
 			align-items: flex-start;
