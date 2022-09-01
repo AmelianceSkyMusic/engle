@@ -1,34 +1,16 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { ThemeButton } from '../../asmlib/asm-ui/components/ThemeButton';
+import { NavLink } from 'react-router-dom';
 
-export interface INavigationProps {
-	logoOnly?: boolean;
-}
-
-export function Navigation({ logoOnly }: INavigationProps) {
-	const navigate = useNavigate();
-	function handleClick(path: string) {
-		navigate(path);
+export function Navigation() {
+	function getClass(isActive: boolean) {
+		return isActive ? 'link navigation__item active' : 'link navigation__item';
 	}
 	return (
-		<nav className="navigation row">
-			<div className="navigation__logo col-2">
-				<a href="/" className="logo">{}</a>
-			</div>
-			{!logoOnly
-				&& (
-					<nav className="navigation__menu col-10">
-						<Link className="link" to="/">Главная</Link>
-						<Link className="link" to="/textbook">Учебник</Link>
-						<Link className="link" to="/audiocall">«Аудиовызов»</Link>
-						<Link className="link" to="/sprint">«Спринт»</Link>
-						<Link className="link" to="/statistics">Статистика</Link>
-						<button type="button" className="button" onClick={() => handleClick('/login')}>
-							Login
-						</button>
-						<ThemeButton />
-					</nav>
-				)}
+		<nav className="navigation">
+			<NavLink className={({ isActive }) => getClass(isActive)} to="/">Главная</NavLink>
+			<NavLink className={({ isActive }) => getClass(isActive)} to="/textbook">Учебник</NavLink>
+			<NavLink className={({ isActive }) => getClass(isActive)} to="/audiocall">«Аудиовызов»</NavLink>
+			<NavLink className={({ isActive }) => getClass(isActive)} to="/sprint">«Спринт»</NavLink>
+			<NavLink className={({ isActive }) => getClass(isActive)} to="/statistics">Статистика</NavLink>
 		</nav>
 	);
 }
