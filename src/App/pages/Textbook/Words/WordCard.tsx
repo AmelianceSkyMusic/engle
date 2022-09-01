@@ -1,9 +1,8 @@
+/* eslint-disable no-param-reassign */
 import { useState } from 'react';
 import { IWord } from '../../../types/interfaces';
 import { BASE_URL } from '../../../API/consts';
 import { Modal } from '../../../../asmlib/asm-ui/components/Modal';
-import { Button } from '../../../../asmlib/asm-ui/components/Button';
-import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 
 interface WordCardProps {
   word: IWord;
@@ -12,6 +11,27 @@ interface WordCardProps {
 export function WordCard({ word, isLogged }: WordCardProps) {
 	const [modal, setModal] = useState(false);
 	const imgUrl = `${BASE_URL}${word.image}`;
+
+	const links = [word.audio, word.audioMeaning, word.audioExample].map((src) => `${BASE_URL}${src}`);
+
+	const player = new Audio();
+	[player.src] = links;
+	player.load();
+	function startAudio() {
+		player.pause();
+		let currentIndex = 0;
+		player.src = links[currentIndex];
+		currentIndex += 1;
+		player.play();
+		player.addEventListener('ended', () => {
+			if (currentIndex < links.length) {
+				player.src = links[currentIndex];
+				player.play();
+				currentIndex += 1;
+			}
+		});
+	}
+
 	return (
 		<li className="word-card">
 			<img className="word-card__img" src={imgUrl} alt={word.word} />
@@ -63,7 +83,7 @@ export function WordCard({ word, isLogged }: WordCardProps) {
 										<p className="word-modal__translation p1">{word.wordTranslate}</p>
 										<div className="word-modal__pronounce">
 											<p className="word-modal__transcription p1">{word.transcription}</p>
-											<button type="button" className="word-modal__sound icon click icon--sound">{}</button>
+											<button type="button" className="word-modal__sound icon click icon--sound" onClick={() => startAudio()}>{}</button>
 										</div>
 									</div>
 									<div className="word-modal__explanations">

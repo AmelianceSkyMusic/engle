@@ -33,9 +33,21 @@ export function Words() {
 
 	function createWordCards() {
 		if (groupNumber === 6) {
-			return hardWords.map((word) => <WordCard word={word} isLogged={isLogged} key={word.id} />);
+			return hardWords.map((word) => (
+				<WordCard
+					word={word}
+					isLogged={isLogged}
+					key={word.id}
+				/>
+			));
 		}
-		return userPageWord?.map((word) => <WordCard word={word} isLogged={isLogged} key={word.id} />);
+		return userPageWord.map((word) => (
+			<WordCard
+				word={word}
+				isLogged={isLogged}
+				key={word.id}
+			/>
+		));
 	}
 
 	const decorationClasses = `decoration decoration_type4 decoration_group${groupNumber}`;
