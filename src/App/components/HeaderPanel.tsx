@@ -6,7 +6,7 @@ import { ThemeButton } from '../../asmlib/asm-ui/components/ThemeButton';
 import { useTypedDispatch } from '../store/hooks/useTypedDispatch';
 import { useTypedSelector } from '../store/hooks/useTypedSelector';
 import { getUserAction } from '../store/reducers/user/actions/getUserAction';
-import { setUserAction } from '../store/reducers/user/actions/setUserAction';
+import { initUserAction } from '../store/reducers/user/actions/initUserAction';
 import { MenuSide } from './MenuSide';
 import { Navigation } from './Navigation';
 
@@ -31,7 +31,7 @@ export function HeaderPanel({ isHideRegistration }: IHeaderPanelProps) {
 		localStorage.removeItem('user');
 		localStorage.removeItem('refreshToken');
 		localStorage.removeItem('token');
-		dispatch(setUserAction({ isLogged: false }));
+		dispatch(initUserAction());
 	}
 
 	const isScreenLg = useMediaQuery({ query: '(max-width: 960px)' });
