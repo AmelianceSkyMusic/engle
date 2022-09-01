@@ -1,0 +1,80 @@
+@use "../globals/" as *;
+
+.header-panel {
+	.logo {
+		display: flex;
+		justify-content: start;
+		align-items: center;
+		@include bgImgSVGStatic("../../assets/svg/engle-logo-white.svg", 100px, 40px);
+	}
+
+	.header-panel__navigation {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: calc(var(--col-gap));
+	}
+
+	.header-panel__buttons {
+		display: flex;
+		align-items: center;
+		gap: calc(var(--col-gap));
+	}
+
+	.navigation {
+		display: flex;
+		align-items: center;
+		gap: calc(var(--col-gap));
+		@media (max-width: $screen-lg) {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 32px;
+		}
+		.navigation__item {
+			position: relative;
+			display: inline-block;
+
+			&.active {
+				color: var(--color--f1-1);
+				cursor: default;
+
+				&:after {
+					position: absolute;
+					bottom: -4px;
+					left: 0;
+					width: 100%;
+					height: 2px;
+					content: "";
+					background-color: var(--color--f1-1);
+					transform: scaleX(100%);
+					transform-origin: bottom right;
+				}
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				width: 100%;
+				transform: scaleX(0);
+				height: 2px;
+				bottom: -4px;
+				left: 0;
+				background-color: var(--color--f1-1);
+				transform-origin: bottom right;
+				transition: transform 0.3s ease-out;
+			}
+
+			@media (hover: hover) {
+				&:hover {
+					color: var(--color--f1-1);
+					transition: all 0.3s ease-in-out;
+				}
+
+				&:hover:after {
+					transform: scaleX(1);
+					transform-origin: bottom left;
+				}
+			}
+		}
+	}
+}

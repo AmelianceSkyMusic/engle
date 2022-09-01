@@ -4,7 +4,7 @@
 
 @mixin setFontColor($font__color, $font__color_inverse) {
 	color: $font__color;
-	&.inversed {
+	&.inverted {
 		color: $font__color_inverse;
 	}
 }

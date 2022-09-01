@@ -15,9 +15,16 @@ input {
 		color: inherit;
 		opacity: 50%;
 	}
-	@media(max-width: $screen-xs) {
+	@media (max-width: $screen-xs) {
 		width: 300px;
 	}
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	filter: grayscale(100%) brightness(110%);
 }
 // input[type="text"] {
 // 	border-radius: 8px;

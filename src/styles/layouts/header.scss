@@ -4,11 +4,5 @@
 	.container {
 		padding-top: var(--col-gap);
 		padding-bottom: 0;
-		.logo {
-			display: flex;
-			align-items: center;
-			justify-content: start;
-			@include bgImgSVGStatic("../../assets/svg/engle-logo-white.svg", 100px, 40px);
-		}
 	}
 }
