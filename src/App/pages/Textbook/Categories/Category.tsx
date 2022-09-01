@@ -28,12 +28,13 @@ interface ICategoryProps {
   group: EGroups;
   name: ENames;
   isBig?: boolean;
+	isLogged?: boolean;
 }
 
-export function Category({ group, name, isBig }: ICategoryProps) {
+export function Category({
+	group, name, isBig, isLogged,
+}: ICategoryProps) {
 	const { groupNumber } = useTypedSelector((state) => state.words);
-
-	const isLogged = true; // поміняти на отримання з редаксу
 
 	function createCategoryClasses() {
 		let classes = `category category_${group} `;

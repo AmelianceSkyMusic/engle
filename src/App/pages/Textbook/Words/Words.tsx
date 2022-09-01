@@ -20,6 +20,7 @@ export function Words() {
 		pageNumber,
 		pagesPerGroup,
 	} = useTypedSelector((state) => state.words);
+	const { isLogged } = useTypedSelector((state) => state.user);
 	const dispatch = useTypedDispatch();
 	useEffect(() => {
 		dispatch(getWordsAction(groupNumber, pageNumber));
@@ -30,7 +31,6 @@ export function Words() {
 		setWordError(!!error);
 	}, [error]);
 
-	const isLogged = true; // поміняти на отримання з редаксу
 	function createWordCards() {
 		if (groupNumber === 6) {
 			return hardWords.map((word) => <WordCard word={word} isLogged={isLogged} key={word.id} />);

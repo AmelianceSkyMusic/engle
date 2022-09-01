@@ -1,6 +1,8 @@
+import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 import { Category, EGroups, ENames } from './Category';
 
 export function Categories() {
+	const { isLogged } = useTypedSelector((state) => state.user);
 	return (
 		<div className="categories">
 			<h2 className="page-textbook__heading h2">Категории</h2>
@@ -18,7 +20,10 @@ export function Categories() {
 					<Category {...{ group: EGroups.C2, name: ENames.C2 }} />
 				</div>
 				<div className="categories__column col-3 col-xx-4 col-lg-6 col-md-12">
-					<Category {...{ group: EGroups.hard, name: ENames.hard, isBig: true }} />
+					<Category {...{
+						group: EGroups.hard, name: ENames.hard, isBig: true, isLogged,
+					}}
+					/>
 				</div>
 			</ul>
 		</div>
