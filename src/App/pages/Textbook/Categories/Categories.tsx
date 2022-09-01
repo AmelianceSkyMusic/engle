@@ -4,7 +4,7 @@ import { Category, EGroups, ENames } from './Category';
 export function Categories() {
 	const { isLogged } = useTypedSelector((state) => state.user);
 	return (
-		<div className="categories">
+		<section className="categories">
 			<h2 className="page-textbook__heading h2">Категории</h2>
 			<ul className="categories__list row">
 				<div className="categories__column col-3 col-xx-4 col-lg-6 col-md-12">
@@ -26,6 +26,6 @@ export function Categories() {
 					/>
 				</div>
 			</ul>
-		</div>
+		</section>
 	);
 }

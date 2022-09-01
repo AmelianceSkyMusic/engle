@@ -4,7 +4,7 @@ import sprintPoster from '../../../../asmlib/asm-ui/assets/img/img--sprint-poste
 
 export function Games() {
 	return (
-		<div className="games">
+		<section className="games">
 			<h2 className="page-textbook__heading h2">Игры</h2>
 			<ul className="games__list">
 				<Game
@@ -23,6 +23,6 @@ export function Games() {
 				/>
 			</ul>
 
-		</div>
+		</section>
 	);
 }

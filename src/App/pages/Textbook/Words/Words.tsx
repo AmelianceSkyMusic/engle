@@ -52,7 +52,7 @@ export function Words() {
 
 	const decorationClasses = `decoration decoration_type4 decoration_group${groupNumber}`;
 	return (
-		<div className="words">
+		<section className="words">
 			<div className={decorationClasses} />
 			{wordsError && <WordsModalError setOpenErrorModal={setWordError} />}
 			<h2 className="page-textbook__heading h2">Слова</h2>
@@ -84,6 +84,6 @@ export function Words() {
 					next
 				</Button>
 			</div>
-		</div>
+		</section>
 	);
 }
