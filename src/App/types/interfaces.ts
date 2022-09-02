@@ -32,6 +32,7 @@ export interface IUser {
 export interface IUserWord {
 	difficulty: 'hard' | 'easy';
 	optional: {
+		isNew: boolean;
 		isLearned: boolean;
 		audioCall: {
 			right: number;
@@ -45,20 +46,17 @@ export interface IUserWord {
 }
 
 export interface IStatistic {
+	id?: string;
 	learnedWords: number;
 	optional: {
 		textBook: {
-			newWords: {
-				[date: string]: string[]; // {'date': ['id', 'id'...], ...}
-			};
 			learnedWords: {
 				[date: string]: string[];
 			};
-			countNewWords: number;
 		};
 		audioCall: {
 			newWords: {
-				[date: string]: string[];
+				[date: string]: string[]; // {'date': ['id', 'id'...], ...}
 			};
 			countNewWords: number;
 			countRight: number;
@@ -70,7 +68,6 @@ export interface IStatistic {
 				[date: string]: string[];
 			};
 			countNewWords: number;
-			countShowedWords: number;
 			countRight: number;
 			countWrong: number;
 			topRight: number;
@@ -85,11 +82,49 @@ export interface ISetting {
 	};
 }
 
-export interface IUserPageWords extends IWord {
+export interface IUserPageWord extends IWord {
 	userWord?: IUserWord;
 }
 
-export interface IAggregateUserWords extends IWord {
+export interface IHardWord {
+	_id?: string;
+	id?: string;
+	group: number;
+	page: number;
+	word: string;
+	image: string;
+	audio: string;
+	audioMeaning: string;
+	audioExample: string;
+	textMeaning: string;
+	textExample: string;
+	transcription: string;
+	wordTranslate: string;
+	textMeaningTranslate: string;
+	textExampleTranslate: string;
+	userWord: IUserWord;
+}
+
+export interface ILearnedWord {
+	_id?: string;
+	id?: string;
+	group: number;
+	page: number;
+	word: string;
+	image: string;
+	audio: string;
+	audioMeaning: string;
+	audioExample: string;
+	textMeaning: string;
+	textExample: string;
+	transcription: string;
+	wordTranslate: string;
+	textMeaningTranslate: string;
+	textExampleTranslate: string;
+	userWord?: IUserWord;
+}
+
+export interface IAggregateUserWord extends IWord {
 	_id: string;
 	group: number;
 	page: number;
@@ -104,10 +139,10 @@ export interface IAggregateUserWords extends IWord {
 	textExampleTranslate: string;
 	textMeaningTranslate: string;
 	wordTranslate: string;
-	userWord: IUserWord[];
+	userWord: IUserWord;
 }
 
 export interface IAggregateUserWordsData {
-	paginatedResults: IAggregateUserWords[];
+	paginatedResults: IAggregateUserWord[];
 	totalCount: { count: number }[];
 }
