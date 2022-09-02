@@ -47,6 +47,10 @@
 		}
 	}
 
+	&_active {
+		pointer-events: none;
+	}
+
 	&_disabled {
 		opacity: 50%;
 		cursor: not-allowed;

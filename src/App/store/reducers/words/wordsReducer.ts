@@ -36,6 +36,11 @@ export function wordsReducer(
 		groupNumber: action.payload,
 	};
 
+	case EWordsActionTypes.SET_PAGE_NUMBER: return {
+		...state,
+		pageNumber: action.payload,
+	};
+
 	case EWordsActionTypes.GET_PREV_PAGE: return {
 		...state,
 		pageNumber: action.payload,
