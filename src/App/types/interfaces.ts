@@ -45,16 +45,13 @@ export interface IUserWord {
 }
 
 export interface IStatistic {
+	id?: string;
 	learnedWords: number;
 	optional: {
 		textBook: {
-			newWords: {
-				[date: string]: string[]; // {'date': ['id', 'id'...], ...}
-			};
 			learnedWords: {
 				[date: string]: string[];
 			};
-			countNewWords: number;
 		};
 		audioCall: {
 			newWords: {
@@ -110,4 +107,15 @@ export interface IAggregateUserWords extends IWord {
 export interface IAggregateUserWordsData {
 	paginatedResults: IAggregateUserWords[];
 	totalCount: { count: number }[];
+}
+
+export interface ISprint {
+	newWords: {
+		[date: string]: string[];
+	};
+	countNewWords: number;
+	countShowedWords: number;
+	countRight: number;
+	countWrong: number;
+	topRight: number;
 }
