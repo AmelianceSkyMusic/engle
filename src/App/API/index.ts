@@ -18,8 +18,8 @@ import { deleteUserWord } from './users/words/deleteUserWord';
 import { getUserSettings } from './users/settings/getUserSettings';
 import { updateUserSettings } from './users/settings/updateUserSettings';
 
-import { getUserStatistics } from './users/statistic/getUserStatistic';
-import { updateUserStatistics } from './users/statistic/updateUserStatistic';
+import { getUserStatistics } from './users/statistic/axios/getUserStatistic';
+import { updateUserStatistics } from './users/statistic/axios/updateUserStatistic';
 
 import { getUserAggregateWords } from './users/aggregatedWords/getUserAggregateWords';
 import { getUserAggWordsByID } from './users/aggregatedWords/getUserAggregateWordsByID';
