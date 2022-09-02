@@ -3,8 +3,8 @@ import { EWordsActionTypes, IWordsState, TWordActions } from './wordsTypes';
 const initialWordsState: IWordsState = {
 	isLoading: false,
 	error: null,
-	groupNumber: 0,
-	pageNumber: 0,
+	groupNumber: Number(localStorage.getItem('currentGroup')),
+	pageNumber: Number(localStorage.getItem('currentPage')),
 	pagesPerGroup: 30,
 	userPageWords: [],
 };

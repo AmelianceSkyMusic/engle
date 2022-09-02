@@ -18,6 +18,8 @@ export function getWordsAction(
 	pageNumber = 0,
 ): ThunkAction<void, TRootState, unknown, AnyAction> {
 	return async function noName(dispatch: Dispatch<TWordActions>) {
+		localStorage.setItem('currentGroup', groupNumber.toString());
+		localStorage.setItem('currentPage', pageNumber.toString());
 		try {
 			dispatch({ type: EWordsActionTypes.GET_WORDS });
 
