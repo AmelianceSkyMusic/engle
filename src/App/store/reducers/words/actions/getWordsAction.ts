@@ -3,8 +3,7 @@ import {
 } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import API from '../../../../API';
-import { IUserPageWords } from '../../../../types/interfaces';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { IUserPageWord } from '../../../../types/interfaces';
 import { store } from '../../../store';
 import { TRootState } from '../../rootReducer';
 import { EWordsActionTypes, TWordActions } from '../wordsTypes';
@@ -27,7 +26,7 @@ export function getWordsAction(
 
 			const words = await API.getWords(groupNumber, pageNumber);
 
-			let userPageWords: IUserPageWords[];
+			let userPageWords: IUserPageWord[];
 
 			if (isLogged) {
 				const response = await API.getUserAggregateWords({
