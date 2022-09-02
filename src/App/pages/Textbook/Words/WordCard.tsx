@@ -62,7 +62,7 @@ export function WordCard({ word, isLogged }: IWordCardProps) {
 							blackout={() => player.pause()}
 						>
 							<div className="word-modal">
-								<div className="word-modal__column col-7 col-md-12">
+								<div className="word-modal__column">
 									<img src={imgUrl} alt={word.word} className="word-modal__image" />
 									{ isLogged
 									&& (
@@ -97,7 +97,7 @@ export function WordCard({ word, isLogged }: IWordCardProps) {
 										</>
 									)}
 								</div>
-								<div className="word-modal__column col-5 col-md-12">
+								<div className="word-modal__column">
 									<div className="word-modal__main-info">
 										<h3 className="word-modal__word h3">{word.word}</h3>
 										<p className="word-modal__translation p1">{word.wordTranslate}</p>

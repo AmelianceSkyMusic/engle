@@ -1,3 +1,4 @@
+@use "../globals/" as *;
 .word-card {
 	width: 217px;
 	padding: 16px;
@@ -30,7 +31,6 @@
 .word-modal {
   display: flex;
   gap: var(--col-gap);
-  flex-wrap: wrap;
   &__column {
     display: flex;
     flex-direction: column;
@@ -53,11 +53,20 @@
   }
 
   &__image {
-    max-width: 100%;
+		min-width: 260px;
+		max-width: 100%;
   }
 
 	&__pronounce {
 		display: flex;
 		column-gap: 12px;
+	}
+
+	@media(max-width: $screen-xl) {
+		flex-wrap: wrap;
+
+		&__column {
+			width: 100%;
+		}
 	}
 }
