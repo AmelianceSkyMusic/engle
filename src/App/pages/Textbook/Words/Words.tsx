@@ -9,21 +9,24 @@ import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
 import { getNextPageAction } from '../../../store/reducers/words/actions/getNextPageAction';
 import { getPrevPageAction } from '../../../store/reducers/words/actions/getPrevPageAction';
+import { getHardWordsAction } from '../../../store/reducers/hardWords/actions/getHardWordsAction';
 
 export function Words() {
 	const {
+		userPageWords,
 		error,
 		isLoading,
-		userPageWord,
-		hardWords,
 		groupNumber,
 		pageNumber,
 		pagesPerGroup,
 	} = useTypedSelector((state) => state.words);
+	const { hardWords } = useTypedSelector((state) => state.hardWords);
 	const { isLogged } = useTypedSelector((state) => state.user);
 	const dispatch = useTypedDispatch();
+
 	useEffect(() => {
 		dispatch(getWordsAction(groupNumber, pageNumber));
+		dispatch(getHardWordsAction());
 	}, [dispatch, groupNumber, pageNumber]);
 
 	const [wordsError, setWordError] = useState(!!error);
@@ -41,7 +44,7 @@ export function Words() {
 				/>
 			));
 		}
-		return userPageWord.map((word) => (
+		return userPageWords.map((word) => (
 			<WordCard
 				word={word}
 				isLogged={isLogged}

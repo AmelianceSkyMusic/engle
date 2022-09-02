@@ -1,14 +1,14 @@
 /* eslint-disable no-param-reassign */
 import { useState } from 'react';
-import { IWord } from '../../../types/interfaces';
+import { IHardWord, IUserPageWord } from '../../../types/interfaces';
 import { BASE_URL } from '../../../API/consts';
 import { Modal } from '../../../../asmlib/asm-ui/components/Modal';
 
-interface WordCardProps {
-  word: IWord;
+interface IWordCardProps {
+  word: IUserPageWord | IHardWord;
 	isLogged: boolean;
 }
-export function WordCard({ word, isLogged }: WordCardProps) {
+export function WordCard({ word, isLogged }: IWordCardProps) {
 	const [modal, setModal] = useState(false);
 	const imgUrl = `${BASE_URL}${word.image}`;
 
@@ -44,8 +44,9 @@ export function WordCard({ word, isLogged }: WordCardProps) {
 					</p>
 				</div>
 				<div className="word-card__panel-row">
-					<div className="word-card__label" />
-					<button type="button" className="icon click icon--corner-down-right" onClick={() => setModal(true)}>
+					{word.userWord?.difficulty === 'hard'
+						&& <div className="hard-word-label" title="Вы пометили это слово как сложное" />}
+					<button type="button" className="word-card__more icon click icon--corner-down-right" onClick={() => setModal(true)}>
 						{}
 					</button>
 					{modal && (
@@ -66,6 +67,8 @@ export function WordCard({ word, isLogged }: WordCardProps) {
 									{ isLogged
 									&& (
 										<>
+											{word.userWord?.difficulty === 'hard'
+												&& <div className="hard-word-label" title="Вы пометили это слово как сложное" />}
 											<div className="word-modal__statistic">
 												<h4 className="h4">Статистика</h4>
 												<p className="word-modal__correct-answers p1">
@@ -76,9 +79,17 @@ export function WordCard({ word, isLogged }: WordCardProps) {
 												</p>
 											</div>
 											<div className="word-modal__controls">
-												<button type="button" className="word-modal__add-to-hard button-sm secondary">
-													Добавить в сложные
-												</button>
+												{word.userWord?.difficulty === 'hard'
+													? (
+														<button type="button" className="word-modal__add-to-hard button-sm secondary">
+															Убрать из сложных
+														</button>
+													)
+													: (
+														<button type="button" className="word-modal__add-to-hard button-sm secondary">
+															Добавить в сложные
+														</button>
+													)}
 												<button type="button" className="word-modal__add-to-learned button-sm secondary">
 													Добавить в изученные
 												</button>
