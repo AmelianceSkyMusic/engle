@@ -61,29 +61,32 @@ export function Words() {
 					? <Loader />
 					: createWordCards()}
 			</ul>
-			<div className="words__pagination">
-				<Button
-					callback={() => dispatch(getPrevPageAction(pageNumber))}
-					type="secondary"
-					buttonClass="button-icon"
-					icon="icon--arrow-left"
-				>
-					prev
-				</Button>
-				<p className="words__page-counter p1">
-					{pageNumber + 1}
-					{' / '}
-					{pagesPerGroup}
-				</p>
-				<Button
-					callback={() => dispatch(getNextPageAction(pageNumber, pagesPerGroup - 1))}
-					type="secondary"
-					buttonClass="button-icon"
-					icon="icon--arrow-right"
-				>
-					next
-				</Button>
-			</div>
+			{groupNumber !== 6
+				&& (
+					<div className="words__pagination">
+						<Button
+							callback={() => dispatch(getPrevPageAction(pageNumber))}
+							type="secondary"
+							buttonClass="button-icon"
+							icon="icon--arrow-left"
+						>
+							prev
+						</Button>
+						<p className="words__page-counter p1">
+							{pageNumber + 1}
+							{' / '}
+							{pagesPerGroup}
+						</p>
+						<Button
+							callback={() => dispatch(getNextPageAction(pageNumber, pagesPerGroup - 1))}
+							type="secondary"
+							buttonClass="button-icon"
+							icon="icon--arrow-right"
+						>
+							next
+						</Button>
+					</div>
+				)}
 		</section>
 	);
 }
