@@ -83,6 +83,24 @@
 			background-color: var(--color--a5-1);
 		}
 		@extend %box-shadow--default;
+		&.a1 {
+			order: 0;
+		}
+		&.a2 {
+			order: 4;
+		}
+		&.b1 {
+			order: 2;
+		}
+		&.b2 {
+			order: 5;
+		}
+		&.c1 {
+			order: 3;
+		}
+		&.c2 {
+			order: 6;
+		}
 		@media (max-width: $screen-xl) {
 			&.a1 {
 				order: 1;
