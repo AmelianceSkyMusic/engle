@@ -58,26 +58,29 @@
 		border-radius: 1000px;
 		transition: background-color 0.2s ease-in-out;
 		border: none;
+		.h4 {
+			text-align: start;
+		}
 		&:hover {
 			cursor: pointer;
 		}
 		&.a1:hover {
-			background-color: var(--color--a3-1);
+			background-color: var(--color--a3-2);
 		}
 		&.a2:hover {
-			background-color: var(--color--a3-0);
+			background-color: var(--color--a3-1);
 		}
 		&.b1:hover {
-			background-color: var(--color--a4-1);
+			background-color: var(--color--a4-2);
 		}
 		&.b2:hover {
-			background-color: var(--color--a4-0);
+			background-color: var(--color--a4-1);
 		}
 		&.c1:hover {
-			background-color: var(--color--a5-1);
+			background-color: var(--color--a5-2);
 		}
 		&.c2:hover {
-			background-color: var(--color--a5-0);
+			background-color: var(--color--a5-1);
 		}
 		@extend %box-shadow--default;
 		@media (max-width: $screen-xl) {
