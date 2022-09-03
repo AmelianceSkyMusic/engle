@@ -1,0 +1,131 @@
+@use "../../globals/" as *;
+
+.start-screen {
+	.main {
+		position: relative;
+		top: calc(0px - var(--col-gap) - 40px);
+		z-index: -1;
+		min-height: 100vh;
+		padding-top: calc(var(--col-gap) + 40px);
+		margin-bottom: calc(0px - var(--col-gap) - 40px);
+		.container {
+			gap: calc(var(--col-gap) * 2);
+			height: 100%;
+			padding-top: calc(var(--col-gap) / 2);
+			padding-bottom: calc(var(--col-gap) / 2);
+			flex-direction: column;
+		}
+	}
+
+	.title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: var(--col-gap);
+		.title__heading {
+			text-align: center;
+		}
+		.title__description {
+			text-align: center;
+		}
+	}
+
+	.levels {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: var(--col-gap);
+
+		.levels__heading-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.levels__section {
+			gap: var(--col-gap);
+		}
+	}
+
+	.level {
+		display: flex;
+		justify-content: start;
+		align-items: center;
+		gap: calc(var(--col-gap) / 2);
+		padding: calc(var(--col-gap) / 2);
+		background-color: var(--color--bg-1);
+		border-radius: 1000px;
+		transition: background-color 0.2s ease-in-out;
+		border: none;
+		&:hover {
+			cursor: pointer;
+		}
+		&.a1:hover {
+			background-color: var(--color--a3-1);
+		}
+		&.a2:hover {
+			background-color: var(--color--a3-0);
+		}
+		&.b1:hover {
+			background-color: var(--color--a4-1);
+		}
+		&.b2:hover {
+			background-color: var(--color--a4-0);
+		}
+		&.c1:hover {
+			background-color: var(--color--a5-1);
+		}
+		&.c2:hover {
+			background-color: var(--color--a5-0);
+		}
+		@extend %box-shadow--default;
+		@media (max-width: $screen-xl) {
+			&.a1 {
+				order: 1;
+			}
+			&.a2 {
+				order: 2;
+			}
+			&.b1 {
+				order: 3;
+			}
+			&.b2 {
+				order: 4;
+			}
+			&.c1 {
+				order: 5;
+			}
+			&.c2 {
+				order: 6;
+			}
+		}
+		.level__cerf {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 80px;
+			height: 80px;
+			text-align: center;
+			border-radius: 1000px;
+			&.a1 {
+				background-color: var(--color--a3-1);
+			}
+			&.a2 {
+				background-color: var(--color--a3-0);
+			}
+			&.b1 {
+				background-color: var(--color--a4-1);
+			}
+			&.b2 {
+				background-color: var(--color--a4-0);
+			}
+			&.c1 {
+				background-color: var(--color--a5-1);
+			}
+			&.c2 {
+				background-color: var(--color--a5-0);
+			}
+		}
+	}
+}
