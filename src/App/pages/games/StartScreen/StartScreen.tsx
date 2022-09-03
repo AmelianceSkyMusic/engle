@@ -9,19 +9,17 @@ interface IStartScreenProps {
 	}) => void;
 	groupNumber: number;
 	pageNumber: number;
+	children: JSX.Element;
 }
 
-export function StartScreen({ setStartGameParam, groupNumber, pageNumber }: IStartScreenProps) {
+export function StartScreen({
+	setStartGameParam, groupNumber, pageNumber, children,
+}: IStartScreenProps) {
 
 	return (
 		<>
 			<div className="title row">
-				<h1 className="title__heading h1">Игра «Аудиовызов»</h1>
-				<p className="title__description p1">
-					Тренировка слуха.
-					<br />
-					Прослушайте слово и выберите правильный вариант
-				</p>
+				{children}
 			</div>
 			{((groupNumber >= 0) && (pageNumber >= 0))
 				? (

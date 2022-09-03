@@ -40,7 +40,16 @@ export function Sprint({ groupNumber = -1, pageNumber = -1 }: ISprintProps) {
 								setStartGameParam={setStartGameParam}
 								groupNumber={groupNumber}
 								pageNumber={pageNumber}
-							/>
+							>
+								<>
+									<h1 className="title__heading h1">Игра «Спринт»</h1>
+									<p className="title__description p1">
+										Тренировка на знание слов.
+										<br />
+										Дайте ответ, соответствует ли слово переводу
+									</p>
+								</>
+							</StartScreen>
 						)}
 				</div>
 			</main>

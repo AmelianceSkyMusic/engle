@@ -40,7 +40,16 @@ export function Audiocall({ groupNumber = -1, pageNumber = -1 }: IAudiocallProps
 								setStartGameParam={setStartGameParam}
 								groupNumber={groupNumber}
 								pageNumber={pageNumber}
-							/>
+							>
+								<>
+									<h1 className="title__heading h1">Игра «Аудиовызов»</h1>
+									<p className="title__description p1">
+										Тренировка слуха.
+										<br />
+										Прослушайте слово и выберите правильный вариант
+									</p>
+								</>
+							</StartScreen>
 						)}
 				</div>
 			</main>
