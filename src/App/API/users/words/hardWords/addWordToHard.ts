@@ -4,12 +4,12 @@ import API from '../../..';
 
 export async function AddWordToHard(wordId: string) {
 	const { userId } = useTypedSelector((state) => state.user);
-	const word = await API.getUserWordByID(userId, wordId).catch((err) => console.log(err));
+	const word = await API.getUserWordByID(userId, wordId).catch((err) => console.error(err));
 	if (!word) {
 		const newWord: IUserWord = {
 			difficulty: 'hard',
 			optional: {
-				isNew: false,
+				isNew: true,
 				isLearned: false,
 				audioCall: {
 					right: 0,
@@ -21,13 +21,13 @@ export async function AddWordToHard(wordId: string) {
 				},
 			},
 		};
-		await API.createUserWord(userId, wordId, newWord).catch((err) => console.log(err));
+		await API.createUserWord(userId, wordId, newWord).catch((err) => console.error(err));
 	} else {
 		delete word.id;
 		delete word.wordId;
 		if (word.difficulty === 'easy') {
 			word.difficulty = 'hard';
-			await API.updateUserWord(userId, wordId, word).catch((err) => console.log(err));
+			await API.updateUserWord(userId, wordId, word).catch((err) => console.error(err));
 		}
 	}
 }
