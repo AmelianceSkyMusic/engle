@@ -1,15 +1,12 @@
 import { EWordsActionTypes, IWordsState, TWordActions } from './wordsTypes';
 
 const initialWordsState: IWordsState = {
-	words: [],
 	isLoading: false,
 	error: null,
 	groupNumber: 0,
 	pageNumber: 0,
 	pagesPerGroup: 30,
-	hardWords: [], // TODO: check is need
-	userPageWord: [],
-	userAggregateWords: [],
+	userPageWords: [],
 };
 
 export function wordsReducer(
@@ -25,7 +22,7 @@ export function wordsReducer(
 	case EWordsActionTypes.GET_WORDS_SUCCESS: return {
 		...state,
 		isLoading: false,
-		userPageWord: action.payload,
+		userPageWords: action.payload,
 	};
 
 	case EWordsActionTypes.GET_WORDS_ERROR: return {
@@ -47,21 +44,6 @@ export function wordsReducer(
 	case EWordsActionTypes.GET_NEXT_PAGE: return {
 		...state,
 		pageNumber: action.payload,
-	};
-
-	case EWordsActionTypes.GET_HARD_WORDS: return { // TODO: check is need
-		...state,
-		hardWords: [...state.hardWords, ...action.payload],
-	};
-
-	case EWordsActionTypes.SET_WORD_TO_HARD: return { // TODO: check is need
-		...state,
-		hardWords: [...state.hardWords, action.payload],
-	};
-
-	case EWordsActionTypes.SET_WORD_TO_LEARNED: return { // TODO: check is need
-		...state,
-		hardWords: [...state.hardWords, action.payload],
 	};
 
 	default:

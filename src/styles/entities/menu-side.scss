@@ -1,0 +1,60 @@
+@use "../globals/" as *;
+
+:root {
+	--menu-side--animation__duration: 0.1s;
+	--menu-side--animation__time-type: ease-in-out;
+	--menu-side--animation__delay: 0;
+}
+
+.menu-side {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	z-index: 101000;
+	display: flex;
+	justify-content: space-between;
+	width: calc((100vw / 2) - (var(--col-gap) * 2));
+	padding: 32px;
+	margin: var(--col-gap);
+	background-color: var(--color--bg-1);
+	border-radius: var(--col-gap);
+	@extend %box-shadow--default;
+
+	@media (max-width: $screen-xs) {
+		width: calc((100vw) - (var(--col-gap) * 2));
+	}
+
+	animation-name: hide-menu-side;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+	transition: transform var(--menu-side--animation__duration) var(--menu-side--animation__time-type),
+		opacity var(--menu-side--animation__duration) var(--menu-side--animation__delay);
+
+	&.show {
+		transform: translate(-50%, -50%) scale(100%);
+		animation-name: show-menu-side;
+		animation-duration: 0.3s;
+		animation-fill-mode: forwards;
+	}
+}
+
+@keyframes show-menu-side {
+	from {
+		opacity: 0;
+		transform: translateX(500px) scale(80%);
+	}
+	to {
+		opacity: 100%;
+		transform: translateX(0) scale(100%);
+	}
+}
+@keyframes hide-menu-side {
+	from {
+		opacity: 100%;
+		transform: translateX(0) scale(100%);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(500px) scale(80%);
+	}
+}

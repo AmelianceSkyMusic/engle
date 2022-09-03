@@ -1,0 +1,13 @@
+@use "../_globals/" as *;
+
+.input.text {
+	border: none;
+	border-bottom: 2px solid var(--color--f1-1);
+	width: 384px;
+	padding: 8px 10px;
+	background: transparent;
+	background-clip: text;
+	@media (max-width: $screen-xs) {
+		width: 300px;
+	}
+}

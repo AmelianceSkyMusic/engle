@@ -15,23 +15,23 @@
 		padding-top: var(--col-gap);
 		padding-right: calc(var(--col-gap) * 3.1);
 	}
-}
 
-.login {
-	display: flex;
-	flex-direction: column;
-	padding-top: calc(var(--col-gap) * 2.7);
-	padding-left: calc(var(--col-gap) * 2.2);
-	&__heading {
-		margin-bottom: calc(var(--col-gap) * 2);
-	}
-	&__log-reg-form {
-		position: relative;
-		z-index: 0;
-		margin-bottom: calc(var(--col-gap) * 2.2);
-	}
-	@media(max-width: $screen-lg) {
-		align-items: center;
-		padding-left: 0;
+	.login {
+		display: flex;
+		flex-direction: column;
+		padding-top: calc(var(--col-gap) * 2.7);
+		padding-left: calc(var(--col-gap) * 2.2);
+		&__heading {
+			margin-bottom: calc(var(--col-gap) * 2);
+		}
+		&__log-reg-form {
+			position: relative;
+			z-index: 0;
+			margin-bottom: calc(var(--col-gap) * 2.2);
+		}
+		@media (max-width: $screen-lg) {
+			align-items: center;
+			padding-left: 0;
+		}
 	}
 }

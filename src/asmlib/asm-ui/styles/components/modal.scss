@@ -82,8 +82,16 @@
 			background-color: var(--color--a3-0);
 		}
 	}
-	.modal__content {
+	.modal__content-container {
 		overflow-x: hidden;
+	}
+	.modal__content {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		gap: calc(var(--col-gap) / 2);
+		padding: calc(var(--col-gap));
 	}
 
 	.modal__button {

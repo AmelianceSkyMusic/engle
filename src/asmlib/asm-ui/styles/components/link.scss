@@ -2,33 +2,31 @@
 
 .link {
 	color: var(--color__link);
-	color: inherit;
-	font: inherit;
-	font-weight: 700;
 	text-decoration: none;
+
 	&_underlined {
 		text-decoration: underline;
 		text-underline-offset: 2px;
 	}
-	
-	&.inversed {
-		color: var(--color__link-inversed);
+
+	&.inverted {
+		color: var(--color__link-inverted);
 	}
 	// text-decoration: none;
 	@media (hover: hover) {
 		&:hover {
 			transition: color var(--time-1) var(--transition-type-2);
 			color: var(--color__link_hover);
-			&.inversed {
-				color: var(--color__link-inversed_hover);
+			&.inverted {
+				color: var(--color__link-inverted_hover);
 			}
 		}
 	}
 	&:active {
 		color: var(--color__link_active);
 		transition: 0s;
-		&.inversed {
-			color: var(--color__link-inversed_active);
+		&.inverted {
+			color: var(--color__link-inverted_active);
 		}
 	}
 
@@ -39,15 +37,15 @@
 		opacity: 60%;
 		cursor: not-allowed;
 		pointer-events: none;
-		&.inversed {
-			color: var(--color__link-inversed_disabled);
+		&.inverted {
+			color: var(--color__link-inverted_disabled);
 		}
 	}
 	// &.inverse {
 	//     color: var(--color__ov_inverse);
 	// @media (hover: hover) {
 	//     &:hover {
-	//         transition: all var(--time__medium) var(--animation__standart);
+	//         transition: all var(--time__medium) var(--animation__standard);
 	//         color: var(--color__link-hover);
 	//     }
 	// }
