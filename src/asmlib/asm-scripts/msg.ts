@@ -1,3 +1,3 @@
-export function msg<T>(...args: T[]) {
-  console.log(...args);
+export function msg<TYPE>(...args: TYPE[]) {
+	console.log(...args);
 }
