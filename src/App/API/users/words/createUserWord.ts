@@ -3,7 +3,11 @@ import axios from 'axios';
 import { BASE_URL } from '../../consts';
 import { IUserWord } from '../../../types/interfaces';
 
-export const createUserWord = async (userId: string, wordId: string): Promise<IUserWord> => {
+export const createUserWord = async (
+	userId: string,
+	wordId: string,
+	wordData: IUserWord,
+): Promise<IUserWord> => {
 	const token = `${localStorage.getItem('token')}`;
 	const res = await axios({
 		method: 'post',
@@ -13,8 +17,7 @@ export const createUserWord = async (userId: string, wordId: string): Promise<IU
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${token}`,
 		},
-		// data: {
-		// },
+		data: wordData,
 	});
 	return res.data;
 };
