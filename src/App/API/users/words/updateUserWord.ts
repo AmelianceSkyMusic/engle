@@ -9,7 +9,6 @@ export const updateUserWord = async (
 	wordData: IUserWord,
 ): Promise<IUserWord> => {
 	const token = `${localStorage.getItem('token')}`;
-	console.log(wordData);
 	const res = await axios({
 		method: 'put',
 		url: `${BASE_URL}users/${userId}/words/${wordId}`,
@@ -20,6 +19,5 @@ export const updateUserWord = async (
 		},
 		data: wordData,
 	});
-	console.log(res.data);
 	return res.data;
 };

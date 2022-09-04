@@ -41,6 +41,7 @@ export function Words() {
 					word={word}
 					isLogged={isLogged}
 					key={word.id}
+					forHardWords
 				/>
 			));
 		}

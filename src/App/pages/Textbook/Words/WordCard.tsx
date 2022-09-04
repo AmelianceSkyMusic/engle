@@ -1,14 +1,19 @@
-/* eslint-disable no-param-reassign */
 import { useState } from 'react';
 import { IHardWord, IUserPageWord } from '../../../types/interfaces';
 import { BASE_URL } from '../../../API/consts';
 import { Modal } from '../../../../asmlib/asm-ui/components/Modal';
+import { addWordToHard } from '../../../API/users/words/hardWords/addWordToHard';
+import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
+import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
+import { deleteWordFromHard } from '../../../API/users/words/hardWords/deleteWordFromHard';
+import { getHardWordsAction } from '../../../store/reducers/hardWords/actions/getHardWordsAction';
 
 interface IWordCardProps {
   word: IUserPageWord | IHardWord;
 	isLogged: boolean;
+	forHardWords?: boolean;
 }
-export function WordCard({ word, isLogged }: IWordCardProps) {
+export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 	const [modal, setModal] = useState(false);
 	const imgUrl = `${BASE_URL}${word.image}`;
 
@@ -29,6 +34,21 @@ export function WordCard({ word, isLogged }: IWordCardProps) {
 				currentIndex += 1;
 			}
 		});
+	}
+
+	const dispatch = useTypedDispatch();
+	async function addToHard() {
+		await addWordToHard(word.id as string);
+		dispatch(getWordsAction(word.group, word.page));
+	}
+	async function removeFromHard() {
+		await deleteWordFromHard(word.id as string);
+		if (forHardWords) {
+			dispatch(getHardWordsAction());
+		} else {
+			dispatch(getWordsAction(word.group, word.page));
+		}
+
 	}
 
 	return (
@@ -81,12 +101,20 @@ export function WordCard({ word, isLogged }: IWordCardProps) {
 											<div className="word-modal__controls">
 												{word.userWord?.difficulty === 'hard'
 													? (
-														<button type="button" className="word-modal__add-to-hard button-sm secondary">
+														<button
+															type="button"
+															className="word-modal__add-to-hard button-sm secondary"
+															onClick={() => removeFromHard()}
+														>
 															Убрать из сложных
 														</button>
 													)
 													: (
-														<button type="button" className="word-modal__add-to-hard button-sm secondary">
+														<button
+															type="button"
+															className="word-modal__add-to-hard button-sm secondary"
+															onClick={() => addToHard()}
+														>
 															Добавить в сложные
 														</button>
 													)}
