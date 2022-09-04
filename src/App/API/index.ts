@@ -24,6 +24,12 @@ import { updateUserStatistics } from './users/statistic/updateUserStatistic';
 import { getUserAggregateWords } from './users/aggregatedWords/getUserAggregateWords';
 import { getUserAggWordsByID } from './users/aggregatedWords/getUserAggregateWordsByID';
 
+import { AddWordToHard } from './users/words/hardWords/addWordToHard';
+import { DeleteWordFromHard } from './users/words/hardWords/deleteWordFromHard';
+
+import { AddWordToLearned } from './users/words/learningWords/addWordToLearned';
+import { DeleteWordFromLearned } from './users/words/learningWords/deleteWordFromLearned';
+
 export default {
 	getWords,
 	getWordsByID,
@@ -50,4 +56,10 @@ export default {
 
 	getUserAggregateWords,
 	getUserAggWordsByID,
+
+	AddWordToHard,
+	DeleteWordFromHard,
+
+	AddWordToLearned,
+	DeleteWordFromLearned,
 };
