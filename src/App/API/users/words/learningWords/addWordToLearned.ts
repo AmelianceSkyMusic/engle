@@ -1,9 +1,9 @@
 import { IUserWord } from '../../../../types/interfaces';
-import { useTypedSelector } from '../../../../store/hooks/useTypedSelector';
 import API from '../../..';
+import { store } from '../../../../store';
 
-export async function AddWordToLearned(wordId: string) {
-	const { userId } = useTypedSelector((state) => state.user);
+export async function addWordToLearned(wordId: string) {
+	const { userId } = store.getState().user;
 	const word = await API.getUserWordByID(userId, wordId).catch((err) => console.error(err));
 	if (!word) {
 		const newWord: IUserWord = {

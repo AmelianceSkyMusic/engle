@@ -24,11 +24,11 @@ import { updateUserStatistics } from './users/statistic/updateUserStatistic';
 import { getUserAggregateWords } from './users/aggregatedWords/getUserAggregateWords';
 import { getUserAggWordsByID } from './users/aggregatedWords/getUserAggregateWordsByID';
 
-import { AddWordToHard } from './users/words/hardWords/addWordToHard';
-import { DeleteWordFromHard } from './users/words/hardWords/deleteWordFromHard';
+import { addWordToHard } from './users/words/hardWords/addWordToHard';
+import { deleteWordFromHard } from './users/words/hardWords/deleteWordFromHard';
 
-import { AddWordToLearned } from './users/words/learningWords/addWordToLearned';
-import { DeleteWordFromLearned } from './users/words/learningWords/deleteWordFromLearned';
+import { addWordToLearned } from './users/words/learningWords/addWordToLearned';
+import { deleteWordFromLearned } from './users/words/learningWords/deleteWordFromLearned';
 
 export default {
 	getWords,
@@ -57,9 +57,9 @@ export default {
 	getUserAggregateWords,
 	getUserAggWordsByID,
 
-	AddWordToHard,
-	DeleteWordFromHard,
+	addWordToHard,
+	deleteWordFromHard,
 
-	AddWordToLearned,
-	DeleteWordFromLearned,
+	addWordToLearned,
+	deleteWordFromLearned,
 };
