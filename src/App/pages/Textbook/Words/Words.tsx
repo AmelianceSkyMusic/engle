@@ -20,7 +20,11 @@ export function Words() {
 		pageNumber,
 		pagesPerGroup,
 	} = useTypedSelector((state) => state.words);
-	const { hardWords } = useTypedSelector((state) => state.hardWords);
+	const {
+		hardWords,
+		isHardWordsLoading,
+		hardWordsError,
+	}	= useTypedSelector((state) => state.hardWords);
 	const { isLogged } = useTypedSelector((state) => state.user);
 	const dispatch = useTypedDispatch();
 
@@ -58,10 +62,10 @@ export function Words() {
 	return (
 		<section className="words">
 			<div className={decorationClasses} />
-			{wordsError && <WordsModalError setOpenErrorModal={setWordError} />}
+			{(wordsError || hardWordsError) && <WordsModalError setOpenErrorModal={setWordError} />}
 			<h2 className="page-textbook__heading h2">Слова</h2>
 			<ul className="words__list">
-				{isLoading
+				{isLoading || isHardWordsLoading
 					? <Loader />
 					: createWordCards()}
 			</ul>
