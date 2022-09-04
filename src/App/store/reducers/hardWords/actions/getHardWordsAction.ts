@@ -29,7 +29,7 @@ export function getHardWordsAction() {
 
 				hardWords = hardWordsForBack.map((word) => {
 
-					const gottenWord: IHardWord = { ...word };
+					const gottenWord = JSON.parse(JSON.stringify(word));
 
 					// eslint-disable-next-line no-underscore-dangle
 					gottenWord.id = gottenWord._id;

@@ -26,32 +26,24 @@ export function getWordsAction(
 			const { userId } = store.getState().user;
 			const { isLogged } = store.getState().user;
 
-			const words = await API.getWords(groupNumber, pageNumber);
-
 			let userPageWords: IUserPageWord[];
-
 			if (isLogged) {
 				const response = await API.getUserAggregateWords({
 					userId,
 					groupNumber,
 					pageNumber,
-					filter: '{"$or":[{"$and":[{"userWord.difficulty":"hard"}]}, {"userWord.optional.isLearned": true}]}',
+					wordsPerPage: 20,
 				});
-
-				const userWordsInThisPage = response[0].paginatedResults;
-				// eslint-disable-next-line no-underscore-dangle
-				const userWordIds = userWordsInThisPage.map((userWord) => userWord._id);
-
-				userPageWords = words.map((word) => {
-					const idPosition = userWordIds.indexOf(word.id);
-
-					if (idPosition >= 0) {
-						return { ...word, ...{ userWord: userWordsInThisPage[idPosition].userWord } };
-					}
-					return word;
+				userPageWords = response[0].paginatedResults.map((word) => {
+					const gottenWord = JSON.parse(JSON.stringify(word));
+					// eslint-disable-next-line no-underscore-dangle
+					gottenWord.id = gottenWord._id;
+					// eslint-disable-next-line no-underscore-dangle
+					delete gottenWord._id;
+					return gottenWord;
 				});
 			} else {
-				userPageWords = [...words];
+				userPageWords = await API.getWords(groupNumber, pageNumber);
 			}
 
 			dispatch({
