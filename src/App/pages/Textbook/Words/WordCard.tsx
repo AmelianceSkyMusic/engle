@@ -9,6 +9,7 @@ import { deleteWordFromHard } from '../../../API/users/words/hardWords/deleteWor
 import { getHardWordsAction } from '../../../store/reducers/hardWords/actions/getHardWordsAction';
 import { addWordToLearned } from '../../../API/users/words/learningWords/addWordToLearned';
 import { deleteWordFromLearned } from '../../../API/users/words/learningWords/deleteWordFromLearned';
+import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
 
 interface IWordCardProps {
   word: IUserPageWord | IHardWord;
@@ -46,24 +47,28 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 			dispatch(getWordsAction(word.group, word.page));
 		}
 	}
+
+	const [waiting, setWaiting] = useState(false);
+
+	async function waitForUpdate(cb: (id: string) => Promise<void>) {
+		setWaiting(true);
+		await cb(word.id as string);
+		setWaiting(false);
+	}
 	async function addToHard() {
-		await addWordToHard(word.id as string);
+		await waitForUpdate(addWordToHard);
 		dispatch(getWordsAction(word.group, word.page));
 	}
 	async function removeFromHard() {
-		await deleteWordFromHard(word.id as string);
-		if (forHardWords) {
-			dispatch(getHardWordsAction());
-		} else {
-			dispatch(getWordsAction(word.group, word.page));
-		}
+		await waitForUpdate(deleteWordFromHard);
+		rerenderCards();
 	}
 	async function addToLearned() {
-		await addWordToLearned(word.id as string);
+		await waitForUpdate(addWordToLearned);
 		rerenderCards();
 	}
 	async function removeFromLearned() {
-		await deleteWordFromLearned(word.id as string);
+		await waitForUpdate(deleteWordFromLearned);
 		rerenderCards();
 	}
 
@@ -100,6 +105,7 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 							blackout={() => player.pause()}
 						>
 							<div className="word-modal">
+								{waiting && <Loader />}
 								<div className="word-modal__column">
 									<img src={imgUrl} alt={word.word} className="word-modal__image" />
 									{ isLogged
