@@ -15,6 +15,7 @@
 		"@types/react-redux": "^7.1.24",
 		"asmlib": "^0.0.0",
 		"axios": "^0.27.2",
+		"framer-motion": "^7.2.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-redux": "^8.0.2",
@@ -51,6 +52,7 @@
 	},
 	"devDependencies": {
 		"@redux-devtools/core": "^3.13.1",
+		"@types/styled-components": "^5.1.26",
 		"@typescript-eslint/eslint-plugin": "^5.33.1",
 		"@typescript-eslint/parser": "^5.33.1",
 		"cross-env": "^7.0.3",

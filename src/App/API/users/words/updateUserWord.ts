@@ -3,8 +3,13 @@ import axios from 'axios';
 import { BASE_URL } from '../../consts';
 import { IUserWord } from '../../../types/interfaces';
 
-export const updateUserWord = async (userId: string, wordId: string): Promise<IUserWord> => {
-	const token = `${sessionStorage.getItem('token')}`;
+export const updateUserWord = async (
+	userId: string,
+	wordId: string,
+	wordData: IUserWord,
+): Promise<IUserWord> => {
+	const token = `${localStorage.getItem('token')}`;
+	console.log(wordData);
 	const res = await axios({
 		method: 'put',
 		url: `${BASE_URL}users/${userId}/words/${wordId}`,
@@ -13,8 +18,8 @@ export const updateUserWord = async (userId: string, wordId: string): Promise<IU
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${token}`,
 		},
-		// data: {
-		// },
+		data: wordData,
 	});
+	console.log(res.data);
 	return res.data;
 };
