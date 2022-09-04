@@ -22,6 +22,7 @@ export function getHardWordsAction() {
 			if (isLogged) {
 				const response = await API.getUserAggregateWords({
 					userId,
+					wordsPerPage: 3600,
 					filter: '{"$and":[{"userWord.difficulty":"hard"}]}',
 				});
 
