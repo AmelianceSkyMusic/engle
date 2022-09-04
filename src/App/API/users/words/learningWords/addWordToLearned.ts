@@ -26,6 +26,7 @@ export async function addWordToLearned(wordId: string) {
 		delete word.id;
 		delete word.wordId;
 		if (word.optional.isLearned === false) {
+			word.difficulty = 'easy';
 			word.optional.isLearned = true;
 			await API.updateUserWord(userId, wordId, word).catch((err) => console.error(err));
 		}

@@ -27,6 +27,7 @@ export async function addWordToHard(wordId: string) {
 		delete word.wordId;
 		if (word.difficulty === 'easy') {
 			word.difficulty = 'hard';
+			word.optional.isLearned = false;
 			await API.updateUserWord(userId, wordId, word).catch((err) => console.error(err));
 		}
 	}

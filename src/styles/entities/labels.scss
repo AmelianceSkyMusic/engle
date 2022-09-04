@@ -1,6 +1,14 @@
-.hard-word-label {
+@use "../globals/" as *;
+.word-label {
   width: 24px;
   height: 24px;
-  background-color: red;
   border-radius: 100%;
+
+  &_hard {
+    background-color: var(--color--a5-1);
+  }
+
+  &_learned {
+    background-color: var(--color--a3-1);
+  }
 }

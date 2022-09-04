@@ -7,6 +7,8 @@ import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
 import { deleteWordFromHard } from '../../../API/users/words/hardWords/deleteWordFromHard';
 import { getHardWordsAction } from '../../../store/reducers/hardWords/actions/getHardWordsAction';
+import { addWordToLearned } from '../../../API/users/words/learningWords/addWordToLearned';
+import { deleteWordFromLearned } from '../../../API/users/words/learningWords/deleteWordFromLearned';
 
 interface IWordCardProps {
   word: IUserPageWord | IHardWord;
@@ -37,6 +39,13 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 	}
 
 	const dispatch = useTypedDispatch();
+	function rerenderCards() {
+		if (forHardWords) {
+			dispatch(getHardWordsAction());
+		} else {
+			dispatch(getWordsAction(word.group, word.page));
+		}
+	}
 	async function addToHard() {
 		await addWordToHard(word.id as string);
 		dispatch(getWordsAction(word.group, word.page));
@@ -48,7 +57,14 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 		} else {
 			dispatch(getWordsAction(word.group, word.page));
 		}
-
+	}
+	async function addToLearned() {
+		await addWordToLearned(word.id as string);
+		rerenderCards();
+	}
+	async function removeFromLearned() {
+		await deleteWordFromLearned(word.id as string);
+		rerenderCards();
 	}
 
 	return (
@@ -65,7 +81,9 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 				</div>
 				<div className="word-card__panel-row">
 					{word.userWord?.difficulty === 'hard'
-						&& <div className="hard-word-label" title="Вы пометили это слово как сложное" />}
+						&& <div className="word-label word-label_hard" title="Вы пометили это слово как сложное" />}
+					{word.userWord?.optional.isLearned
+						&& <div className="word-label word-label_learned" title="Вы пометили это слово как изученное" />}
 					<button type="button" className="word-card__more icon click icon--corner-down-right" onClick={() => setModal(true)}>
 						{}
 					</button>
@@ -88,7 +106,9 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 									&& (
 										<>
 											{word.userWord?.difficulty === 'hard'
-												&& <div className="hard-word-label" title="Вы пометили это слово как сложное" />}
+												&& <div className="word-label word-label_hard" title="Вы пометили это слово как сложное" />}
+											{word.userWord?.optional.isLearned
+												&& <div className="word-label word-label_learned" title="Вы пометили это слово как изученное" />}
 											<div className="word-modal__statistic">
 												<h4 className="h4">Статистика</h4>
 												<p className="word-modal__correct-answers p1">
@@ -118,9 +138,26 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 															Добавить в сложные
 														</button>
 													)}
-												<button type="button" className="word-modal__add-to-learned button-sm secondary">
-													Добавить в изученные
-												</button>
+												{word.userWord?.optional.isLearned
+													? (
+														<button
+															type="button"
+															className="word-modal__add-to-learned button-sm secondary"
+															onClick={() => removeFromLearned()}
+														>
+															Убрать из изученных
+														</button>
+													)
+													: (
+														<button
+															type="button"
+															className="word-modal__add-to-learned button-sm secondary"
+															onClick={() => addToLearned()}
+														>
+															Добавить в изученные
+														</button>
+													)}
+
 											</div>
 										</>
 									)}
