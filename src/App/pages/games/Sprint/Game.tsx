@@ -1,19 +1,21 @@
+import { IUserPageWord } from '../../../types/interfaces';
+
 interface IGameProps {
-	groupNumber: number;
-	pageNumber: number;
+	words: IUserPageWord[];
 }
 
-export function Game({ groupNumber, pageNumber }: IGameProps) {
+export function Game({ words }: IGameProps) {
+	console.log(words);
 	return (
 		<>
 			<div>
 				<h1 className="h1">
-					{groupNumber}
+					{words[0].group}
 				</h1>
 			</div>
 			<div>
 				<h1 className="h1">
-					{pageNumber}
+					{words[0].page}
 				</h1>
 			</div>
 		</>
