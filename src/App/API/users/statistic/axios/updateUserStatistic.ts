@@ -5,7 +5,7 @@ import { IStatistic } from '../../../../types/interfaces';
 
 export const updateUserStatistics = async (
 	userId: string,
-	curData: object,
+	curData: IStatistic,
 ): Promise<IStatistic> => {
 	const token = `${localStorage.getItem('token')}`;
 	const res = await axios({
