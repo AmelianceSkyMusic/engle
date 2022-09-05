@@ -37,7 +37,6 @@ export function Words() {
 	useEffect(() => {
 		setWordError(!!error);
 	}, [error]);
-
 	function createWordCards() {
 		if (groupNumber === 6) {
 			return hardWords.map((word) => (
@@ -58,12 +57,21 @@ export function Words() {
 		));
 	}
 
+	const pageLearned = (userPageWords
+		.every((word) => word.userWord?.optional.isLearned || word.userWord?.difficulty === 'hard')
+		&& groupNumber !== 6);
+	const wordsClasses = `words ${pageLearned ? 'words_page-learned' : ''}`;
 	const decorationClasses = `decoration decoration_type4 decoration_group${groupNumber}`;
 	return (
-		<section className="words">
+		<section
+			className={wordsClasses}
+			title={pageLearned ? 'Эта страница содержит только изученные или сложные слова' : ''}
+		>
 			<div className={decorationClasses} />
 			{(wordsError || hardWordsError) && <WordsModalError setOpenErrorModal={setWordError} />}
-			<h2 className="page-textbook__heading h2">Слова</h2>
+			<h2 className="words__heading page-textbook__heading h2">
+				Слова
+			</h2>
 			<ul className="words__list">
 				{isLoading || isHardWordsLoading
 					? <Loader />

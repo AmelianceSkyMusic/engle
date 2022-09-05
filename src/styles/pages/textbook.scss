@@ -119,6 +119,8 @@
 .words {
 	position: relative;
 	&__list {
+		position: relative;
+		z-index: 0;
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
@@ -132,7 +134,23 @@
 		align-items: center;
 		column-gap: 18px;
 	}
+
+	&_page-learned {
+		.words__heading {
+			position: relative;
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 5px;
+				@include bgImgSVG("../../assets/svg/icon--check.svg", 60px, 60px);
+				background-color: var(--color--a3-1);
+			}
+			
+		}
+	}
 }
+
 
 .games {
 	&__list {
