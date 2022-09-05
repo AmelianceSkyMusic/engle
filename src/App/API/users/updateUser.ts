@@ -4,7 +4,7 @@ import { BASE_URL } from '../consts';
 import { IUser } from '../../types/interfaces';
 
 export const updateUser = async (userId: string, mail: string, pass: string): Promise<IUser> => {
-	const token = `${sessionStorage.getItem('token')}`;
+	const token = `${localStorage.getItem('token')}`;
 	const res = await axios({
 		method: 'put',
 		url: `${BASE_URL}users/${userId}`,
