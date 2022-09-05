@@ -2,7 +2,7 @@
 .word-card {
 	width: 217px;
 	padding: 16px;
-	box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.1);
+	@extend %box-shadow--default;
 	border-radius: 32px;
 	background-color: var(--color--bg-1);
 	&__img {

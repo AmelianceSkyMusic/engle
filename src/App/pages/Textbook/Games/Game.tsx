@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
 interface IGameProps {
-  name: string;
-  description: string;
-  imageSrc: string;
+	name: string;
+	description: string;
+	imageSrc: string;
 	gameLink: string;
 }
 
