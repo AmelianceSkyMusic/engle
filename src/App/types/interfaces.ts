@@ -123,3 +123,13 @@ export interface ISprint {
 	countWrong: number;
 	topRight: number;
 }
+export interface IAudioCall {
+	newWords: {
+		[date: string]: string[];
+	};
+	countNewWords: number;
+	countShowedWords: number;
+	countRight: number;
+	countWrong: number;
+	topRight: number;
+}
