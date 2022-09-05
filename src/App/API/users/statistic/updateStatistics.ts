@@ -6,7 +6,7 @@ import { IStatistic } from '../../../types/interfaces';
 
 async function updateStatistic(
 	userId: string,
-	blockUpdate: string,
+	blockUpdate: 'textbook' | 'audioCall' | 'sprint',
 	value: object | { learnedWords: string[] },
 ) {
 	let curStatUser = await getUserStatistics(userId)
