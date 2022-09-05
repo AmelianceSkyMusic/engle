@@ -6,13 +6,7 @@ import { IStatistic } from '../../../../types/interfaces';
 export const updateUserStatistics = async (
 	userId: string,
 	curData: object,
-	// limit: number,
-	// newWords: number,
-	// currentDate: Date,
-	// id1: string,
-	// id2: string,
 ): Promise<IStatistic> => {
-	console.log(curData);
 	const token = `${localStorage.getItem('token')}`;
 	const res = await axios({
 		method: 'put',
@@ -23,8 +17,6 @@ export const updateUserStatistics = async (
 			Authorization: `Bearer ${token}`,
 		},
 		data: curData,
-		// data['optional'][]
 	});
-	console.log(res);
 	return res.data;
 };
