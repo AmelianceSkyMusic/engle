@@ -1,6 +1,13 @@
 @use "../_globals/" as *;
 
 input {
+	border: none;
+	border-bottom: 3px solid var(--color--el-1);
+	width: 384px;
+	padding: 8px 10px;
+	font-size: 18px;
+	background: transparent;
+	color: var(--color--el-1);
 	&:focus {
 		outline: none !important;
 	}

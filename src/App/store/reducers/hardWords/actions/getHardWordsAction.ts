@@ -22,6 +22,7 @@ export function getHardWordsAction() {
 			if (isLogged) {
 				const response = await API.getUserAggregateWords({
 					userId,
+					wordsPerPage: 3600,
 					filter: '{"$and":[{"userWord.difficulty":"hard"}]}',
 				});
 
@@ -29,7 +30,7 @@ export function getHardWordsAction() {
 
 				hardWords = hardWordsForBack.map((word) => {
 
-					const gottenWord: IHardWord = { ...word };
+					const gottenWord = JSON.parse(JSON.stringify(word));
 
 					// eslint-disable-next-line no-underscore-dangle
 					gottenWord.id = gottenWord._id;

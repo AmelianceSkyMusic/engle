@@ -16,6 +16,7 @@ export enum EWordsActionTypes {
 	GET_WORDS_ERROR = 'GET_WORDS_ERROR',
 
 	SET_GROUP_NUMBER = 'SET_GROUP_NUMBER',
+	SET_PAGE_NUMBER = 'SET_PAGE_NUMBER',
 	GET_PREV_PAGE = 'GET_PREV_PAGE',
 	GET_NEXT_PAGE = 'GET_NEXT_PAGE',
 
@@ -51,6 +52,10 @@ interface INextPage {
 	type: EWordsActionTypes.GET_NEXT_PAGE;
 	payload: number;
 }
+interface ISetPage {
+	type: EWordsActionTypes.SET_PAGE_NUMBER;
+	payload: number;
+}
 
 export type TWordActions =
 	IInit |
@@ -61,4 +66,5 @@ export type TWordActions =
 
 	ISetWordsGroupNumber |
 	INextPage |
-	IPrevPage
+	IPrevPage |
+	ISetPage
