@@ -1,21 +1,51 @@
 import { updateStatTextBook } from './updateStatTextBook';
 import { updateStatGameSprint } from './updateStatGameSprint';
+import { updateStatGameAudioCall } from './updateStatGameAudiocall';
+import { getUserStatistics } from './axios/getUserStatistic';
+import { IStatistic } from '../../../types/interfaces';
 
 async function updateStatistic(
 	userId: string,
 	blockUpdate: string,
-	caseOfOpt: string,
-	value: string[] | number[],
+	value: object | { learnedWords: string[] },
 ) {
+	let curStatUser = await getUserStatistics(userId)
+		.catch((err) => console.error(err)) as IStatistic;
+	if (!curStatUser) {
+		curStatUser = {
+			learnedWords: 0,
+			optional: {
+				textBook: {
+					learnedWords: {},
+				},
+				audioCall: {
+					newWords: {},
+					countNewWords: 0,
+					countRight: 0,
+					countWrong: 0,
+					topRight: 0,
+				},
+				sprint: {
+					newWords: {},
+					countNewWords: 0,
+					countRight: 0,
+					countWrong: 0,
+					topRight: 0,
+				},
+			},
+		};
+	} else {
+		(delete curStatUser.id);
+	}
 	switch (blockUpdate) {
 	case 'textbook':
-		await updateStatTextBook(userId, caseOfOpt, value);
+		await updateStatTextBook(userId, value as { learnedWords: string[] }, curStatUser);
 		break;
-	case 'audiocall':
-
+	case 'audioCall':
+		await updateStatGameAudioCall(userId, value, curStatUser);
 		break;
 	case 'sprint':
-		await updateStatGameSprint(userId, caseOfOpt, value);
+		await updateStatGameSprint(userId, value, curStatUser);
 		break;
 	default:
 		break;
