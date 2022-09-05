@@ -84,7 +84,7 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 						&& <div className="word-label word-label_hard" title="Вы пометили это слово как сложное" />}
 					{word.userWord?.optional.isLearned
 						&& <div className="word-label word-label_learned" title="Вы пометили это слово как изученное" />}
-					<button type="button" className="word-card__more icon click icon--corner-down-right" onClick={() => setModal(true)}>
+					<button type="button" className="word-card__more icon click icon--more-horizontal" onClick={() => setModal(true)}>
 						{}
 					</button>
 					{modal && (
