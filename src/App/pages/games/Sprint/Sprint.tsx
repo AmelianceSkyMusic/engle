@@ -2,6 +2,7 @@ import '../../../../styles/pages/games/start-screen.scss';
 import '../../../../styles/pages/games/sprint.scss';
 
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Footer } from '../../../components/layouts/Footer';
 import { Header } from '../../../components/layouts/Header';
 import { Game } from './Game';
@@ -12,12 +13,19 @@ import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAc
 import { IUserPageWord } from '../../../types/interfaces';
 import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
 
-interface ISprintProps {
-	groupNumber?: number;
-	pageNumber?: number;
-}
+export function Sprint() {
+	const location = useLocation();
+	let groupNumber = -1;
+	let pageNumber = -1;
+	interface ILocationState {
+		groupNumber: number;
+		pageNumber: number;
+	}
+	if (location.state) {
+		groupNumber = (location.state as ILocationState).groupNumber;
+		pageNumber = (location.state as ILocationState).pageNumber;
+	}
 
-export function Sprint({ groupNumber = -1, pageNumber = -1 }: ISprintProps) {
 	const dispatch = useTypedDispatch();
 
 	const { userPageWords, isLoading, error } = useTypedSelector((state) => state.words);
