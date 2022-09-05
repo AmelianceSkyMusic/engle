@@ -13,36 +13,34 @@ export const useValidation = (
 
 	useEffect(() => {
 		function validat() {
-			// TODO: DIMA FIX THIS
-			// eslint-disable-next-line no-restricted-syntax
-			for (const validation in validations) {
-				if (validation === 'minLength') {
-					if (value.length < (validations[validation])) {
+			Object.entries(validations).forEach((el) => {
+				if (el[0] === 'minLength') {
+					if (value.length < el[1]) {
 						setMinLengthError(true);
 					} else {
 						setMinLengthError(false);
 					}
-				} else if (validation === 'isEmpty') {
+				} else if (el[0] === 'isEmpty') {
 					if (value) {
 						setEmpty(false);
 					} else {
 						setEmpty(true);
 					}
-				} else if (validation === 'isEmail') {
+				} else if (el[0] === 'isEmail') {
 					const re = /\S+@\S+\.\S+/;
 					if (re.test(String(value).toLowerCase())) {
 						setEmailError(false);
 					} else {
 						setEmailError(true);
 					}
-				}	else if (validation === 'isPasswordMatch') {
+				}	else if (el[0] === 'isPasswordMatch') {
 					if (Object.is(value, pass)) {
 						setPasswordMatch(false);
 					} else {
 						setPasswordMatch(true);
 					}
 				}
-			}
+			});
 		}
 		validat();
 	}, [validations, value, pass]);
