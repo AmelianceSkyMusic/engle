@@ -52,6 +52,14 @@
     row-gap: 10px;
   }
 
+	&__right-answer {
+		color: var(--color--a3-1);
+	}
+
+	&__wrong-answer {
+		color: var(--color--a5-1);
+	}
+
   &__image {
 		min-width: 260px;
 		max-width: 100%;

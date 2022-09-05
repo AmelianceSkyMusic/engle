@@ -78,11 +78,6 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 			<div className="word-card__panel">
 				<div className="word-card__panel-row">
 					<p className="word-card__word p1">{word.word}</p>
-					<p className="statistic word-card__statistic p2">
-						<span className="statistic__correct">8</span>
-						/
-						<span className="statistic__wrong">10</span>
-					</p>
 				</div>
 				<div className="word-card__panel-row">
 					{word.userWord?.difficulty === 'hard'
@@ -117,11 +112,17 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 												&& <div className="word-label word-label_learned" title="Вы пометили это слово как изученное" />}
 											<div className="word-modal__statistic">
 												<h4 className="h4">Статистика</h4>
-												<p className="word-modal__correct-answers p1">
-													Угадано: 8
+												<p className="word-modal__audiocall-statistic p1">
+													Аудиовызов:
+													<span className="word-modal__right-answer" title="Правильные ответы"> 0 </span>
+													/
+													<span className="word-modal__wrong-answer" title="Неправильные ответы"> 0</span>
 												</p>
-												<p className="word-modal__incorrect-answers p1">
-													Не угадано: 10
+												<p className="word-modal__sprint-statistic p1">
+													Спринт:
+													<span className="word-modal__right-answer" title="Правильные ответы"> 0 </span>
+													/
+													<span className="word-modal__wrong-answer" title="Неправильные ответы"> 0</span>
 												</p>
 											</div>
 											<div className="word-modal__controls">
