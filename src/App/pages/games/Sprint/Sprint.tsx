@@ -33,10 +33,10 @@ export function Sprint({ groupNumber = -1, pageNumber = -1 }: ISprintProps) {
 
 	useEffect(() => {
 		setWords(userPageWords);
-		if (words.length > 0) {
+		if (startGameParam.groupNumber >= 0 && startGameParam.pageNumber >= 0 && words.length > 0) {
 			setIsStartGame(true);
 		}
-	}, [userPageWords, words]);
+	}, [userPageWords, startGameParam, words]);
 
 	return (
 		<div className="page-container page-sprint start-screen">
