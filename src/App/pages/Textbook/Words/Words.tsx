@@ -37,8 +37,13 @@ export function Words() {
 	useEffect(() => {
 		setWordError(!!error);
 	}, [error]);
+
+	const noHardWords = hardWords.length < 1;
 	function createWordCards() {
 		if (groupNumber === 6) {
+			if (noHardWords) {
+				return <h3 className="h3">Вы ещё не отметили ни одно слово как сложное</h3>;
+			}
 			return hardWords.map((word) => (
 				<WordCard
 					word={word}
@@ -61,10 +66,16 @@ export function Words() {
 		.every((word) => word.userWord?.optional.isLearned || word.userWord?.difficulty === 'hard')
 		&& groupNumber !== 6);
 	const wordsClasses = `words ${pageLearned ? 'words_page-learned' : ''}`;
+	function createWordsClasses() {
+		let classes = 'words ';
+		if (pageLearned) classes += 'words_page-learned ';
+		if (noHardWords && groupNumber === 6) classes += 'words_no-words ';
+		return classes;
+	}
 	const decorationClasses = `decoration decoration_type4 decoration_group${groupNumber}`;
 	return (
 		<section
-			className={wordsClasses}
+			className={createWordsClasses()}
 			title={pageLearned ? 'Эта страница содержит только изученные или сложные слова' : ''}
 		>
 			<div className={decorationClasses} />
