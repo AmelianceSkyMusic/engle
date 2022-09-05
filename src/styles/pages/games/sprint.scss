@@ -5,4 +5,45 @@
 		.container {
 		}
 	}
+	.sprint-game {
+		flex-wrap: nowrap;
+		&__col {
+			display: flex;
+			flex-direction: column;
+			width: auto;
+			&_left {
+				align-items: flex-end;
+			}
+			&_center {
+				align-items: center;
+			}
+			&_right {
+				align-items: flex-start;
+			}
+		}
+		&__wrong-btn {
+			color: var(--color--f2-1);
+			background-color: var(--color--a5-1);
+			.icon {
+				background-color: var(--color--f2-1);
+			}
+		}
+
+		&__correct-btn {
+			color: var(--color--f1-1);
+			background-color: var(--color--a3-1);
+			.icon {
+				background-color: var(--color--f1-1);
+			}
+		}
+
+		&__row-1 {
+			margin-bottom: calc(var(--col-gap) / 2);
+		}
+		&__row-2,
+		&__row-3 {
+			margin-bottom: calc(var(--col-gap) * 2);
+		}
+	}
 }
+
