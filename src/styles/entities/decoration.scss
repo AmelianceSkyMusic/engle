@@ -1,29 +1,64 @@
 @use "../globals/" as *;
-
 .decoration {
-	position: absolute;
-	z-index: -1;
-	@include bgImgSVG("../../assets/svg/img--half-circle.svg", 100%, 1828px);
+  position: absolute;
+	left: -300px;
+  z-index: -1;
+  @include bgImgSVG("../../assets/svg/img--half-circle.svg", 100%, 1828px);
 	-webkit-mask-position: center;
 	mask-position: center;
 	background-color: var(--color--bg-0);
-
-	&_type1 {
-		top: -542px;
-		left: -300px;
-		@media (max-width: $screen-lg) {
+  &_type1 {
+    top: -542px;
+		@media(max-width: $screen-lg) {
 			transform: rotate(90deg);
 			left: 0;
 			top: -774px;
 		}
 	}
 
-	&_type2 {
-		top: 136px;
-		left: -300px;
-		@media (max-width: $screen-lg) {
+  &_type2 {
+    top: 136px;
+		@media(max-width: $screen-lg) {
 			top: -800px;
 			left: -95px;
 		}
+	}
+	&_type3 {
+		top: -1028px;
+		transform: rotate(90deg);
+		@media(max-width: $screen-sm) {
+			top: -900px;
+			left: -200px;
+		}
+	}
+
+	&_type4 {
+		top: 0px;
+		mask-position: top center;
+		@media(max-width: $screen-sm) {
+			left: -40px;
+		}
+	}
+	
+	&_group0 {
+		background-color: var(--color--a3-2);
+	}
+	&_group1 {
+		background-color: var(--color--a3-1);
+	}
+	&_group2 {
+		background-color: var(--color--a4-2);
+	}
+	&_group3 {
+		background-color: var(--color--a4-1);
+	}
+	&_group4 {
+		background-color: var(--color--a5-2);
+	}
+	&_group5 {
+		background-color: var(--color--a5-1);
+	}
+	&_group6 {
+		background-color: var(--color--a5-0);
 	}
 }

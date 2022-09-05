@@ -1,2 +1,81 @@
+@use "../globals/" as *;
 .word-card {
+	width: 217px;
+	padding: 16px;
+	@extend %box-shadow--default;
+	border-radius: 32px;
+	background-color: var(--color--bg-1);
+	&__img {
+		height: 116px;
+		min-width: 100%;
+		margin-bottom: 19px;
+		border-radius: 16px;
+	}
+
+	&__panel {
+		display: flex;
+		flex-direction: column;
+		row-gap: 16px;
+		&-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	&__more {
+		margin-left: auto;
+		padding: 15px;
+	}
+}
+
+.word-modal {
+  display: flex;
+  gap: var(--col-gap);
+  &__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: calc(var(--col-gap) * 0.75);
+  }
+
+  &__main-info,
+  &__explanations,
+  &__examples,
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    row-gap: calc(var(--col-gap) / 2);
+  }
+
+  &__statistic {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+	&__right-answer {
+		color: var(--color--a3-1);
+	}
+
+	&__wrong-answer {
+		color: var(--color--a5-1);
+	}
+
+  &__image {
+		min-width: 260px;
+		max-width: 100%;
+  }
+
+	&__pronounce {
+		display: flex;
+		column-gap: 12px;
+	}
+
+	@media(max-width: $screen-xl) {
+		flex-wrap: wrap;
+
+		&__column {
+			width: 100%;
+		}
+	}
 }

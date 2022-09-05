@@ -45,6 +45,11 @@ export interface IUserWord {
 	};
 }
 
+export interface IUserWordWithId extends IUserWord {
+	id?: string;
+	wordId?: string;
+}
+
 export interface IStatistic {
 	id?: string;
 	learnedWords: number;

@@ -18,6 +18,8 @@ export function getWordsAction(
 	pageNumber = 0,
 ): ThunkAction<void, TRootState, unknown, AnyAction> {
 	return async function noName(dispatch: Dispatch<TWordActions>) {
+		localStorage.setItem('currentGroup', groupNumber.toString());
+		localStorage.setItem('currentPage', pageNumber.toString());
 		try {
 			dispatch({ type: EWordsActionTypes.GET_WORDS });
 
@@ -25,21 +27,17 @@ export function getWordsAction(
 			const { isLogged } = store.getState().user;
 
 			const words = await API.getWords(groupNumber, pageNumber);
-
 			let userPageWords: IUserPageWord[];
-
 			if (isLogged) {
 				const response = await API.getUserAggregateWords({
 					userId,
 					groupNumber,
-					pageNumber,
+					wordsPerPage: 20,
 					filter: '{"$or":[{"$and":[{"userWord.difficulty":"hard"}]}, {"userWord.optional.isLearned": true}]}',
 				});
-
 				const userWordsInThisPage = response[0].paginatedResults;
 				// eslint-disable-next-line no-underscore-dangle
 				const userWordIds = userWordsInThisPage.map((userWord) => userWord._id);
-
 				userPageWords = words.map((word) => {
 					const idPosition = userWordIds.indexOf(word.id);
 
@@ -49,7 +47,7 @@ export function getWordsAction(
 					return word;
 				});
 			} else {
-				userPageWords = [...words];
+				userPageWords = words;
 			}
 
 			dispatch({

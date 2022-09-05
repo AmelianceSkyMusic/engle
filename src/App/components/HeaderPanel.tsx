@@ -31,6 +31,10 @@ export function HeaderPanel({ isHideRegistration }: IHeaderPanelProps) {
 		localStorage.removeItem('refreshToken');
 		localStorage.removeItem('token');
 		dispatch(initUserAction());
+		if (localStorage.getItem('currentGroup') === '6') {
+			localStorage.setItem('currentGroup', '0');
+		}
+		window.location.reload();
 	}
 
 	const isScreenLg = useMediaQuery({ query: '(max-width: 960px)' });
