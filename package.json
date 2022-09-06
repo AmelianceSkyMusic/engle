@@ -31,13 +31,14 @@
 	},
 	"scripts": {
 		"predeploy": "npm run build",
-		"deploy-to-gh-pages": "gh-pages -d build -e ./",
+		"deploy": "gh-pages -d build",
 		"start": "react-scripts start",
 		"dev": "cross-env BROWSER=none react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
+	"homepage": "https://amelianceskymusic.github.io/engle",
 	"browserslist": {
 		"production": [
 			">0.2%",
