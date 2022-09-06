@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { IStatistic } from '../../types/interfaces';
-import { miniCard } from './miniCard';
 
 export function userCreateStatMarkup(data: IStatistic) {
 	const curDate = new Date().toLocaleDateString();
