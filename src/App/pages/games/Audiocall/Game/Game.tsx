@@ -6,7 +6,8 @@ import {
 import { getRandomNumber } from '../../../../../asmlib/asm-scripts';
 import { shuffleArray } from '../../../../../asmlib/asm-scripts/shuffleArray';
 import { Button } from '../../../../../asmlib/asm-ui/components/Button';
-import { IUserPageWord } from '../../../../types/interfaces';
+import { IAudioCall, IUserPageWord } from '../../../../types/interfaces';
+import { ModalResult } from '../ModalResult';
 import { playAudio } from './playAudio';
 
 interface IGameProps {
@@ -14,6 +15,9 @@ interface IGameProps {
 }
 
 export function Game({ words }: IGameProps) {
+
+	const [result, setResult] = useState<Partial<IAudioCall>>({});
+
 	const shuffledWords = useMemo(() => shuffleArray(words), [words]);
 	const wordsForGame = useMemo(() => structuredClone(shuffledWords), [shuffledWords]);
 
@@ -24,7 +28,7 @@ export function Game({ words }: IGameProps) {
 
 	useLayoutEffect(() => {
 		setCurrentWord(wordsForGame[correctWordCount]);
-		if (correctWordCount >= 0) {
+		if (correctWordCount >= 0 && correctWordCount <= 19) {
 			const wordVariantsTemp: IUserPageWord[] = [wordsForGame[correctWordCount]];
 
 			while (wordVariantsTemp.length < 5) {
@@ -46,6 +50,11 @@ export function Game({ words }: IGameProps) {
 		playAudio();
 		const word$ = document.querySelector(`[data-id="${correctWord.id}"]`) as HTMLButtonElement;
 		word$.classList.add('right');
+		if (result.countWrong) {
+			setResult({ ...result, countWrong: result.countWrong += 1 });
+		} else {
+			setResult({ ...result, countWrong: 1 });
+		}
 		word$.disabled = true;
 		const words$ = document.querySelectorAll('.game__button') as NodeListOf<HTMLButtonElement>;
 		words$.forEach((w$) => {
@@ -83,11 +92,21 @@ export function Game({ words }: IGameProps) {
 		});
 		playAudio();
 		if (correctWord.id === elem.dataset.id) {
-
 			elem.classList.add('right');
+
+			if (result.countRight) {
+				setResult({ ...result, countRight: result.countRight += 1 });
+			} else {
+				setResult({ ...result, countRight: 1 });
+			}
 		} else {
 			word$.classList.add('right');
 			elem.classList.add('wrong');
+			if (result.countWrong) {
+				setResult({ ...result, countWrong: result.countWrong += 1 });
+			} else {
+				setResult({ ...result, countWrong: 1 });
+			}
 		}
 	}
 
@@ -137,44 +156,53 @@ export function Game({ words }: IGameProps) {
 	}, [keysHandler]);
 
 	return (
-		<div className="game">
-			<audio id="audio" autoPlay>
-				<track kind="captions" />
-				<source src={`https://app-learnwords.herokuapp.com/${correctWord.audio}`} type="audio/mpeg" />
-			</audio>
-			<button type="button" onClick={playAudio} className="game__play-sound-button button--sound">{}</button>
-			{isShowAnswerWord && <h3 className="h3">{correctWord.word}</h3>}
-			{wordVariants.length > 0
-			&& (
-				<div className="game__buttons">
+		<div>
+			{ correctWordCount < 20
+				? (
+					<div className="game">
+						<audio id="audio" autoPlay>
+							<track kind="captions" />
+							<source src={`https://app-learnwords.herokuapp.com/${correctWord.audio}`} type="audio/mpeg" />
+						</audio>
+						<button type="button" onClick={playAudio} className="game__play-sound-button button--sound">{}</button>
+						{isShowAnswerWord && <h3 className="h3">{correctWord.word}</h3>}
+						{wordVariants.length > 0
 
-					<button type="button" data-id={wordVariants[0].id} onClick={checkAnswer} className="game__button">
-						<div className="button-icon">1</div>
-						<h4 className="h4">{wordVariants[0].wordTranslate}</h4>
-					</button>
-					<button type="button" data-id={wordVariants[1].id} onClick={checkAnswer} className="game__button">
-						<div className="button-icon">2</div>
-						<h4 className="h4">{wordVariants[1].wordTranslate}</h4>
-					</button>
-					<button type="button" data-id={wordVariants[2].id} onClick={checkAnswer} className="game__button">
-						<div className="button-icon">3</div>
-						<h4 className="h4">{wordVariants[2].wordTranslate}</h4>
-					</button>
-					<button type="button" data-id={wordVariants[3].id} onClick={checkAnswer} className="game__button">
-						<div className="button-icon">4</div>
-						<h4 className="h4">{wordVariants[3].wordTranslate}</h4>
-					</button>
-					<button type="button" data-id={wordVariants[4].id} onClick={checkAnswer} className="game__button">
-						<div className="button-icon">5</div>
-						<h4 className="h4">{wordVariants[4].wordTranslate}</h4>
-					</button>
+					&& (
+						<div className="game__buttons">
 
-				</div>
-			)			}
-			{isShowAnswerWord
-				? <Button type="secondary" buttonClass="button" callback={() => handleNextButton()}>Далее</Button>
-				: <Button type="secondary" buttonClass="button" callback={() => handleIDontKnowButton()}>Без понятия</Button>}
+							<button type="button" data-id={wordVariants[0].id} onClick={checkAnswer} className="game__button">
+								<div className="button-icon">1</div>
+								<h4 className="h4">{wordVariants[0].wordTranslate}</h4>
+							</button>
+							<button type="button" data-id={wordVariants[1].id} onClick={checkAnswer} className="game__button">
+								<div className="button-icon">2</div>
+								<h4 className="h4">{wordVariants[1].wordTranslate}</h4>
+							</button>
+							<button type="button" data-id={wordVariants[2].id} onClick={checkAnswer} className="game__button">
+								<div className="button-icon">3</div>
+								<h4 className="h4">{wordVariants[2].wordTranslate}</h4>
+							</button>
+							<button type="button" data-id={wordVariants[3].id} onClick={checkAnswer} className="game__button">
+								<div className="button-icon">4</div>
+								<h4 className="h4">{wordVariants[3].wordTranslate}</h4>
+							</button>
+							<button type="button" data-id={wordVariants[4].id} onClick={checkAnswer} className="game__button">
+								<div className="button-icon">5</div>
+								<h4 className="h4">{wordVariants[4].wordTranslate}</h4>
+							</button>
 
+						</div>
+					)}
+						{isShowAnswerWord
+							? <Button type="secondary" buttonClass="button" callback={() => handleNextButton()}>Далее</Button>
+							: <Button type="secondary" buttonClass="button" callback={() => handleIDontKnowButton()}>Без понятия</Button>}
+
+					</div>
+				)
+				: (
+					<ModalResult result={result} />
+				)}
 		</div>
 	);
 }

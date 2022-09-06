@@ -53,7 +53,6 @@ export function Sprint({ groupNumber = -1, pageNumber = -1 }: ISprintProps) {
 						)}
 				</div>
 			</main>
-			<Footer />
 		</div>
 	);
 }

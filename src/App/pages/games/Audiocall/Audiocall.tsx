@@ -7,7 +7,7 @@ import { Header } from '../../../components/layouts/Header';
 import { Game } from './Game';
 import { StartScreen } from '../StartScreen';
 import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
-import { IUserPageWord } from '../../../types/interfaces';
+import { IAudioCall, IUserPageWord } from '../../../types/interfaces';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
 import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
 import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
@@ -21,13 +21,12 @@ export function Audiocall({ groupNumber = -1, pageNumber = -1 }: IAudiocallProps
 	const dispatch = useTypedDispatch();
 
 	const { userPageWords, isLoading, error } = useTypedSelector((state) => state.words);
-	const [startGameParam, setStartGameParam] = useState({ groupNumber, pageNumber });
+	const [startGameParam, setStartGameParam] = useState({ groupNumber: -1, pageNumber: -1 });
 	const [isStartGame, setIsStartGame] = useState(false);
 	const [words, setWords] = useState<IUserPageWord[]>(userPageWords);
 
 	useEffect(() => {
 
-		console.log(startGameParam);
 		if (startGameParam.groupNumber >= 0 && startGameParam.pageNumber >= 0) {
 			dispatch(getWordsAction(startGameParam.groupNumber, startGameParam.pageNumber));
 		}
@@ -73,7 +72,6 @@ export function Audiocall({ groupNumber = -1, pageNumber = -1 }: IAudiocallProps
 						)}
 				</div>
 			</main>
-			<Footer />
 		</div>
 	);
 }
