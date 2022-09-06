@@ -25,7 +25,7 @@ export function Statistics() {
 		};
 		fetchData();
 
-	}, [userId]);\
+	}, [userId]);
 
 	return (
 		<div className="page-container page-statistics">
