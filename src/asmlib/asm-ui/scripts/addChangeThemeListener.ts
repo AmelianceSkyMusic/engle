@@ -1,4 +1,4 @@
-const toogleTheme = () => {
+const toggleTheme = () => {
 	document.body.classList.add('no-transition');
 
 	const currentTheme$ = document.documentElement.getAttribute('data-theme');
@@ -12,10 +12,10 @@ const toogleTheme = () => {
 	localStorage.setItem('theme', targetTheme);
 };
 
-export function addChangeThemeListener<T extends HTMLElement>(element: T, defaultTheme: 'light' | 'dark') {
+export function addChangeThemeListener<TYPE extends HTMLElement>(element: TYPE, defaultTheme: 'light' | 'dark') {
 	const storedTheme = localStorage.getItem('theme') || defaultTheme;
 
 	if (storedTheme) document.documentElement.setAttribute('data-theme', storedTheme);
 
-	element.addEventListener('click', toogleTheme);
+	element.addEventListener('click', toggleTheme);
 }
