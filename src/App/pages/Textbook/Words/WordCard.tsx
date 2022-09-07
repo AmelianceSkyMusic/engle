@@ -10,6 +10,8 @@ import { getHardWordsAction } from '../../../store/reducers/hardWords/actions/ge
 import { addWordToLearned } from '../../../API/users/words/learningWords/addWordToLearned';
 import { deleteWordFromLearned } from '../../../API/users/words/learningWords/deleteWordFromLearned';
 import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
+import { store } from '../../../store';
+import { updateStatistic } from '../../../API/users/statistic/updateStatistics';
 
 interface IWordCardProps {
   word: IUserPageWord | IHardWord;
@@ -19,6 +21,7 @@ interface IWordCardProps {
 export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 	const [modal, setModal] = useState(false);
 	const imgUrl = `${BASE_URL}${word.image}`;
+	const { userId } = store.getState().user;
 
 	const links = [word.audio, word.audioMeaning, word.audioExample].map((src) => `${BASE_URL}${src}`);
 	const player = new Audio();
@@ -65,6 +68,7 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 	}
 	async function addToLearned() {
 		await waitForUpdate(addWordToLearned);
+		await updateStatistic(userId, 'textbook', { learnedWords: word.id });
 		rerenderCards();
 	}
 	async function removeFromLearned() {
