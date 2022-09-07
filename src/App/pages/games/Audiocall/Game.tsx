@@ -1,12 +1,10 @@
 import {
-	Key,
-	useCallback,
-	useEffect, useLayoutEffect, useMemo, useState,
+	useCallback, useEffect, useLayoutEffect, useMemo, useState,
 } from 'react';
-import { getRandomNumber } from '../../../../../asmlib/asm-scripts';
-import { shuffleArray } from '../../../../../asmlib/asm-scripts/shuffleArray';
-import { Button } from '../../../../../asmlib/asm-ui/components/Button';
-import { IAudioCall, IUserPageWord } from '../../../../types/interfaces';
+import { getRandomNumber } from '../../../../asmlib/asm-scripts';
+import { shuffleArray } from '../../../../asmlib/asm-scripts/shuffleArray';
+import { Button } from '../../../../asmlib/asm-ui/components/Button';
+import { IUserPageWord } from '../../../types/interfaces';
 import { ModalResult } from '../ModalResult';
 import { playAudio } from './playAudio';
 
@@ -18,7 +16,9 @@ export function Game({ words }: IGameProps) {
 
 	const [topRight, setTopRight] = useState(0);
 	const [currentRightCount, setCurrentRightCount] = useState(0);
-	const [result, setResult] = useState<Partial<IAudioCall>>({});
+	const [result, setResult] = useState<
+	{ right: IUserPageWord[]; wrong: IUserPageWord[]; topRight: number }
+	>({ right: [], wrong: [], topRight: 0 });
 
 	const shuffledWords = useMemo(() => shuffleArray(words), [words]);
 	const wordsForGame = useMemo(() => structuredClone(shuffledWords), [shuffledWords]);
@@ -52,10 +52,11 @@ export function Game({ words }: IGameProps) {
 		playAudio();
 		const word$ = document.querySelector(`[data-id="${correctWord.id}"]`) as HTMLButtonElement;
 		word$.classList.add('right');
-		if (result.countWrong) {
-			setResult({ ...result, countWrong: result.countWrong += 1 });
-		} else {
-			setResult({ ...result, countWrong: 1 });
+		if (result.wrong) {
+			setResult({
+				...result,
+				wrong: [...result.wrong, correctWord],
+			});
 		}
 		word$.disabled = true;
 		const words$ = document.querySelectorAll('.game__button') as NodeListOf<HTMLButtonElement>;
@@ -98,14 +99,12 @@ export function Game({ words }: IGameProps) {
 			setCurrentRightCount((prev) => prev + 1);
 			if ((currentRightCount + 1) > topRight) setTopRight(currentRightCount + 1);
 
-			if (result.countRight) {
+			if (result.right) {
 				setResult({
 					...result,
-					countRight: result.countRight += 1,
+					right: [...result.right, correctWord],
 					topRight: topRight + 1,
 				});
-			} else {
-				setResult({ ...result, countRight: 1, topRight: topRight + 1 });
 			}
 
 			console.log('result', result);
@@ -113,10 +112,8 @@ export function Game({ words }: IGameProps) {
 			word$.classList.add('right');
 			elem.classList.add('wrong');
 			setCurrentRightCount(0);
-			if (result.countWrong) {
-				setResult({ ...result, countWrong: result.countWrong += 1 });
-			} else {
-				setResult({ ...result, countWrong: 1 });
+			if (result.wrong) {
+				setResult({ ...result, wrong: [...result.wrong, correctWord] });
 			}
 		}
 
@@ -214,7 +211,6 @@ export function Game({ words }: IGameProps) {
 						{isShowAnswerWord
 							? <Button type="secondary" buttonClass="button" callback={() => handleNextButton()}>Далее</Button>
 							: <Button type="secondary" buttonClass="button" callback={() => handleIDontKnowButton()}>Без понятия</Button>}
-
 					</div>
 				)
 				: (
@@ -223,10 +219,3 @@ export function Game({ words }: IGameProps) {
 		</div>
 	);
 }
-
-// {shuffleWordVariants.map((word, i) => (
-// 	<div key={word.id} className="game__button">
-// 		<Button buttonClass="button-icon" callback={() => console.log(1)}>{`${i + 1}`}</Button>
-// 		<h4 className="h4">{word.word}</h4>
-// 	</div>
-// ))}
