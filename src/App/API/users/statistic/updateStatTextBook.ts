@@ -8,6 +8,7 @@ async function updateStatTextBook(
 	curStat: IStatistic,
 ) {
 	const updateValue = value.learnedWords;
+	console.log(curStat);
 	// eslint-disable-next-line no-case-declarations
 	const dateNow = new Date().toLocaleDateString();
 	if ('textBook' in curStat.optional) {
@@ -17,7 +18,7 @@ async function updateStatTextBook(
 		} else {
 			// eslint-disable-next-line max-len
 			curStat.optional.textBook.learnedWords[dateNow]	= ((curStat.optional.textBook.learnedWords[dateNow]).concat(updateValue));
-			curStat.learnedWords += updateValue.length;
+			curStat.learnedWords += 1;
 		}
 	} else {
 		curStat.optional.textBook = {
