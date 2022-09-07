@@ -13,12 +13,14 @@ export function Statistics() {
 	const { isLogged, userId, userName } = store.getState().user;
 
 	const [stateShort, setStateShort] = useState({});
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const response = await API.getUserStatistics(userId);
 				setStateShort(response);
+				setLoading(false);
 			} catch (error) {
 				console.error(error);
 			}
@@ -51,7 +53,7 @@ export function Statistics() {
 								<h3 className="page-statistics__heading h3">Войдите чтоб увидеть статистику</h3>
 							</div>
 						)}
-					{ stateShort && isLogged && (
+					{ stateShort && isLogged && !loading && (
 						userCreateStatMarkup(stateShort as IStatistic)
 					)}
 				</div>

@@ -2,10 +2,9 @@ import { IStatistic } from '../../types/interfaces';
 
 export function userCreateStatMarkup(data: IStatistic) {
 	const curDate = new Date().toLocaleDateString();
-	let countWordForDay = 0;
-	if (curDate in data.optional.textBook.learnedWords) {
-		countWordForDay = data.optional.textBook.learnedWords[curDate].length;
-	}
+	console.log(data);
+	const countWordForDay = data.optional.textBook.learnedWords[curDate].length;
+
 	return (
 		<div className="page-statistics__container">
 			<section className="page-statistics__section">
@@ -24,7 +23,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 				</div>
 			</section>
 			<section className="page-statistics__section">
-				<h4 className="h4">AudioCall: </h4>
+				<h4 className="h4">Игра «Аудиовызов»: </h4>
 				<div className="page-statistics__section-description">
 					<p className="p1">
 						Показано слов:
@@ -36,7 +35,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 						{' '}
 						{(data.optional.audioCall.countRight
 						/ (data.optional.audioCall.countRight + data.optional.audioCall.countWrong))
-						* 100 }
+						* 100 || 0 }
 						%
 					</p>
 					<p className="p1">
@@ -47,7 +46,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 				</div>
 			</section>
 			<section className="page-statistics__section">
-				<h4 className="h4">Sprint:</h4>
+				<h4 className="h4">Игра «Спринт»:</h4>
 				<div className="page-statistics__section-description">
 					<p className="p1">
 						Показано слов:
@@ -59,7 +58,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 						{' '}
 						{(data.optional.sprint.countRight
 						/ (data.optional.sprint.countRight + data.optional.sprint.countWrong))
-						* 100 }
+						* 100 || 0 }
 						%
 					</p>
 					<p className="p1">
