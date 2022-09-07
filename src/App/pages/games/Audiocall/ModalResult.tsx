@@ -10,6 +10,7 @@ interface IModalResultProps {
 
 export function ModalResult({ result }: IModalResultProps) {
 	const { userId } = useTypedSelector((state) => state.user);
+	console.log(result);
 
 	const resultMain = {
 		newWords: {},
@@ -17,7 +18,7 @@ export function ModalResult({ result }: IModalResultProps) {
 		countShowedWords: Number(result.countRight || 0) + Number(result.countWrong || 0),
 		countRight: result.countRight || 0,
 		countWrong: result.countWrong || 0,
-		topRight: 0, // TODO: count max right session
+		topRight: result.topRight || 0,
 	};
 	updateStatistic(userId, 'audioCall', resultMain);
 	const navigate = useNavigate();

@@ -16,6 +16,8 @@ interface IGameProps {
 
 export function Game({ words }: IGameProps) {
 
+	const [topRight, setTopRight] = useState(0);
+	const [currentRightCount, setCurrentRightCount] = useState(0);
 	const [result, setResult] = useState<Partial<IAudioCall>>({});
 
 	const shuffledWords = useMemo(() => shuffleArray(words), [words]);
@@ -23,8 +25,8 @@ export function Game({ words }: IGameProps) {
 
 	const [correctWordCount, setCurrentWordCount] = useState(0);
 	const [correctWord, setCurrentWord] = useState<IUserPageWord>(wordsForGame[correctWordCount]);
-	const [isShowAnswerWord, setIsShowAnswerWord] = useState(false);
 	const [wordVariants, setWordVariants] = useState<IUserPageWord[]>([]);
+	const [isShowAnswerWord, setIsShowAnswerWord] = useState(false);
 
 	useLayoutEffect(() => {
 		setCurrentWord(wordsForGame[correctWordCount]);
@@ -93,21 +95,31 @@ export function Game({ words }: IGameProps) {
 		playAudio();
 		if (correctWord.id === elem.dataset.id) {
 			elem.classList.add('right');
+			setCurrentRightCount((prev) => prev + 1);
+			if ((currentRightCount + 1) > topRight) setTopRight(currentRightCount + 1);
 
 			if (result.countRight) {
-				setResult({ ...result, countRight: result.countRight += 1 });
+				setResult({
+					...result,
+					countRight: result.countRight += 1,
+					topRight: topRight + 1,
+				});
 			} else {
-				setResult({ ...result, countRight: 1 });
+				setResult({ ...result, countRight: 1, topRight: topRight + 1 });
 			}
+
+			console.log('result', result);
 		} else {
 			word$.classList.add('right');
 			elem.classList.add('wrong');
+			setCurrentRightCount(0);
 			if (result.countWrong) {
 				setResult({ ...result, countWrong: result.countWrong += 1 });
 			} else {
 				setResult({ ...result, countWrong: 1 });
 			}
 		}
+
 	}
 
 	const keysHandler = useCallback((event: KeyboardEvent) => {
@@ -164,7 +176,12 @@ export function Game({ words }: IGameProps) {
 							<track kind="captions" />
 							<source src={`https://app-learnwords.herokuapp.com/${correctWord.audio}`} type="audio/mpeg" />
 						</audio>
-						<button type="button" onClick={playAudio} className="game__play-sound-button button--sound">{}</button>
+						<div className="game__play-sound-button-container">
+							<button type="button" onClick={playAudio} className="game__play-sound-button button--sound">{}</button>
+							<span className="game__play-sound-button_hover">{}</span>
+							<span className="game__play-sound-button_playing">{}</span>
+							{isShowAnswerWord && <img src={`https://app-learnwords.herokuapp.com/${correctWord.image}`} alt={correctWord.image} className="game__image" />}
+						</div>
 						{isShowAnswerWord && <h3 className="h3">{correctWord.word}</h3>}
 						{wordVariants.length > 0
 
