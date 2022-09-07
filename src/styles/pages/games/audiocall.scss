@@ -3,6 +3,116 @@
 .page-audiocall {
 	.main {
 		.container {
+			.button--sound {
+				background: none;
+				border: none;
+				padding: 0;
+				cursor: pointer;
+				@include bgImgSVGStatic("../../assets/svg/button--sound.svg", 128px, 128px);
+			}
+
+			.game {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				gap: calc(var(--col-gap) * 2);
+				.game__play-sound-button-container {
+					display: grid;
+					grid-template-columns: 1fr;
+					grid-template-rows: 1fr;
+					justify-content: center;
+					align-items: center;
+					.game__play-sound-button {
+						grid-column-start: 1;
+						grid-row-start: 1;
+					}
+					.game__play-sound-button_playing,
+					.game__play-sound-button_hover {
+						z-index: -1;
+						display: block;
+						grid-row-start: 1;
+						grid-column-start: 1;
+						width: 100%;
+						height: 100%;
+						background-color: var(--color--bg-2);
+						border-radius: 1000px;
+						opacity: 0%;
+						transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+						transform: scale(100%);
+					}
+					&:hover .game__play-sound-button_hover {
+						opacity: 30%;
+						transform: scale(110%);
+					}
+					.game__play-sound-button_playing.playing {
+						animation: pulse 1s alternate ease-in-out;
+					}
+				}
+
+				.game__image {
+					grid-row-start: 1;
+					grid-column-start: 1;
+					width: 128px;
+					height: 128px;
+					border-radius: 1000px;
+					pointer-events: none;
+					object-fit: cover;
+				}
+				.game__buttons {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					flex-wrap: wrap;
+					gap: var(--col-gap);
+				}
+				.game__button {
+					cursor: pointer;
+					padding: 0;
+					margin: 0;
+					border: none;
+					background: none;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: calc(var(--col-gap) / 4);
+					&[disabled] {
+						cursor: default;
+						user-select: none;
+						pointer-events: none;
+					}
+
+					&.right {
+						.button-icon {
+							background-color: var(--color--a3-0);
+							color: var(--color--f1-1);
+						}
+					}
+					&.wrong {
+						.button-icon {
+							background-color: var(--color--a5-0);
+						}
+					}
+				}
+				.button {
+					align-self: center;
+				}
+			}
 		}
+	}
+}
+
+@keyframes pulse {
+	0% {
+		opacity: 0%;
+		transform: scale(100%);
+	}
+	50% {
+		opacity: 30%;
+		transform: scale(130%);
+	}
+	100% {
+		opacity: 0%;
+		transform: scale(100%);
 	}
 }
