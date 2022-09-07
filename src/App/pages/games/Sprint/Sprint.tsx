@@ -31,20 +31,13 @@ export function Sprint() {
 	const { userPageWords, isLoading, error } = useTypedSelector((state) => state.words);
 	const [startGameParam, setStartGameParam] = useState({ groupNumber: -1, pageNumber: -1 });
 	const [isStartGame, setIsStartGame] = useState(false);
-	const [words, setWords] = useState<IUserPageWord[]>(userPageWords);
 
 	useEffect(() => {
 		if (startGameParam.groupNumber >= 0 && startGameParam.pageNumber >= 0) {
 			dispatch(getWordsAction(startGameParam.groupNumber, startGameParam.pageNumber));
-		}
-	}, [dispatch, startGameParam]);
-
-	useEffect(() => {
-		setWords(userPageWords);
-		if (startGameParam.groupNumber >= 0 && startGameParam.pageNumber >= 0 && words.length > 0) {
 			setIsStartGame(true);
 		}
-	}, [userPageWords, startGameParam, words]);
+	}, [startGameParam, dispatch]);
 
 	return (
 		<div className="page-container page-sprint start-screen">
@@ -57,7 +50,7 @@ export function Sprint() {
 						: (isStartGame
 							? (
 								<Game
-									words={words}
+									words={userPageWords}
 								/>
 							)
 							: (
