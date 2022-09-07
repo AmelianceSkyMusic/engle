@@ -153,8 +153,15 @@ export function Game({ words }: IGameProps) {
 			default: break;
 			}
 		}
-		if (event.key === ' ' || event.key === 'Enter') button$.click();
+		if (event.key === ' ' || event.key === 'Enter') {
+			if (isShowAnswerWord) {
+				handleNextButton();
+			} else {
+				handleIDontKnowButton();
+			}
+		}
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [correctWord, isShowAnswerWord, wordVariants]);
 
 	useEffect(() => {
