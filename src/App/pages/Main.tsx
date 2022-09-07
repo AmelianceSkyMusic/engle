@@ -10,7 +10,7 @@ import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
 
 export function Main() {
-	alert('Сайт в процессе доработки, если есть возможность зайдите, пожалуйста, позже или оставьте контакты, мы с вами свяжемся https://t.me/amelianceskymusic');
+
 	return (
 		<div className="page-container page-main">
 			<div className="decoration decoration_type1" />
