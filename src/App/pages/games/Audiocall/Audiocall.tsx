@@ -2,41 +2,55 @@ import '../../../../styles/pages/games/start-screen.scss';
 import '../../../../styles/pages/games/audiocall.scss';
 
 import { useEffect, useState } from 'react';
-import { Footer } from '../../../components/layouts/Footer';
+import { useLocation } from 'react-router-dom';
 import { Header } from '../../../components/layouts/Header';
 import { Game } from './Game';
 import { StartScreen } from '../StartScreen';
 import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
-import { IAudioCall, IUserPageWord } from '../../../types/interfaces';
+import { IUserPageWord } from '../../../types/interfaces';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
 import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
 import { Loader } from '../../../../asmlib/asm-ui/components/Loader';
 
-interface IAudiocallProps {
-	groupNumber?: number;
-	pageNumber?: number;
+export interface ILocationState {
+ groupNumber: number;
+ pageNumber: number;
 }
 
-export function Audiocall({ groupNumber = -1, pageNumber = -1 }: IAudiocallProps) {
+export function Audiocall() {
+
 	const dispatch = useTypedDispatch();
 
+	const location = useLocation();
+	let groupNumber = -1;
+	let pageNumber = -1;
+	if (location.state) {
+		groupNumber = (location.state as ILocationState).groupNumber;
+		pageNumber = (location.state as ILocationState).pageNumber;
+	}
+
+	const [isInit, setIsInit] = useState(false);
 	const { userPageWords, isLoading, error } = useTypedSelector((state) => state.words);
 	const [startGameParam, setStartGameParam] = useState({ groupNumber: -1, pageNumber: -1 });
 	const [isStartGame, setIsStartGame] = useState(false);
 	const [words, setWords] = useState<IUserPageWord[]>(userPageWords);
 
 	useEffect(() => {
-
 		if (startGameParam.groupNumber >= 0 && startGameParam.pageNumber >= 0) {
 			dispatch(getWordsAction(startGameParam.groupNumber, startGameParam.pageNumber));
 		}
 	}, [dispatch, startGameParam]);
 
 	useEffect(() => {
-		setWords(userPageWords);
-		if (words.length > 0) {
-			setIsStartGame(true);
+		setIsInit(true);
+		if (isInit) {
+			setWords(userPageWords);
+			if (words.length > 0) {
+				setIsStartGame(true);
+			}
 		}
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [userPageWords, words]);
 
 	return (
