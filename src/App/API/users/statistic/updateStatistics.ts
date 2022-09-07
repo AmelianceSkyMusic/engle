@@ -7,7 +7,7 @@ import { IStatistic } from '../../../types/interfaces';
 async function updateStatistic(
 	userId: string,
 	blockUpdate: 'textbook' | 'audioCall' | 'sprint',
-	value: object | { learnedWords: string[] },
+	value: object | { learnedWords: string },
 ) {
 	let curStatUser = await getUserStatistics(userId)
 		.catch((err) => console.error(err)) as IStatistic;
@@ -39,7 +39,7 @@ async function updateStatistic(
 	}
 	switch (blockUpdate) {
 	case 'textbook':
-		await updateStatTextBook(userId, value as { learnedWords: string[] }, curStatUser);
+		await updateStatTextBook(userId, value as { learnedWords: string }, curStatUser);
 		break;
 	case 'audioCall':
 		await updateStatGameAudioCall(userId, value, curStatUser);
