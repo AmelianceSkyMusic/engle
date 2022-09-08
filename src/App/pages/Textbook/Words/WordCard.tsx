@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IHardWord, IUserPageWord } from '../../../types/interfaces';
+import { IHardWord, IUserPageWord, IUserWord } from '../../../types/interfaces';
 import { BASE_URL } from '../../../API/consts';
 import { Modal } from '../../../../asmlib/asm-ui/components/Modal';
 import { addWordToHard } from '../../../API/users/words/hardWords/addWordToHard';
@@ -17,9 +17,18 @@ interface IWordCardProps {
   word: IUserPageWord | IHardWord;
 	isLogged: boolean;
 	forHardWords?: boolean;
+	userWord?: IUserWord;
 }
-export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
+export function WordCard({
+	userWord, word, isLogged, forHardWords,
+}: IWordCardProps) {
 	const [modal, setModal] = useState(false);
+	const dispatch = useTypedDispatch();
+
+	function modalOpenHandler() {
+		setModal(true);
+		// dispatch(getWordsAction(word.group, word.page));
+	}
 	const imgUrl = `${BASE_URL}${word.image}`;
 	const { userId } = store.getState().user;
 
@@ -42,7 +51,6 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 		});
 	}
 
-	const dispatch = useTypedDispatch();
 	function rerenderCards() {
 		if (forHardWords) {
 			dispatch(getHardWordsAction());
@@ -76,6 +84,8 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 		rerenderCards();
 	}
 
+	console.log(word);
+
 	return (
 		<li className="word-card">
 			<img className="word-card__img" src={imgUrl} alt={word.word} />
@@ -88,7 +98,7 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 						&& <div className="word-label word-label_hard" title="Вы пометили это слово как сложное" />}
 					{word.userWord?.optional.isLearned
 						&& <div className="word-label word-label_learned" title="Вы пометили это слово как изученное" />}
-					<button type="button" className="word-card__more icon click icon--more-horizontal" onClick={() => setModal(true)}>
+					<button type="button" className="word-card__more icon click icon--more-horizontal" onClick={() => modalOpenHandler()}>
 						{}
 					</button>
 					{modal && (
@@ -120,27 +130,27 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 													Аудиовызов:
 													<span className="word-modal__right-answer" title="Правильные ответы">
 														{' '}
-														{word.userWord?.optional.audioCall.right as number > 0
-															? word.userWord?.optional.audioCall.right : 0}
+														{userWord?.optional?.audioCall?.right || 0}
 														{' '}
 													</span>
 													/
 													<span className="word-modal__wrong-answer" title="Неправильные ответы">
 														{' '}
-														{word.userWord?.optional.audioCall.wrong || 0}
+														{userWord?.optional?.audioCall?.wrong || 0}
+														{' '}
 													</span>
 												</p>
 												<p className="word-modal__sprint-statistic p1">
 													Спринт:
 													<span className="word-modal__right-answer" title="Правильные ответы">
 														{' '}
-														{word.userWord?.optional.sprint.right || 0}
+														{userWord?.optional?.sprint?.right || 0}
 														{' '}
 													</span>
 													/
 													<span className="word-modal__wrong-answer" title="Неправильные ответы">
 														{' '}
-														{word.userWord?.optional.sprint.wrong || 0}
+														{userWord?.optional?.sprint?.wrong || 0}
 													</span>
 												</p>
 											</div>
