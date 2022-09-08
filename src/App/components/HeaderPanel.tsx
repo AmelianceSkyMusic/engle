@@ -30,6 +30,8 @@ export function HeaderPanel({ isHideRegistration }: IHeaderPanelProps) {
 		localStorage.removeItem('user');
 		localStorage.removeItem('refreshToken');
 		localStorage.removeItem('token');
+		localStorage.removeItem('currentGroup');
+		localStorage.removeItem('currentPage');
 		dispatch(initUserAction());
 		if (localStorage.getItem('currentGroup') === '6') {
 			localStorage.setItem('currentGroup', '0');

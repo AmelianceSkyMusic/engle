@@ -9,6 +9,7 @@ async function updateStatistic(
 	blockUpdate: 'textbook' | 'audiocall' | 'sprint',
 	value: object | { learnedWords: string },
 ) {
+	const dateNow = new Date().toLocaleDateString();
 	let curStatUser = await getUserStatistics(userId)
 		.catch((err) => console.error(err)) as IStatistic;
 	if (!curStatUser) {
@@ -16,7 +17,9 @@ async function updateStatistic(
 			learnedWords: 0,
 			optional: {
 				textBook: {
-					learnedWords: {},
+					learnedWords: {
+						[dateNow]: [],
+					},
 				},
 				audioCall: {
 					newWords: {},

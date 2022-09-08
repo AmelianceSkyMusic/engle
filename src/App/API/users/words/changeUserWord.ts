@@ -1,15 +1,15 @@
 import API from '../..';
 import { store } from '../../../store';
-import { IUserWord } from '../../../types/interfaces';
+import { IUserWordWithId } from '../../../types/interfaces';
 import { updateWordAudiocall } from './updateWordAudiocall';
 import { updateWordSprint } from './updateWordSprint';
 
 async function changeUserWord(wordId: string, game: 'audioCall' | 'sprint', value: 'wrong' | 'right') {
 	const { userId } = store.getState().user;
-	let userWord = await API.getUserWordByID(userId, wordId);
+	const userWord = await API.getUserWordByID(userId, wordId).catch((err) => console.error(err));
 	if (!userWord) {
-		const newWord: IUserWord = {
-			difficulty: 'hard',
+		const newWord: IUserWordWithId = {
+			difficulty: 'easy',
 			optional: {
 				isNew: true,
 				isLearned: false,
@@ -23,23 +23,36 @@ async function changeUserWord(wordId: string, game: 'audioCall' | 'sprint', valu
 				},
 			},
 		};
-		userWord = await API.createUserWord(userId, wordId, newWord);
-		delete userWord.id;
-		delete userWord.wordId;
+		const newUserWord = await API.createUserWord(userId, wordId, newWord) as IUserWordWithId;
+		console.log(newUserWord);
+		delete newUserWord.id;
+		delete newUserWord.wordId;
+		switch (game) {
+		case 'audioCall':
+			await updateWordAudiocall(userId, wordId, value, newUserWord);
+			break;
+		case 'sprint':
+			await updateWordSprint(userId, wordId, value, newUserWord);
+			break;
+
+		default:
+			break;
+		}
 	} else {
 		delete userWord.id;
 		delete userWord.wordId;
-	}
-	switch (game) {
-	case 'audioCall':
-		await updateWordAudiocall(userId, wordId, value, userWord);
-		break;
-	case 'sprint':
-		await updateWordSprint(userId, wordId, value, userWord);
-		break;
+		console.log(userWord);
+		switch (game) {
+		case 'audioCall':
+			await updateWordAudiocall(userId, wordId, value, userWord);
+			break;
+		case 'sprint':
+			await updateWordSprint(userId, wordId, value, userWord);
+			break;
 
-	default:
-		break;
+		default:
+			break;
+		}
 	}
 }
 
