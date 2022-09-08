@@ -44,7 +44,6 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 
 	const dispatch = useTypedDispatch();
 	function rerenderCards() {
-		(document.querySelector('body') as HTMLBodyElement).style.overflow = 'visible';
 		if (forHardWords) {
 			dispatch(getHardWordsAction());
 		} else {
