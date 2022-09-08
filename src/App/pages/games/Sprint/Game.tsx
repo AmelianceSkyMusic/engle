@@ -7,6 +7,7 @@ import { getRandomNumber } from '../../../../asmlib/asm-scripts';
 import correctAnswerSound from '../../../../asmlib/asm-ui/assets/sounds/correct-answer.mp3';
 import wrongAnswerSound from '../../../../asmlib/asm-ui/assets/sounds/wrong-answer.mp3';
 import { ModalResult } from '../ModalResult';
+import { changeUserWord } from '../../../API/users/words/changeUserWord';
 
 interface IGameProps {
 	words: IUserPageWord[];
@@ -67,6 +68,7 @@ export function Game({ words }: IGameProps) {
 				right: [...result.right, word],
 				topRight: result.topRight + 1,
 			});
+			changeUserWord(word.id, 'sprint', 'right');
 		} else {
 			blink('red');
 			wrongAnswerAudio.play();
@@ -74,6 +76,7 @@ export function Game({ words }: IGameProps) {
 				...result,
 				wrong: [...result.wrong, word],
 			});
+			changeUserWord(word.id, 'sprint', 'wrong');
 		}
 		if (shuffledWords[wordIdx + 1]) {
 			setWord(shuffledWords[wordIdx + 1]);
