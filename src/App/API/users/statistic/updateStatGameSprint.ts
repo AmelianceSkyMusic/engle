@@ -24,6 +24,9 @@ async function updateStatGameSprint(userId: string, value: object, curStat: ISta
 		case 'countNewWords':
 			curStat.optional.sprint.countNewWords += el[1] as number;
 			break;
+		case 'countShowedWords':
+			curStat.optional.sprint.countShowedWords += el[1] as number;
+			break;
 		case 'countRight':
 			curStat.optional.sprint.countRight += el[1] as number;
 			break;

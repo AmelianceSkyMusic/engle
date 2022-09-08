@@ -21,6 +21,7 @@ async function updateStatistic(
 				audioCall: {
 					newWords: {},
 					countNewWords: 0,
+					countShowedWords: 0,
 					countRight: 0,
 					countWrong: 0,
 					topRight: 0,
@@ -28,6 +29,7 @@ async function updateStatistic(
 				sprint: {
 					newWords: {},
 					countNewWords: 0,
+					countShowedWords: 0,
 					countRight: 0,
 					countWrong: 0,
 					topRight: 0,

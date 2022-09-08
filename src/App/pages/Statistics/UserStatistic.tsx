@@ -2,21 +2,19 @@ import { IStatistic } from '../../types/interfaces';
 
 export function userCreateStatMarkup(data: IStatistic) {
 	const curDate = new Date().toLocaleDateString();
-	console.log(data);
 	const countWordForDay = data.optional.textBook.learnedWords[curDate].length;
-
 	return (
 		<div className="page-statistics__container">
 			<section className="page-statistics__section">
 				<h4 className="h4">По словам: </h4>
 				<div className="page-statistics__section-description">
 					<p className="p1">
-						Виучено слов всего:
+						Выучено слов всего:
 						{' '}
 						{data.learnedWords}
 					</p>
 					<p className="p1">
-						Виучено слов за день:
+						Выучено слов за день:
 						{' '}
 						{countWordForDay}
 					</p>
