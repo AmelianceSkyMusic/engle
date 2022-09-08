@@ -6,6 +6,7 @@ import { shuffleArray } from '../../../../asmlib/asm-scripts/shuffleArray';
 import { getRandomNumber } from '../../../../asmlib/asm-scripts';
 import correctAnswerSound from '../../../../asmlib/asm-ui/assets/sounds/correct-answer.mp3';
 import wrongAnswerSound from '../../../../asmlib/asm-ui/assets/sounds/wrong-answer.mp3';
+import { ModalResult } from '../ModalResult';
 
 interface IGameProps {
 	words: IUserPageWord[];
@@ -41,7 +42,7 @@ export function Game({ words }: IGameProps) {
 	const wrongAnswerAudio = new Audio(wrongAnswerSound);
 	wrongAnswerAudio.preload = 'auto';
 
-	const [seconds, setSeconds] = useState(60);
+	const [seconds, setSeconds] = useState(20);
 	useEffect((): undefined | (() => void) => {
 		if (seconds >= 1) {
 			const interval = setInterval(() => {
@@ -52,15 +53,28 @@ export function Game({ words }: IGameProps) {
 		return undefined;
 	}, [seconds]);
 
+	const [result, setResult] = useState<
+	{ right: IUserPageWord[]; wrong: IUserPageWord[]; topRight: number }
+	>({ right: [], wrong: [], topRight: 0 });
+
 	function handleAnswer(answer: boolean) {
 		const wordIdx = shuffledWords.indexOf(word);
 		if (shuffledWords[wordIdx + 1]) {
 			if (answer === (word.wordTranslate === translation)) {
 				blink('green');
 				correctAnswerAudio.play();
+				setResult({
+					...result,
+					right: [...result.right, word],
+					topRight: result.topRight + 1,
+				});
 			} else {
 				blink('red');
 				wrongAnswerAudio.play();
+				setResult({
+					...result,
+					wrong: [...result.wrong, word],
+				});
 			}
 			setWord(shuffledWords[wordIdx + 1]);
 		} else {
@@ -68,45 +82,49 @@ export function Game({ words }: IGameProps) {
 		}
 	}
 
-	if (seconds <= 0) {
-		alert('END OF TIME');
-	}
-
 	return (
-		<div className="sprint-game row">
-			<div ref={blinkerEl} className="blinker" />
-			<div className="sprint-game__col sprint-game__col_left col-4">
-				<div className="sprint-game__check sprint-game__check_1  icon icon--check sprint-game__row-1" />
-				<p className="sprint-game__curr-points p1 sprint-game__row-2">10 очков</p>
-				<h3 className="sprint-game__eng-word h3 sprint-game__row-3">{word.word}</h3>
-				<button
-					type="button"
-					className="sprint-game__wrong-btn button sprint-game__row-4"
-					onClick={() => handleAnswer(false)}
-				>
-					<span className="icon icon--arrow-left" />
-					Неверно
-				</button>
-			</div>
-			<div className="sprint-game__col sprint-game__col_center col-4">
-				<div className="sprint-game__check sprint-game__check_2 icon icon--check sprint-game__row-1" />
-				<p className="sprint-game__coff p1 sprint-game__row-2">x2</p>
-				<h3 className="sprint-game__question-mark h3 sprint-game__row-3">?</h3>
-				<h4 className="sprint-game__counter h4 sprint-game__row-4">{seconds}</h4>
-			</div>
-			<div className="sprint-game__col sprint-game__col_right col-4">
-				<div className="sprint-game__check sprint-game__check_3 icon icon--check sprint-game__row-1" />
-				<p className="sprint-game__overall-points p1 sprint-game__row-2">Всего очков: 20</p>
-				<h3 className="sprint-game__ru-word h3 sprint-game__row-3">{translation}</h3>
-				<button
-					type="button"
-					className="sprint-game__correct-btn button sprint-game__row-4"
-					onClick={() => handleAnswer(true)}
-				>
-					Верно
-					<span className="icon icon--arrow-right" />
-				</button>
-			</div>
+		<div>
+			{seconds > 0
+				? (
+					<div className="sprint-game row">
+						<div ref={blinkerEl} className="blinker" />
+						<div className="sprint-game__col sprint-game__col_left col-4">
+							<div className="sprint-game__check sprint-game__check_1  icon icon--check sprint-game__row-1" />
+							<p className="sprint-game__curr-points p1 sprint-game__row-2">10 очков</p>
+							<h3 className="sprint-game__eng-word h3 sprint-game__row-3">{word.word}</h3>
+							<button
+								type="button"
+								className="sprint-game__wrong-btn button sprint-game__row-4"
+								onClick={() => handleAnswer(false)}
+							>
+								<span className="icon icon--arrow-left" />
+								Неверно
+							</button>
+						</div>
+						<div className="sprint-game__col sprint-game__col_center col-4">
+							<div className="sprint-game__check sprint-game__check_2 icon icon--check sprint-game__row-1" />
+							<p className="sprint-game__coff p1 sprint-game__row-2">x2</p>
+							<h3 className="sprint-game__question-mark h3 sprint-game__row-3">?</h3>
+							<h4 className="sprint-game__counter h4 sprint-game__row-4">{seconds}</h4>
+						</div>
+						<div className="sprint-game__col sprint-game__col_right col-4">
+							<div className="sprint-game__check sprint-game__check_3 icon icon--check sprint-game__row-1" />
+							<p className="sprint-game__overall-points p1 sprint-game__row-2">Всего очков: 20</p>
+							<h3 className="sprint-game__ru-word h3 sprint-game__row-3">{translation}</h3>
+							<button
+								type="button"
+								className="sprint-game__correct-btn button sprint-game__row-4"
+								onClick={() => handleAnswer(true)}
+							>
+								Верно
+								<span className="icon icon--arrow-right" />
+							</button>
+						</div>
+					</div>
+				)
+				: (
+					<ModalResult result={result} />
+				)}
 		</div>
 	);
 }
