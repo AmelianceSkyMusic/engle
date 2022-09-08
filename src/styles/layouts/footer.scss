@@ -1,7 +1,7 @@
 @use "../globals/" as *;
 
 .footer {
-	background: var(--color--bg-2);
+	background: var(--color--bg-2-static);
 	.container {
 		@media (max-width: $screen-md) {
 			padding-bottom: var(--col-gap);
@@ -24,6 +24,7 @@
 			// @media (max-width: $screen-md) {
 			@include imgLinkSVG("../../assets/svg/github-logo.svg", 34px, 12px);
 			//   }
+			background-color: var(--color--f2-1-static);
 		}
 	}
 
@@ -64,6 +65,14 @@
 			// @media (max-width: $screen-md) {
 			@include imgLinkSVG("../../assets/svg/rsschool-logo.svg", 34px, 12px);
 			//   }
+			background-color: var(--color--f2-1-static);
 		}
+	}
+
+	.link,
+	.p2 {
+		font-size: 10px;
+		color: var(--color--f2-1-static);
+		line-height: 100%;
 	}
 }

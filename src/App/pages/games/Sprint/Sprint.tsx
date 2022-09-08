@@ -72,7 +72,6 @@ export function Sprint() {
 						)}
 				</div>
 			</main>
-			<Footer />
 		</div>
 	);
 }

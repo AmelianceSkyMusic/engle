@@ -1,0 +1,1 @@
+export { ModalResult } from './ModalResult';

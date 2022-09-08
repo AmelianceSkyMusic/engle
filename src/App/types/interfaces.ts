@@ -64,6 +64,7 @@ export interface IStatistic {
 				[date: string]: string[]; // {'date': ['id', 'id'...], ...}
 			};
 			countNewWords: number;
+			countShowedWords: number;
 			countRight: number;
 			countWrong: number;
 			topRight: number;
@@ -73,6 +74,7 @@ export interface IStatistic {
 				[date: string]: string[];
 			};
 			countNewWords: number;
+			countShowedWords: number;
 			countRight: number;
 			countWrong: number;
 			topRight: number;
@@ -111,4 +113,25 @@ export interface IAggregateUserWord extends IWord {
 export interface IAggregateUserWordsData {
 	paginatedResults: IAggregateUserWord[];
 	totalCount: { count: number }[];
+}
+
+export interface ISprint {
+	newWords: {
+		[date: string]: string[];
+	};
+	countNewWords: number;
+	countShowedWords: number;
+	countRight: number;
+	countWrong: number;
+	topRight: number;
+}
+export interface IAudioCall {
+	newWords: {
+		[date: string]: string[];
+	};
+	countNewWords: number;
+	countShowedWords: number;
+	countRight: number;
+	countWrong: number;
+	topRight: number;
 }
