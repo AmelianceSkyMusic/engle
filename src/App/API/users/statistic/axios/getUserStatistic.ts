@@ -12,6 +12,5 @@ export const getUserStatistics = async (userId: string): Promise<IStatistic> => 
 			'Content-Type': 'application/json',
 		},
 	});
-	console.log(res);
 	return res.data;
 };

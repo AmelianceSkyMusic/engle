@@ -2,21 +2,19 @@ import { IStatistic } from '../../types/interfaces';
 
 export function userCreateStatMarkup(data: IStatistic) {
 	const curDate = new Date().toLocaleDateString();
-	console.log(data);
 	const countWordForDay = data.optional.textBook.learnedWords[curDate].length;
-
 	return (
 		<div className="page-statistics__container">
 			<section className="page-statistics__section">
 				<h4 className="h4">По словам: </h4>
 				<div className="page-statistics__section-description">
 					<p className="p1">
-						Виучено слов всего:
+						Выучено слов всего:
 						{' '}
 						{data.learnedWords}
 					</p>
 					<p className="p1">
-						Виучено слов за день:
+						Выучено слов за день:
 						{' '}
 						{countWordForDay}
 					</p>
@@ -28,7 +26,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 					<p className="p1">
 						Показано слов:
 						{' '}
-						{data.optional.audioCall.countRight + data.optional.audioCall.countWrong}
+						{data.optional.audioCall.countShowedWords}
 					</p>
 					<p className="p1">
 						Процент правильных ответов:
@@ -51,7 +49,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 					<p className="p1">
 						Показано слов:
 						{' '}
-						{data.optional.sprint.countRight + data.optional.sprint.countWrong}
+						{data.optional.sprint.countShowedWords}
 					</p>
 					<p className="p1">
 						Процент правильных ответов:
