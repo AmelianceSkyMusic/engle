@@ -26,7 +26,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 					<p className="p1">
 						Показано слов:
 						{' '}
-						{data.optional.audioCall.countRight + data.optional.audioCall.countWrong}
+						{data.optional.audioCall.countShowedWords}
 					</p>
 					<p className="p1">
 						Процент правильных ответов:
@@ -49,7 +49,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 					<p className="p1">
 						Показано слов:
 						{' '}
-						{data.optional.sprint.countRight + data.optional.sprint.countWrong}
+						{data.optional.sprint.countShowedWords}
 					</p>
 					<p className="p1">
 						Процент правильных ответов:
