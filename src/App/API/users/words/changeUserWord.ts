@@ -1,9 +1,11 @@
 import API from '../..';
+import { store } from '../../../store';
 import { IUserWord } from '../../../types/interfaces';
 import { updateWordAudiocall } from './updateWordAudiocall';
 import { updateWordSprint } from './updateWordSprint';
 
-async function changeUserWord(userId: string, wordId: string, game: 'audioCall' | 'sprint', value: 'wrong' | 'right') {
+async function changeUserWord(wordId: string, game: 'audioCall' | 'sprint', value: 'wrong' | 'right') {
+	const { userId } = store.getState().user;
 	let userWord = await API.getUserWordByID(userId, wordId);
 	if (!userWord) {
 		const newWord: IUserWord = {

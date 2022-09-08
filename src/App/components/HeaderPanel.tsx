@@ -44,7 +44,7 @@ export function HeaderPanel({ isHideRegistration }: IHeaderPanelProps) {
 	return (
 		<div className="header-panel row">
 			<div className="header-panel__logo col-2 col-lg-5">
-				<a href="/" className="logo">{}</a>
+				<a href="/engle" className="logo">{}</a>
 			</div>
 			<nav className="header-panel__navigation col-10 col-lg-7">
 				{!isScreenLg

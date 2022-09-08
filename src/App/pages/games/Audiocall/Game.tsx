@@ -4,12 +4,18 @@ import {
 import { getRandomNumber } from '../../../../asmlib/asm-scripts';
 import { shuffleArray } from '../../../../asmlib/asm-scripts/shuffleArray';
 import { Button } from '../../../../asmlib/asm-ui/components/Button';
+import { changeUserWord } from '../../../API/users/words/changeUserWord';
+import { deleteWordFromLearned } from '../../../API/users/words/learningWords/deleteWordFromLearned';
 import { IUserPageWord } from '../../../types/interfaces';
 import { ModalResult } from '../ModalResult';
 import { playAudio } from './playAudio';
 
 interface IGameProps {
 	words: IUserPageWord[];
+}
+
+async function removeFromLearned(id: string) {
+	await deleteWordFromLearned(id);
 }
 
 export function Game({ words }: IGameProps) {
@@ -53,10 +59,12 @@ export function Game({ words }: IGameProps) {
 		const word$ = document.querySelector(`[data-id="${correctWord.id}"]`) as HTMLButtonElement;
 		word$.classList.add('right');
 		if (result.wrong) {
+			changeUserWord(correctWord.id, 'audioCall', 'wrong');
 			setResult({
 				...result,
 				wrong: [...result.wrong, correctWord],
 			});
+			removeFromLearned(correctWord.id);
 		}
 		word$.disabled = true;
 		const words$ = document.querySelectorAll('.game__button') as NodeListOf<HTMLButtonElement>;
@@ -100,20 +108,21 @@ export function Game({ words }: IGameProps) {
 			if ((currentRightCount + 1) > topRight) setTopRight(currentRightCount + 1);
 
 			if (result.right) {
+				changeUserWord(correctWord.id, 'audioCall', 'right');
 				setResult({
 					...result,
 					right: [...result.right, correctWord],
 					topRight: topRight + 1,
 				});
 			}
-
-			console.log('result', result);
 		} else {
 			word$.classList.add('right');
 			elem.classList.add('wrong');
 			setCurrentRightCount(0);
 			if (result.wrong) {
+				changeUserWord(correctWord.id, 'audioCall', 'wrong');
 				setResult({ ...result, wrong: [...result.wrong, correctWord] });
+				removeFromLearned(correctWord.id);
 			}
 		}
 
@@ -153,8 +162,15 @@ export function Game({ words }: IGameProps) {
 			default: break;
 			}
 		}
-		if (event.key === ' ' || event.key === 'Enter') button$.click();
+		if (event.key === ' ' || event.key === 'Enter') {
+			if (isShowAnswerWord) {
+				handleNextButton();
+			} else {
+				handleIDontKnowButton();
+			}
+		}
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [correctWord, isShowAnswerWord, wordVariants]);
 
 	useEffect(() => {
@@ -214,7 +230,7 @@ export function Game({ words }: IGameProps) {
 					</div>
 				)
 				: (
-					<ModalResult result={result} />
+					<ModalResult result={result} game="audioCall" />
 				)}
 		</div>
 	);
