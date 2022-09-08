@@ -44,6 +44,7 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 
 	const dispatch = useTypedDispatch();
 	function rerenderCards() {
+		(document.querySelector('body') as HTMLBodyElement).style.overflow = 'visible';
 		if (forHardWords) {
 			dispatch(getHardWordsAction());
 		} else {
@@ -118,15 +119,29 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 												<h4 className="h4">Статистика</h4>
 												<p className="word-modal__audiocall-statistic p1">
 													Аудиовызов:
-													<span className="word-modal__right-answer" title="Правильные ответы"> 0 </span>
+													<span className="word-modal__right-answer" title="Правильные ответы">
+														{' '}
+														{word.userWord?.optional.audioCall.right || 0}
+														{' '}
+													</span>
 													/
-													<span className="word-modal__wrong-answer" title="Неправильные ответы"> 0</span>
+													<span className="word-modal__wrong-answer" title="Неправильные ответы">
+														{' '}
+														{word.userWord?.optional.audioCall.wrong || 0}
+													</span>
 												</p>
 												<p className="word-modal__sprint-statistic p1">
 													Спринт:
-													<span className="word-modal__right-answer" title="Правильные ответы"> 0 </span>
+													<span className="word-modal__right-answer" title="Правильные ответы">
+														{' '}
+														{word.userWord?.optional.sprint.right || 0}
+														{' '}
+													</span>
 													/
-													<span className="word-modal__wrong-answer" title="Неправильные ответы"> 0</span>
+													<span className="word-modal__wrong-answer" title="Неправильные ответы">
+														{' '}
+														{word.userWord?.optional.sprint.wrong || 0}
+													</span>
 												</p>
 											</div>
 											<div className="word-modal__controls">
