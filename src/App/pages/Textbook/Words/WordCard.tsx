@@ -120,7 +120,8 @@ export function WordCard({ word, isLogged, forHardWords }: IWordCardProps) {
 													Аудиовызов:
 													<span className="word-modal__right-answer" title="Правильные ответы">
 														{' '}
-														{word.userWord?.optional.audioCall.right || 0}
+														{word.userWord?.optional.audioCall.right as number > 0
+															? word.userWord?.optional.audioCall.right : 0}
 														{' '}
 													</span>
 													/
