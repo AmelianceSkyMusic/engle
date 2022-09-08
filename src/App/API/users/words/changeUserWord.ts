@@ -9,7 +9,7 @@ async function changeUserWord(wordId: string, game: 'audioCall' | 'sprint', valu
 	const userWord = await API.getUserWordByID(userId, wordId).catch((err) => console.error(err));
 	if (!userWord) {
 		const newWord: IUserWordWithId = {
-			difficulty: 'hard',
+			difficulty: 'easy',
 			optional: {
 				isNew: true,
 				isLearned: false,

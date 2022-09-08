@@ -55,6 +55,7 @@ export function Words() {
 		}
 		return userPageWords.map((word) => (
 			<WordCard
+				userWord={word?.userWord}
 				word={word}
 				isLogged={isLogged}
 				key={word.id}

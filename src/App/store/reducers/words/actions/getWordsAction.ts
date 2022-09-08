@@ -33,7 +33,6 @@ export function getWordsAction(
 					userId,
 					groupNumber,
 					wordsPerPage: 20,
-					filter: '{"$or":[{"$and":[{"userWord.difficulty":"hard"}]}, {"userWord.optional.isLearned": true}]}',
 				});
 				const userWordsInThisPage = response[0].paginatedResults;
 				// eslint-disable-next-line no-underscore-dangle
