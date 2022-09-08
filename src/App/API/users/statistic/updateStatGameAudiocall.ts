@@ -24,6 +24,9 @@ async function updateStatGameAudioCall(userId: string, value: object, curStat: I
 		case 'countNewWords':
 			curStat.optional.audioCall.countNewWords += el[1] as number;
 			break;
+		case 'countShowedWords':
+			curStat.optional.audioCall.countShowedWords += el[1] as number;
+			break;
 		case 'countRight':
 			curStat.optional.audioCall.countRight += el[1] as number;
 			break;
