@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/engle/static/css/main.e5e92c01.css",
-    "main.js": "/engle/static/js/main.c0de9a95.js",
+    "main.css": "/engle/static/css/main.01a6a6e4.css",
+    "main.js": "/engle/static/js/main.a206e7c8.js",
     "static/media/Lato-Bold.ttf": "/engle/static/media/Lato-Bold.bb154e8dcbf157f82e9b.ttf",
     "static/media/Lato-Light.ttf": "/engle/static/media/Lato-Light.d92647541fd5192917e0.ttf",
     "static/media/Lato-Medium.ttf": "/engle/static/media/Lato-Medium.dffae17524847ef31d01.ttf",
@@ -13,10 +13,12 @@
     "static/media/img--dima.jpg": "/engle/static/media/img--dima.9a74dd854bace816fc76.jpg",
     "static/media/img--radzhab.jpg": "/engle/static/media/img--radzhab.49d496b70cb034aa9e47.jpg",
     "static/media/img--thinking-man.svg": "/engle/static/media/img--thinking-man.9177f856bf0ce6cca17a.svg",
+    "static/media/correct-answer.mp3": "/engle/static/media/correct-answer.ed3894f877249fd39ddf.mp3",
     "static/media/img--postman.svg": "/engle/static/media/img--postman.6a1c8ea602b5ea4f6178.svg",
     "static/media/engle-logo-white.svg": "/engle/static/media/engle-logo-white.7b4975b7a36e832c0f0d.svg",
     "static/media/img--magic-man.svg": "/engle/static/media/img--magic-man.3e7a9d7d36fbcfeb6018.svg",
     "static/media/rsschool-logo.svg": "/engle/static/media/rsschool-logo.517b0957d66a0e73f3a8.svg",
+    "static/media/wrong-answer.mp3": "/engle/static/media/wrong-answer.836d44bdeb10a3b2315b.mp3",
     "static/media/github-logo.svg": "/engle/static/media/github-logo.c99440a68f89e266d517.svg",
     "static/media/icon--sun.svg": "/engle/static/media/icon--sun.4770896b6b86c99099a1.svg",
     "static/media/icon--moon.svg": "/engle/static/media/icon--moon.952ffb519f921d8b924d.svg",
@@ -33,11 +35,11 @@
     "static/media/icon--arrow-right.svg": "/engle/static/media/icon--arrow-right.afe7a91a65853f693ae8.svg",
     "static/media/img--half-circle.svg": "/engle/static/media/img--half-circle.0122b159e9de038c7b5b.svg",
     "static/media/icon--check.svg": "/engle/static/media/icon--check.f1050d6223e2688cb1e3.svg",
-    "main.e5e92c01.css.map": "/engle/static/css/main.e5e92c01.css.map",
-    "main.c0de9a95.js.map": "/engle/static/js/main.c0de9a95.js.map"
+    "main.01a6a6e4.css.map": "/engle/static/css/main.01a6a6e4.css.map",
+    "main.a206e7c8.js.map": "/engle/static/js/main.a206e7c8.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5e92c01.css",
-    "static/js/main.c0de9a95.js"
+    "static/css/main.01a6a6e4.css",
+    "static/js/main.a206e7c8.js"
   ]
 }
