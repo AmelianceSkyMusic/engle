@@ -7,7 +7,7 @@ import { IUserPageWord } from '../../../types/interfaces';
 
 interface IModalResultProps {
 	result: { right: IUserPageWord[]; wrong: IUserPageWord[]; topRight: number };
-	game: 'textbook' | 'audioCall' | 'sprint';
+	game: 'textbook' | 'audiocall' | 'sprint';
 }
 
 function playButtonAudio(event: React.MouseEvent) {
@@ -48,7 +48,7 @@ export function ModalResult({ result, game }: IModalResultProps) {
 			heading="Результат:"
 			setOpen={() => modalHandler('/')}
 			mainButton={{ text: 'Закрыть', callback: () => modalHandler('/') }}
-			secondButton={{ text: 'Повторить', callback: () => modalHandler('/audiocall') }}
+			secondButton={{ text: 'Повторить', callback: () => modalHandler(`/${game}`) }}
 		>
 			<div style={{
 				display: 'flex', flexDirection: 'column', gap: 'calc(var(--col-gap) / 2)', padding: '0 calc(var(--col-gap) / 2)',

@@ -230,7 +230,7 @@ export function Game({ words }: IGameProps) {
 					</div>
 				)
 				: (
-					<ModalResult result={result} game="audioCall" />
+					<ModalResult result={result} game="audiocall" />
 				)}
 		</div>
 	);

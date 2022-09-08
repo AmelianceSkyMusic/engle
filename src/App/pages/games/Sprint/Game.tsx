@@ -123,7 +123,7 @@ export function Game({ words }: IGameProps) {
 					</div>
 				)
 				: (
-					<ModalResult result={result} />
+					<ModalResult result={result} game="sprint" />
 				)}
 		</div>
 	);
