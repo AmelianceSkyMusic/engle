@@ -33,9 +33,9 @@ export function Modal({
 	secondButton = { callback: null },
 	isButtons = true,
 }: IModal) {
-	(document.querySelector('body')as HTMLBodyElement).style.overflow = 'hidden';
+	(document.querySelector('body') as HTMLBodyElement).style.overflow = 'hidden';
 	function closeModal() {
-		(document.querySelector('body')as HTMLBodyElement).style.overflow = 'visible';
+		(document.querySelector('body') as HTMLBodyElement).style.overflow = 'visible';
 		const modalBlock$ = document.querySelector('#modal') as HTMLElement;
 		const blackout$ = modalBlock$.querySelector('.blackout') as HTMLElement;
 		blackout$.classList.remove('show');
