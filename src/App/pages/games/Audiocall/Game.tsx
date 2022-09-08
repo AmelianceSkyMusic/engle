@@ -106,8 +106,6 @@ export function Game({ words }: IGameProps) {
 					topRight: topRight + 1,
 				});
 			}
-
-			console.log('result', result);
 		} else {
 			word$.classList.add('right');
 			elem.classList.add('wrong');

@@ -13,7 +13,6 @@ interface IModalResultProps {
 function playButtonAudio(event: React.MouseEvent) {
 	const element$ = event.target as HTMLButtonElement;
 	const id = element$.id.split('-')[1];
-	console.log(id);
 
 	const audio$ = document.querySelector(`#audio-${id}`) as HTMLAudioElement;
 	audio$.pause();

@@ -8,7 +8,6 @@ async function updateStatTextBook(
 	curStat: IStatistic,
 ) {
 	const updateValue = value.learnedWords;
-	console.log(curStat);
 	// eslint-disable-next-line no-case-declarations
 	const dateNow = new Date().toLocaleDateString();
 	if ('textBook' in curStat.optional) {
