@@ -4,16 +4,15 @@ import { Modal } from '../../../../asmlib/asm-ui/components/Modal';
 import { updateStatistic } from '../../../API/users/statistic/updateStatistics';
 import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 import { IUserPageWord } from '../../../types/interfaces';
-import { playAudio } from '../Audiocall/playAudio';
 
 interface IModalResultProps {
 	result: { right: IUserPageWord[]; wrong: IUserPageWord[]; topRight: number };
+	game: 'textbook' | 'audioCall' | 'sprint';
 }
 
 function playButtonAudio(event: React.MouseEvent) {
 	const element$ = event.target as HTMLButtonElement;
 	const id = element$.id.split('-')[1];
-	console.log(id);
 
 	const audio$ = document.querySelector(`#audio-${id}`) as HTMLAudioElement;
 	audio$.pause();
@@ -21,7 +20,7 @@ function playButtonAudio(event: React.MouseEvent) {
 	audio$.play();
 }
 
-export function ModalResult({ result }: IModalResultProps) {
+export function ModalResult({ result, game }: IModalResultProps) {
 	const { userId } = useTypedSelector((state) => state.user);
 
 	const resultMain = {
@@ -32,7 +31,7 @@ export function ModalResult({ result }: IModalResultProps) {
 		countWrong: result.wrong.length || 0,
 		topRight: result.topRight || 0,
 	};
-	updateStatistic(userId, 'audioCall', resultMain);
+	updateStatistic(userId, game, resultMain);
 	const navigate = useNavigate();
 
 	function modalHandler(path: string) {
@@ -46,7 +45,7 @@ export function ModalResult({ result }: IModalResultProps) {
 		<Modal
 			size="large"
 			type="alert"
-			heading="Вот:"
+			heading="Результат:"
 			setOpen={() => modalHandler('/')}
 			mainButton={{ text: 'Закрыть', callback: () => modalHandler('/') }}
 			secondButton={{ text: 'Повторить', callback: () => modalHandler('/audiocall') }}

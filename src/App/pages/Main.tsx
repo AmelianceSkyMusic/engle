@@ -51,7 +51,7 @@ export function Main() {
 									<p className="p2">Kantor17</p>
 								</div>
 								<div className="about-us__items">
-									<p className="p1">✓ Верста: учебник, логин, регистрация, главный экран, игра «Спринт»</p>
+									<p className="p1">✓ Верстка: учебник, логин, регистрация, главный экран, игра «Спринт»</p>
 									<p className="p1">✓ Учебник</p>
 									<p className="p1">✓ Игра «Спринт»</p>
 								</div>
@@ -84,7 +84,7 @@ export function Main() {
 								<div className="about-us__items">
 									<p className="p1">✓ Дизайн</p>
 									<p className="p1">✓ Redux. Store</p>
-									<p className="p1">✓ Верста: хедер, футер, игра «Аудиовызов», главный экран</p>
+									<p className="p1">✓ Верстка: хедер, футер, игра «Аудиовызов», главный экран</p>
 									<p className="p1">✓ Игра «Аудиовызов»</p>
 								</div>
 							</div>
