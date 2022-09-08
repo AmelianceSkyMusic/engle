@@ -42,7 +42,7 @@ export function Game({ words }: IGameProps) {
 	const wrongAnswerAudio = new Audio(wrongAnswerSound);
 	wrongAnswerAudio.preload = 'auto';
 
-	const [seconds, setSeconds] = useState(20);
+	const [seconds, setSeconds] = useState(30);
 	useEffect((): undefined | (() => void) => {
 		if (seconds >= 1) {
 			const interval = setInterval(() => {
@@ -59,26 +59,26 @@ export function Game({ words }: IGameProps) {
 
 	function handleAnswer(answer: boolean) {
 		const wordIdx = shuffledWords.indexOf(word);
+		if (answer === (word.wordTranslate === translation)) {
+			blink('green');
+			correctAnswerAudio.play();
+			setResult({
+				...result,
+				right: [...result.right, word],
+				topRight: result.topRight + 1,
+			});
+		} else {
+			blink('red');
+			wrongAnswerAudio.play();
+			setResult({
+				...result,
+				wrong: [...result.wrong, word],
+			});
+		}
 		if (shuffledWords[wordIdx + 1]) {
-			if (answer === (word.wordTranslate === translation)) {
-				blink('green');
-				correctAnswerAudio.play();
-				setResult({
-					...result,
-					right: [...result.right, word],
-					topRight: result.topRight + 1,
-				});
-			} else {
-				blink('red');
-				wrongAnswerAudio.play();
-				setResult({
-					...result,
-					wrong: [...result.wrong, word],
-				});
-			}
 			setWord(shuffledWords[wordIdx + 1]);
 		} else {
-			alert('End of words');
+			setSeconds(0);
 		}
 	}
 
