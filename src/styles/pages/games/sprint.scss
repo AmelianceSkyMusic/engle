@@ -5,4 +5,71 @@
 		.container {
 		}
 	}
+	.sprint-game {
+		flex-wrap: nowrap;
+		&__col {
+			display: flex;
+			flex-direction: column;
+			width: auto;
+			&_left {
+				align-items: flex-end;
+			}
+			&_center {
+				align-items: center;
+			}
+			&_right {
+				align-items: flex-start;
+			}
+		}
+		&__wrong-btn {
+			color: var(--color--f2-1);
+			background-color: var(--color--a5-1);
+			.icon {
+				background-color: var(--color--f2-1);
+			}
+		}
+
+		&__correct-btn {
+			color: var(--color--f1-1);
+			background-color: var(--color--a3-1);
+			.icon {
+				background-color: var(--color--f1-1);
+			}
+		}
+
+		&__row-1 {
+			margin-bottom: calc(var(--col-gap) / 2);
+		}
+		&__row-2,
+		&__row-3 {
+			margin-bottom: calc(var(--col-gap) * 2);
+		}
+	}
+}
+
+.blinker {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	opacity: 0;
+	&_red {
+		animation: blink linear .4s;
+		background-color: #FF6666;
+	}
+	&_green {
+		animation: blink linear .4s;
+		background-color: #CCFF99;
+	}
+}
+
+@keyframes blink {
+	from {
+		opacity: 0.8;
+	}
+	to {
+		opacity: 0;
+	}
 }

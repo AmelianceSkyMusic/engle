@@ -6,7 +6,7 @@ import { IStatistic } from '../../../types/interfaces';
 
 async function updateStatistic(
 	userId: string,
-	blockUpdate: 'textbook' | 'audioCall' | 'sprint',
+	blockUpdate: 'textbook' | 'audiocall' | 'sprint',
 	value: object | { learnedWords: string },
 ) {
 	const dateNow = new Date().toLocaleDateString();
@@ -46,7 +46,7 @@ async function updateStatistic(
 	case 'textbook':
 		await updateStatTextBook(userId, value as { learnedWords: string }, curStatUser);
 		break;
-	case 'audioCall':
+	case 'audiocall':
 		await updateStatGameAudioCall(userId, value, curStatUser);
 		break;
 	case 'sprint':

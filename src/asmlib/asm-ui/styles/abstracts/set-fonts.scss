@@ -96,6 +96,11 @@
 
 	@media (max-width: $screen-lg) {
 		@include setTypoElem(h1, $font-family__primary, 48px, $font-weight__black, 120%, 0);
+		@include setTypoElem(h2, $font-family__primary, 36px, $font-weight__black, 120%, 0);
+		@include setTypoElem(h3, $font-family__secondary, 24px, $font-weight__bold, 120%, 0);
+		@include setTypoElem(h4, $font-family__secondary, 18px, $font-weight__bold, 140%, 0);
+		@include setTypoElem(p1, $font-family__secondary, 16px, $font-weight__medium, 140%, 0);
+		@include setTypoElem(p2, $font-family__secondary, 13px, $font-weight__medium, 140%, 0);
 	}
 }
 
