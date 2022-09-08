@@ -12,7 +12,7 @@ import { userCreateStatMarkup } from './Statistics/UserStatistic';
 export function Statistics() {
 	const { isLogged, userId, userName } = store.getState().user;
 
-	const [stateShort, setStateShort] = useState({});
+	const [stateShort, setStateShort] = useState<IStatistic>();
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -38,7 +38,7 @@ export function Statistics() {
 						? (
 							<div className="page-statistics__header-block">
 								<h2 className="page-statistics__heading h2">
-									Cтатистика
+									Статистика
 								</h2>
 								<h3 className="page-statistics__heading h3">
 									{userName}
@@ -48,13 +48,16 @@ export function Statistics() {
 						: 	(
 							<div className="page-statistics__header-block">
 								<h2 className="page-statistics__heading h2">
-									Cтатистика
+									Статистика
 								</h2>
 								<h3 className="page-statistics__heading h3">Войдите чтоб увидеть статистику</h3>
 							</div>
 						)}
 					{ stateShort && isLogged && !loading && (
-						userCreateStatMarkup(stateShort as IStatistic)
+						userCreateStatMarkup(stateShort)
+					)}
+					{ !stateShort && isLogged && (
+						<h4 className="page-statistics__heading h4">Вы пока не проводили действий, отслеживаемых статистикой</h4>
 					)}
 				</div>
 			</main>
