@@ -32,7 +32,7 @@ export function getWordsAction(
 				const response = await API.getUserAggregateWords({
 					userId,
 					groupNumber,
-					wordsPerPage: 20,
+					wordsPerPage: 3600,
 				});
 				const userWordsInThisPage = response[0].paginatedResults;
 				// eslint-disable-next-line no-underscore-dangle
