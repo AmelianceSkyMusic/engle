@@ -1,4 +1,6 @@
-import { useMemo, useRef, useState } from 'react';
+import {
+	useEffect, useMemo, useRef, useState,
+} from 'react';
 import { IUserPageWord } from '../../../types/interfaces';
 import { shuffleArray } from '../../../../asmlib/asm-scripts/shuffleArray';
 import { getRandomNumber } from '../../../../asmlib/asm-scripts';
@@ -11,15 +13,18 @@ interface IGameProps {
 export function Game({ words }: IGameProps) {
 	const shuffledWords = useMemo(() => shuffleArray(words), [words]);
 	const [word, setWord] = useState(shuffledWords[0]);
+	const [translation, setTranslation] = useState('');
 
-	function getTranslation() {
-		const sameWordChance = getRandomNumber(1, 100);
-		if (sameWordChance <= 55) {
-			return shuffledWords[getRandomNumber(0, 19)].wordTranslate;
+	useEffect(() => {
+		function getTranslation() {
+			const sameWordChance = getRandomNumber(1, 100);
+			if (sameWordChance <= 55) {
+				return shuffledWords[getRandomNumber(0, 19)].wordTranslate;
+			}
+			return word.wordTranslate;
 		}
-		return word.wordTranslate;
-	}
-	const translation = getTranslation();
+		setTranslation(getTranslation());
+	}, [shuffledWords, word]);
 
 	const blinkerEl = useRef<HTMLDivElement>(null);
 	function blink(color: 'red' | 'green') {
@@ -36,6 +41,17 @@ export function Game({ words }: IGameProps) {
 	const wrongAnswerAudio = new Audio(wrongAnswerSound);
 	wrongAnswerAudio.preload = 'auto';
 
+	const [seconds, setSeconds] = useState(60);
+	useEffect((): undefined | (() => void) => {
+		if (seconds >= 1) {
+			const interval = setInterval(() => {
+				setSeconds(seconds - 1);
+			}, 1000);
+			return () => clearInterval(interval);
+		}
+		return undefined;
+	}, [seconds]);
+
 	function handleAnswer(answer: boolean) {
 		const wordIdx = shuffledWords.indexOf(word);
 		if (shuffledWords[wordIdx + 1]) {
@@ -50,7 +66,10 @@ export function Game({ words }: IGameProps) {
 		} else {
 			alert('End of words');
 		}
+	}
 
+	if (seconds <= 0) {
+		alert('END OF TIME');
 	}
 
 	return (
@@ -73,7 +92,7 @@ export function Game({ words }: IGameProps) {
 				<div className="sprint-game__check sprint-game__check_2 icon icon--check sprint-game__row-1" />
 				<p className="sprint-game__coff p1 sprint-game__row-2">x2</p>
 				<h3 className="sprint-game__question-mark h3 sprint-game__row-3">?</h3>
-				<h4 className="sprint-game__counter h4 sprint-game__row-4">60</h4>
+				<h4 className="sprint-game__counter h4 sprint-game__row-4">{seconds}</h4>
 			</div>
 			<div className="sprint-game__col sprint-game__col_right col-4">
 				<div className="sprint-game__check sprint-game__check_3 icon icon--check sprint-game__row-1" />
