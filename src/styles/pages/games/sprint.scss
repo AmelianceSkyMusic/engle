@@ -47,3 +47,29 @@
 	}
 }
 
+.blinker {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	opacity: 0;
+	&_red {
+		animation: blink linear .4s;
+		background-color: #FF6666;
+	}
+	&_green {
+		animation: blink linear .4s;
+		background-color: #CCFF99;
+	}
+}
+
+@keyframes blink {
+	from {
+		opacity: 0.8;
+	}
+	to {
+		opacity: 0;
+	}
+}

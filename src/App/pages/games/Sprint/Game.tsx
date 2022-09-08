@@ -1,7 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { IUserPageWord } from '../../../types/interfaces';
 import { shuffleArray } from '../../../../asmlib/asm-scripts/shuffleArray';
 import { getRandomNumber } from '../../../../asmlib/asm-scripts';
+import correctAnswerSound from '../../../../asmlib/asm-ui/assets/sounds/correct-answer.mp3';
+import wrongAnswerSound from '../../../../asmlib/asm-ui/assets/sounds/wrong-answer.mp3';
 
 interface IGameProps {
 	words: IUserPageWord[];
@@ -19,13 +21,30 @@ export function Game({ words }: IGameProps) {
 	}
 	const translation = getTranslation();
 
+	const blinkerEl = useRef<HTMLDivElement>(null);
+	function blink(color: 'red' | 'green') {
+		if (blinkerEl.current) {
+			blinkerEl.current.className = `blinker blinker_${color}`;
+			blinkerEl.current.addEventListener('animationend', () => {
+				(blinkerEl.current as HTMLDivElement).className = 'blinker';
+			});
+		}
+	}
+
+	const correctAnswerAudio = new Audio(correctAnswerSound);
+	correctAnswerAudio.preload = 'auto';
+	const wrongAnswerAudio = new Audio(wrongAnswerSound);
+	wrongAnswerAudio.preload = 'auto';
+
 	function handleAnswer(answer: boolean) {
 		const wordIdx = shuffledWords.indexOf(word);
 		if (shuffledWords[wordIdx + 1]) {
 			if (answer === (word.wordTranslate === translation)) {
-				alert('Correct');
+				blink('green');
+				correctAnswerAudio.play();
 			} else {
-				alert('Wrong');
+				blink('red');
+				wrongAnswerAudio.play();
 			}
 			setWord(shuffledWords[wordIdx + 1]);
 		} else {
@@ -36,6 +55,7 @@ export function Game({ words }: IGameProps) {
 
 	return (
 		<div className="sprint-game row">
+			<div ref={blinkerEl} className="blinker" />
 			<div className="sprint-game__col sprint-game__col_left col-4">
 				<div className="sprint-game__check sprint-game__check_1  icon icon--check sprint-game__row-1" />
 				<p className="sprint-game__curr-points p1 sprint-game__row-2">10 очков</p>
