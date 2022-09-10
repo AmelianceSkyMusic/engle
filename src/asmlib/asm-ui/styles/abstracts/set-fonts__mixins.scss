@@ -1,0 +1,40 @@
+// >----------------------------------------------------------------<
+// >                            MIXINS                              <
+// >----------------------------------------------------------------<
+
+@mixin initFont($font-family-name, $font-path, $font-family-file, $font-weight) {
+	font-family: $font-family-name;
+	src: url($font-path + $font-family-file);
+	font-weight: $font-weight;
+	font-display: swap;
+}
+
+@mixin setFont($font-family, $font-size, $font-weight, $font-line-height, $letter-spacing: 0, $font-style) {
+	font-family: $font-family;
+	font-size: $font-size;
+	line-height: $font-line-height;
+	font-weight: $font-weight;
+	letter-spacing: $letter-spacing;
+	font-style: $font-style;
+	margin: 0;
+	padding: 0;
+}
+
+@mixin setTypoElem(
+	$elem,
+	$font-family,
+	$font-size,
+	$font-weight,
+	$font-line-height,
+	$letter-spacing,
+	$font-style: normal
+) {
+	.#{$elem} {
+		#{--font__font-family_ + $elem}: #{$font-family};
+		#{--font__font-size_ + $elem}: #{$font-size};
+		#{--font__line-height_ + $elem}: #{$font-line-height};
+		#{--font__font-weight_ + $elem}: #{$font-weight};
+		#{--font__letter-spacing_ + $elem}: #{$letter-spacing};
+		#{--font__font-style_ + $elem}: #{$font-style};
+	}
+}

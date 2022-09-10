@@ -1,0 +1,29 @@
+*,  *::before, *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; // disable blue tap for sensor device
+}
+
+html {
+    // font-size: 1px; // reset pixels for em / rem unit
+    scroll-behavior: smooth;
+    // scroll-padding-top: 64px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	padding: 0;
+    margin: 0;
+}
+
+body {
+	.page-container { 
+		position: relative;
+		z-index: 0;
+		overflow: hidden;
+
+		// footer to bottom
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		min-height: 100vh;
+		margin: 0;
+	}
+}

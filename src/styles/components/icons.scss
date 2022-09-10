@@ -1,0 +1,21 @@
+@use "../globals/" as *;
+
+$iconsSet: (
+	icon--arrow-right,
+	icon--arrow-left,
+	icon--x-circle,
+	icon--menu,
+	icon--check,
+	icon--corner-down-right,
+	icon--corner-up-left,
+	icon--sun,
+	icon--moon,
+	icon--sound,
+	icon--more-horizontal,
+);
+
+@each $icon in $iconsSet {
+	.#{$icon} {
+		@include useIcon($icon + ".svg");
+	}
+} ;

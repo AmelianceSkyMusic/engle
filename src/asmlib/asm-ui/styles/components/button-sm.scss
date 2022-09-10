@@ -1,0 +1,16 @@
+.button-sm {
+	padding: 0 16px;
+	height: 34px;
+	& .label {
+		height: 18px;
+	}
+	& .icon.right {
+		margin-left: 2px;
+		margin-right: -2px;
+	}
+
+	& .icon.left {
+		margin-left: -2px;
+		margin-right: 2px;
+	}
+}

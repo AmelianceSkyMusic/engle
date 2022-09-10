@@ -1,0 +1,8 @@
+@use "../globals/" as *;
+
+.header {
+	.container {
+		padding-top: var(--col-gap);
+		padding-bottom: 0;
+	}
+}

@@ -1,0 +1,27 @@
+@use "../_globals/" as *;
+
+:root {
+	--col-gap: 32px;
+	--col-outer: var(--col-gap);
+	--container-width: calc(
+		1216px + (var(--col-outer) * 2)
+	); // block container --> 72px * 12 columns | gutter 32 px | side padding 32px * 2
+	@media (max-width: $screen-xx) {
+		--col-gap: 24px;
+	}
+	@media (max-width: $screen-xl) {
+		--col-gap: 24px;
+	}
+	@media (max-width: $screen-lg) {
+		--col-gap: 24px;
+	}
+	@media (max-width: $screen-md) {
+		--col-gap: 16px;
+	}
+	@media (max-width: $screen-sm) {
+		--col-gap: 16px;
+	}
+	@media (max-width: $screen-xs) {
+		--col-gap: 8px;
+	}
+}

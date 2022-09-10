@@ -1,0 +1,48 @@
+// >----------------------------------------------------------------<
+// >                             IMPORT                             <
+// >----------------------------------------------------------------<
+
+// Edit this file for change style
+@use "blackout__variables" as *;
+
+// >----------------------------------------------------------------<
+// >                             CLASS                              <
+// >----------------------------------------------------------------<
+
+.blackout {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--blackout--color);
+	animation-name: hide-blackout;
+	animation-duration: var(--blackout--animation-duration);
+	animation-fill-mode: forwards;
+	&.show {
+		animation-name: show-blackout;
+		animation-duration: 0;
+		animation-fill-mode: forwards;
+	}
+}
+
+@keyframes show-blackout {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: var(--blackout--opacity);
+	}
+}
+@keyframes hide-blackout {
+	from {
+		opacity: var(--blackout--opacity);
+	}
+	to {
+		opacity: 0;
+	}
+}

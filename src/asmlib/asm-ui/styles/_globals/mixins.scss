@@ -1,0 +1,60 @@
+// >----------------------------------------------------------------<
+// >                             MIXINS                             <
+// >----------------------------------------------------------------<
+
+@mixin bgImgSVG($img, $w: auto, $h: auto) {
+	// ex: @include bgImgSVG("img.svg", 10px, 10px);
+	width: $w;
+	height: $h;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-image: url($img);
+	mask-image: url($img);
+}
+
+@mixin useIcon($img) {
+	mask-image: url("../../assets/svg/" + $img);
+	-webkit-mask-image: url("../../assets/svg/" + $img);
+}
+
+@mixin imgLinkSVG($img, $w: auto, $h: auto) {
+	width: $w;
+	height: $h;
+	background-color: var(--color--f1-1);
+	transition: background-color 0.2s ease-in-out;
+	-webkit-mask-size: contain;
+	mask-size: contain;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-image: url($img);
+	mask-image: url($img);
+	&.inverted {
+		background-color: var(--color--f2-1);
+	}
+	&:hover {
+		background-color: var(--color--f1-2);
+		&.inverted {
+			background-color: var(--color--f2-2);
+		}
+	}
+}
+
+@mixin bgImgSVGStatic($img, $w: auto, $h: auto) {
+	// ex: @include bgImgSVGStatic("img.svg", 10px, 10px);
+	width: $w;
+	height: $h;
+	background-image: url($img);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+@mixin bgImgStatic($img, $w: auto, $h: auto) {
+	// ex: @include bgImgSVGStatic("img.svg", 10px, 10px);
+	width: $w;
+	height: $h;
+	background-image: url($img);
+	background-size: contain;
+	background-repeat: no-repeat;
+}

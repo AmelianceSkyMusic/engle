@@ -1,0 +1,156 @@
+// ADD CLASS TO USE
+// col-    | >  1280 px | gap 32 px
+// col-xx- | <= 1280 px | gap 32 px
+// col-xl- | <= 1024 px | gap 24 px
+// col-lg- | <=  960 px | gap 24 px
+// col-md- | <=  720 px | gap 16 px
+// col-sm- | <=  540 px | gap 16 px
+// col-xs- | <=  480 px | gap  8 px
+// >----------------------------------------------------------------<
+// >                             IMPORT                             <
+// >----------------------------------------------------------------<
+
+@use "grid__variables" as *;
+
+// >----------------------------------------------------------------<
+// >                              GRID                              <
+// >----------------------------------------------------------------<
+.container {
+    max-width: var(--container-width);
+    display: flex;
+    max-height: 100%;
+    margin: 0 auto;
+    padding: 0 var(--col-outer);
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--col-gap);
+    justify-content: center;
+	 box-sizing: border-box;
+
+
+    $setCol-elements: (
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+    );
+
+
+    @each $item in $setCol-elements {
+        .#{col- + $item} {
+            width: calc((100% - (11 * var(--col-gap))) / 12 * $item + (($item - 1) * var(--col-gap)));
+        };
+    };
+
+    @each $item in $setCol-elements {
+        @media (max-width: 1300px) {
+            .#{col-xx- + $item} {
+                width: calc((100% - (11 * var(--col-gap))) / 12 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol-elements {
+        @media (max-width: 1024px) {
+            .#{col-xl- + $item} {
+                width: calc((100% - (11 * var(--col-gap))) / 12 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol-elements {
+        @media (max-width: 960px) {
+            .#{col-lg- + $item} {
+                width: calc((100% - (11 * var(--col-gap))) / 12 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol-elements {
+        @media (max-width: 720px) {
+            .#{col-md- + $item} {
+                width: calc((100% - (11 * var(--col-gap))) / 12 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol-elements {
+        @media (max-width: 540px) {
+            .#{col-sm- + $item} {
+                width: calc((100% - (11 * var(--col-gap))) / 12 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol-elements {
+        @media (max-width: 480px) {
+            .#{col-xs- + $item} {
+                width: calc((100% - (11 * var(--col-gap))) / 12 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+
+
+    $setCol10-elements: (
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    );
+
+    @each $item in $setCol10-elements {
+        .#{col10- + $item} {
+            width: calc((100% - (9 * var(--col-gap))) / 10 * $item + (($item - 1) * var(--col-gap)));
+        };
+    };
+
+    @each $item in $setCol10-elements {
+        @media (max-width: 1300px) {
+            .#{col10-xx- + $item} {
+                width: calc((100% - (9 * var(--col-gap))) / 10 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol10-elements {
+        @media (max-width: 1024px) {
+            .#{col10-xl- + $item} {
+                width: calc((100% - (9 * var(--col-gap))) / 10 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol10-elements {
+        @media (max-width: 960px) {
+            .#{col10-lg- + $item} {
+                width: calc((100% - (9 * var(--col-gap))) / 10 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol10-elements {
+        @media (max-width: 720px) {
+            .#{col10-md- + $item} {
+                width: calc((100% - (9 * var(--col-gap))) / 10 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol10-elements {
+        @media (max-width: 540px) {
+            .#{col10-sm- + $item} {
+                width: calc((100% - (9 * var(--col-gap))) / 10 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+
+    @each $item in $setCol10-elements {
+        @media (max-width: 480px) {
+            .#{col10-xs- + $item} {
+                width: calc((100% - (9 * var(--col-gap))) / 10 * $item + (($item - 1) * var(--col-gap)));
+            };
+        }
+    }
+}

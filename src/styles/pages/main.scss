@@ -1,0 +1,97 @@
+@use "../globals/" as *;
+
+.page-main {
+	.header {
+		position: relative;
+		z-index: 1;
+	}
+
+	.main {
+		.container {
+			padding-top: calc(var(--col-gap) / 2);
+			padding-bottom: calc(var(--col-gap) / 2);
+			flex-direction: column;
+			gap: calc(var(--col-gap) * 2);
+		}
+		position: relative;
+		top: -72px;
+		padding-top: 72px;
+		margin-bottom: -72px;
+		min-height: 100vh;
+		&__mascot {
+			padding-top: calc(var(--col-gap) * 1.3);
+			padding-right: calc(var(--col-gap) * 2);
+		}
+	}
+
+	.hero {
+		height: 100%;
+		padding-top: calc(var(--col-gap) / 2);
+		padding-bottom: calc(var(--col-gap) / 2);
+		align-content: space-between;
+
+		&__description {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			padding-top: calc(var(--col-gap) * 4.2);
+			row-gap: var(--col-gap);
+
+			.h1,
+			.p1 {
+				max-width: 540px;
+			}
+
+			@media (max-width: $screen-lg) {
+				align-items: center;
+			}
+		}
+
+		&__scroll-down-button {
+			display: block;
+			width: 51px;
+			height: 31px;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 8px;
+			cursor: pointer;
+		}
+		&__scroll-down-img {
+			@include bgImgSVGStatic("../../assets/svg/img--scroll-down.svg", 35px, 15px);
+		}
+	}
+
+	.about-us {
+		row-gap: var(--col-gap);
+		.about-us__creator {
+			display: flex;
+			align-items: flex-start;
+			flex-direction: column;
+			border-radius: var(--col-gap);
+			padding: var(--col-gap);
+			@extend %box-shadow--default;
+			background-color: var(--color--bg-1);
+			gap: var(--col-gap);
+		}
+		.about-us__img {
+			border-radius: 4px;
+			width: 100%;
+		}
+		.about-us__description {
+			display: flex;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: calc(var(--col-gap) / 2);
+		}
+	}
+
+	.about-app {
+		.about-app__container {
+			display: flex;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: var(--col-gap);
+			padding-bottom: calc(var(--col-gap) * 2);
+		}
+	}
+}

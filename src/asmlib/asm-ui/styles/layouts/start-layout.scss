@@ -1,0 +1,37 @@
+// >----------------------------------------------------------------<
+// >                             HEADER                             <
+// >----------------------------------------------------------------<
+
+.header {
+	background: var(--color-bg-2);
+    .container {
+	    padding-top: var(--col-gap);
+	    padding-bottom: var(--col-gap);
+    }
+}
+
+
+// >----------------------------------------------------------------<
+// >                              MAIN                              <
+// >----------------------------------------------------------------<
+
+.main {
+	background: var(--color-bg-0);
+	.container {
+	    padding-top: var(--col-gap);
+	    padding-bottom: var(--col-gap);
+	}
+}
+
+
+
+// >----------------------------------------------------------------<
+// >                             FOOTER                             <
+// >----------------------------------------------------------------<
+.footer {
+	background: var(--color-bg-1);
+    .container {
+	    padding-top: var(--col-gap);
+	    padding-bottom: var(--col-gap);
+    }
+}

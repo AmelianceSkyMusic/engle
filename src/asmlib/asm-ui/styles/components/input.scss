@@ -1,0 +1,39 @@
+@use "../_globals/" as *;
+
+input {
+	border: none;
+	border-bottom: 3px solid var(--color--el-1);
+	width: 384px;
+	padding: 8px 10px;
+	font-size: 18px;
+	background: transparent;
+	color: var(--color--f1-1);
+	&:focus {
+		outline: none !important;
+	}
+	&::placeholder {
+		color: inherit;
+		opacity: 50%;
+	}
+	@media (max-width: $screen-xs) {
+		width: 300px;
+	}
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	filter: grayscale(100%) brightness(110%);
+}
+// input[type="text"] {
+// 	border-radius: 8px;
+// 	background: var(--color-bg-0);
+// 	padding: 8px auto;
+// 	height: 32px;
+// 	border: 2px solid var(--color--el-1);
+// 	line-height: 100%;
+// 	&:focus {
+// 		outline: none !important;
+// 	}
+// }

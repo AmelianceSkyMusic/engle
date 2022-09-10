@@ -1,0 +1,145 @@
+// >----------------------------------------------------------------<
+// >                             IMPORT                             <
+// >----------------------------------------------------------------<
+
+// Edit this file for change style
+@use "../_globals/" as *;
+@use "set-fonts__variables" as *;
+@use "set-fonts__mixins" as *;
+
+// >----------------------------------------------------------------<
+// >                             EMBED                              <
+// >----------------------------------------------------------------<
+
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+//
+// OR
+//
+
+@font-face {
+	@include initFont($font-primary__family-name, $font-primary__path, "PlayfairDisplay-Black.ttf", 900);
+}
+@font-face {
+	@include initFont($font-primary__family-name, $font-primary__path, "PlayfairDisplay-Bold.ttf", 700);
+}
+
+// @font-face { @include initFont($font-secondary__family-name, $font-secondary__path, "Montserrat-Black.ttf", 900) }
+// @font-face { @include initFont($font-secondary__family-name, $font-secondary__path, "Montserrat-ExtraBold.ttf", 800) }
+@font-face {
+	@include initFont($font-secondary__family-name, $font-secondary__path, "Lato-Bold.ttf", 700);
+}
+// @font-face { @include initFont($font-secondary__family-name, $font-secondary__path, "Montserrat-SemiBold.ttf", 600) }
+@font-face {
+	@include initFont($font-secondary__family-name, $font-secondary__path, "Lato-Medium.ttf", 500);
+}
+// @font-face { @include initFont($font-secondary__family-name, $font-secondary__path, "Montserrat-Regular.ttf", 400) }
+@font-face {
+	@include initFont($font-secondary__family-name, $font-secondary__path, "Lato-Light.ttf", 300);
+}
+// @font-face { @include initFont($font-secondary__family-name, $font-secondary__path, "Montserrat-ExtraLight.ttf", 200) }
+// @font-face { @include initFont($font-secondary__family-name, $font-secondary__path, "Montserrat-Thin.ttf", 100) }
+
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-Black.ttf", 900) }
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-ExtraBold.ttf", 800) }
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-Bold.ttf", 700) }
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-SemiBold.ttf", 600) }
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-Medium.ttf", 500) }
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-Regular.ttf", 400) }
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-Light.ttf", 300) }
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-ExtraLight.ttf", 200) }
+// @font-face { @include initFont($font-tertiary__family-name, $font-tertiary__path, "NotoSansMono-Thin.ttf", 100) }
+
+// >----------------------------------------------------------------<
+// >                             TOKENS                             <
+// >----------------------------------------------------------------<
+
+:root {
+	// ^------------------------ typography elements ------------------------
+
+	// font-family, font-size, font-weight, line-height, letter-spacing
+	@include setTypoElem(h1, $font-family__primary, 64px, $font-weight__black, 120%, 0);
+
+	@include setTypoElem(h2, $font-family__primary, 48px, $font-weight__black, 120%, 0);
+
+	@include setTypoElem(h3, $font-family__secondary, 36px, $font-weight__bold, 120%, 0);
+
+	@include setTypoElem(h4, $font-family__secondary, 24px, $font-weight__bold, 140%, 0);
+
+	// @include setTypoElem(h5, $font-family__secondary, 12px, $font-weight__bold, 140%, 0);
+
+	// @include setTypoElem(h6, $font-family__secondary, 20px, $font-weight__bold, 100%, 0);
+
+	// @include setTypoElem(s1, $font-family__secondary, px, $font-weight__bold, 100%, 0);
+
+	// @include setTypoElem(s2, $font-family__secondary, px, $font-weight__bold, 100%, 0);
+
+	@include setTypoElem(p1, $font-family__secondary, 18px, $font-weight__medium, 140%, 0);
+
+	@include setTypoElem(p2, $font-family__secondary, 14px, $font-weight__medium, 140%, 0);
+
+	// @include setTypoElem(p3, $font-family__secondary, 10px, $font-weight__regular, 140%, 0);
+
+	// @include setTypoElem(ct, $font-family__secondary, px, $font-weight__bold, 100%, 0);
+
+	@include setTypoElem(button, $font-family__secondary, 18px, $font-weight__bold, 135%, 0);
+	@include setTypoElem(button-sm, $font-family__secondary, 14px, $font-weight__bold, 130%, 0);
+	@include setTypoElem(button-icon, $font-family__secondary, 18px, $font-weight__bold, 135%, 0);
+	@include setTypoElem(button-icon-sm, $font-family__secondary, 14px, $font-weight__bold, 130%, 0);
+	// @include setTypoElem(button-lg, $font-family__secondary, 16px, $font-weight__bold, 100%, 0);
+
+	// @include setTypoElem(ov, $font-family__secondary, px, $font-weight__bold, 100%, 0);
+
+	@include setTypoElem(link, $font-family__secondary, 18px, $font-weight__bold, 135%, 0);
+
+	@include setTypoElem(input, $font-family__secondary, 16px, $font-weight__medium, 135%, 0);
+
+	@media (max-width: $screen-lg) {
+		@include setTypoElem(h1, $font-family__primary, 48px, $font-weight__black, 120%, 0);
+		@include setTypoElem(h2, $font-family__primary, 36px, $font-weight__black, 120%, 0);
+		@include setTypoElem(h3, $font-family__secondary, 24px, $font-weight__bold, 120%, 0);
+		@include setTypoElem(h4, $font-family__secondary, 18px, $font-weight__bold, 140%, 0);
+		@include setTypoElem(p1, $font-family__secondary, 16px, $font-weight__medium, 140%, 0);
+		@include setTypoElem(p2, $font-family__secondary, 13px, $font-weight__medium, 140%, 0);
+	}
+}
+
+// >----------------------------------------------------------------<
+// >                        SET TYPOGRAPHY                          <
+// >----------------------------------------------------------------<
+
+$setTypo-elements: (
+	h1,
+	h2,
+	h3,
+	h4,
+	// h5,
+	// h6,
+	// s1,
+	// s2,
+	p1,
+	p2,
+	// p3,
+	// ct,
+	button,
+	button-sm,
+	button-icon,
+	button-icon-sm,
+	// button-lg,
+	// ov,
+	link,
+	input
+);
+
+@each $item in $setTypo-elements {
+	.#{$item} {
+		@include setFont(
+			var(--font__font-family_ + $item),
+			var(--font__font-size_ + $item),
+			var(--font__font-weight_ + $item),
+			var(--font__line-height_ + $item),
+			var(--font__letter-spacing_ + $item),
+			var(--font__font-style_ + $item)
+		);
+	}
+} ;

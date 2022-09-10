@@ -1,0 +1,28 @@
+@use "../globals/" as *;
+
+.page-statistics {
+	.main {
+		background-color: var(--color--bg-3);
+		.container {
+			padding-top: calc(var(--col-gap) / 2);
+			padding-bottom: calc(var(--col-gap) / 2);
+			flex-direction: column;
+			gap: var(--col-gap);
+		}
+		.page-statistics__header-block {
+			display: flex;
+			flex-direction: column;
+			gap: calc(var(--col-gap) / 2);
+		}
+		.page-statistics__container {
+			display: flex;
+			flex-direction: column;
+			gap: calc(var(--col-gap) / 2);
+		}
+		.page-statistics__section {
+			display: flex;
+			flex-direction: column;
+			gap: calc(var(--col-gap) / 4);
+		}
+	}
+}
