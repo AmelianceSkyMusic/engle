@@ -57,22 +57,29 @@ export function Game() {
 		setGameEnded(true);
 	}, []);
 
-	function checkForNewWords() {
-		const wordIdx = shuffledWords.indexOf(word);
-		if (shuffledWords[wordIdx + 1]) {
-			setWord(shuffledWords[wordIdx + 1]);
-		} else if (word.page > 0) {
-			dispatch(getWordsAction(word.group, word.page - 1));
-		} else {
-			endGame();
-		}
-	}
+	const correctAnswerAudio = useMemo(() => {
+		const audio = new Audio(correctAnswerSound);
+		audio.preload = 'auto';
+		return audio;
+	}, []);
+	const wrongAnswerAudio = useMemo(() => {
+		const audio = new Audio(wrongAnswerSound);
+		audio.preload = 'auto';
+		return audio;
+	}, []);
 
-	const correctAnswerAudio = new Audio(correctAnswerSound);
-	correctAnswerAudio.preload = 'auto';
-	const wrongAnswerAudio = new Audio(wrongAnswerSound);
-	wrongAnswerAudio.preload = 'auto';
-	function handleAnswer(answer: boolean) {
+	const handleAnswer = useCallback((answer: boolean) => {
+		function checkForNewWords() {
+			const wordIdx = shuffledWords.indexOf(word);
+			if (shuffledWords[wordIdx + 1]) {
+				setWord(shuffledWords[wordIdx + 1]);
+			} else if (word.page > 0) {
+				dispatch(getWordsAction(word.group, word.page - 1));
+			} else {
+				endGame();
+			}
+		}
+
 		if (answer === (word.wordTranslate === translation)) {
 			blink('green');
 			correctAnswerAudio.play();
@@ -92,7 +99,26 @@ export function Game() {
 			changeUserWord(word.id, 'sprint', 'wrong');
 		}
 		checkForNewWords();
-	}
+	}, [correctAnswerAudio, dispatch, endGame, result, shuffledWords,
+		translation, word, wrongAnswerAudio]);
+
+	useEffect(() => {
+		function handleKeyboardAnswer(event: KeyboardEvent) {
+			switch (event.key) {
+			case 'ArrowLeft':
+				handleAnswer(false);
+				break;
+			case 'ArrowRight':
+				handleAnswer(true);
+				break;
+			default:
+				break;
+			}
+		}
+		document.addEventListener('keydown', handleKeyboardAnswer);
+		return () => document.removeEventListener('keydown', handleKeyboardAnswer);
+	}, [handleAnswer]);
+
 	return (
 		<div className="sprint-game row">
 			{gameEnded && <ModalResult result={result} game="sprint" />}
@@ -149,5 +175,4 @@ export function Game() {
 			</div>
 		</div>
 	);
-
 }
