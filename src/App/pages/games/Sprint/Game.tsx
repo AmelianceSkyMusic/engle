@@ -115,64 +115,65 @@ export function Game() {
 				break;
 			}
 		}
-		document.addEventListener('keydown', handleKeyboardAnswer);
+		if (!gameEnded) document.addEventListener('keydown', handleKeyboardAnswer);
 		return () => document.removeEventListener('keydown', handleKeyboardAnswer);
-	}, [handleAnswer]);
+	}, [handleAnswer, gameEnded]);
 
-	return (
-		<div className="sprint-game row">
-			{gameEnded && <ModalResult result={result} game="sprint" />}
-			<div ref={blinkerEl} className="blinker" />
-			<div className="sprint-game__col sprint-game__col_left col-4">
-				<div className="sprint-game__check sprint-game__check_1  icon icon--check sprint-game__row-1" />
-				<p className="sprint-game__curr-points p1 sprint-game__row-2">10 очков</p>
-				<h3 className="sprint-game__eng-word h3 sprint-game__row-3">
-					{
-						isLoading
-							?	(
-								<div className="">
-									...
-									<Loader />
-								</div>
-							)
+	return gameEnded
+		? <ModalResult result={result} game="sprint" />
+		: (
+			<div className="sprint-game row">
+				<div ref={blinkerEl} className="blinker" />
+				<div className="sprint-game__col sprint-game__col_left col-4">
+					<div className="sprint-game__check sprint-game__check_1  icon icon--check sprint-game__row-1" />
+					<p className="sprint-game__curr-points p1 sprint-game__row-2">10 очков</p>
+					<h3 className="sprint-game__eng-word h3 sprint-game__row-3">
+						{
+							isLoading
+								?	(
+									<div className="">
+										...
+										<Loader />
+									</div>
+								)
 
-							: word?.word
-					}
-				</h3>
-				<button
-					type="button"
-					className="sprint-game__wrong-btn button sprint-game__row-4"
-					onClick={() => handleAnswer(false)}
-				>
-					<span className="icon icon--arrow-left" />
-					Неверно
-				</button>
+								: word?.word
+						}
+					</h3>
+					<button
+						type="button"
+						className="sprint-game__wrong-btn button sprint-game__row-4"
+						onClick={() => handleAnswer(false)}
+					>
+						<span className="icon icon--arrow-left" />
+						Неверно
+					</button>
+				</div>
+				<div className="sprint-game__col sprint-game__col_center col-4">
+					<div className="sprint-game__check sprint-game__check_2 icon icon--check sprint-game__row-1" />
+					<p className="sprint-game__coff p1 sprint-game__row-2">x2</p>
+					<h3 className="sprint-game__question-mark h3 sprint-game__row-3">?</h3>
+					<Timer onEndCallback={endGame} />
+				</div>
+				<div className="sprint-game__col sprint-game__col_right col-4">
+					<div className="sprint-game__check sprint-game__check_3 icon icon--check sprint-game__row-1" />
+					<p className="sprint-game__overall-points p1 sprint-game__row-2">Всего очков: 20</p>
+					<h3 className="sprint-game__ru-word h3 sprint-game__row-3">
+						{
+							isLoading
+								?	'...'
+								: translation
+						}
+					</h3>
+					<button
+						type="button"
+						className="sprint-game__correct-btn button sprint-game__row-4"
+						onClick={() => handleAnswer(true)}
+					>
+						Верно
+						<span className="icon icon--arrow-right" />
+					</button>
+				</div>
 			</div>
-			<div className="sprint-game__col sprint-game__col_center col-4">
-				<div className="sprint-game__check sprint-game__check_2 icon icon--check sprint-game__row-1" />
-				<p className="sprint-game__coff p1 sprint-game__row-2">x2</p>
-				<h3 className="sprint-game__question-mark h3 sprint-game__row-3">?</h3>
-				<Timer onEndCallback={endGame} />
-			</div>
-			<div className="sprint-game__col sprint-game__col_right col-4">
-				<div className="sprint-game__check sprint-game__check_3 icon icon--check sprint-game__row-1" />
-				<p className="sprint-game__overall-points p1 sprint-game__row-2">Всего очков: 20</p>
-				<h3 className="sprint-game__ru-word h3 sprint-game__row-3">
-					{
-						isLoading
-							?	'...'
-							: translation
-					}
-				</h3>
-				<button
-					type="button"
-					className="sprint-game__correct-btn button sprint-game__row-4"
-					onClick={() => handleAnswer(true)}
-				>
-					Верно
-					<span className="icon icon--arrow-right" />
-				</button>
-			</div>
-		</div>
-	);
+		);
 }
