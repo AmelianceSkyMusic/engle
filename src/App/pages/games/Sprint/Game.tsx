@@ -48,6 +48,7 @@ export function Game() {
 		}
 	}
 
+	const [streak, setStreak] = useState(0);
 	const [result, setResult] = useState<
 	{ right: IUserPageWord[]; wrong: IUserPageWord[]; topRight: number }
 	>({ right: [], wrong: [], topRight: 0 });
@@ -71,18 +72,25 @@ export function Game() {
 			}
 		}
 
+		function checkForTopRight() {
+			if (streak > result.topRight) return streak;
+			return result.topRight;
+		}
+
 		if (answer === (word.wordTranslate === translation)) {
 			blink('green');
 			correctAnswerAudio.play();
+			setStreak(streak + 1);
 			setResult({
 				...result,
 				right: [...result.right, word],
-				topRight: result.topRight + 1,
+				topRight: checkForTopRight(),
 			});
 			changeUserWord(word.id, 'sprint', 'right');
 		} else {
 			blink('red');
 			wrongAnswerAudio.play();
+			setStreak(0);
 			setResult({
 				...result,
 				wrong: [...result.wrong, word],
@@ -91,7 +99,7 @@ export function Game() {
 		}
 		checkForNewWords();
 	}, [dispatch, endGame, result, shuffledWords,
-		translation, word]);
+		translation, word, streak]);
 
 	useEffect(() => {
 		function handleKeyboardAnswer(event: KeyboardEvent) {
