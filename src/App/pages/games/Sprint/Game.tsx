@@ -57,18 +57,9 @@ export function Game() {
 		setGameEnded(true);
 	}, []);
 
-	const correctAnswerAudio = useMemo(() => {
-		const audio = new Audio(correctAnswerSound);
-		audio.preload = 'auto';
-		return audio;
-	}, []);
-	const wrongAnswerAudio = useMemo(() => {
-		const audio = new Audio(wrongAnswerSound);
-		audio.preload = 'auto';
-		return audio;
-	}, []);
-
 	const handleAnswer = useCallback((answer: boolean) => {
+		const correctAnswerAudio = new Audio(correctAnswerSound);
+		const wrongAnswerAudio = new Audio(wrongAnswerSound);
 		function checkForNewWords() {
 			const wordIdx = shuffledWords.indexOf(word);
 			if (shuffledWords[wordIdx + 1]) {
@@ -99,8 +90,8 @@ export function Game() {
 			changeUserWord(word.id, 'sprint', 'wrong');
 		}
 		checkForNewWords();
-	}, [correctAnswerAudio, dispatch, endGame, result, shuffledWords,
-		translation, word, wrongAnswerAudio]);
+	}, [dispatch, endGame, result, shuffledWords,
+		translation, word]);
 
 	useEffect(() => {
 		function handleKeyboardAnswer(event: KeyboardEvent) {
