@@ -21,6 +21,9 @@ export function Game() {
 	const shuffledWords = useMemo(() => shuffleArray(userPageWords), [userPageWords]);
 	const [word, setWord] = useState<IUserPageWord>(shuffledWords[0]);
 	const [translation, setTranslation] = useState('');
+	const DEFAULT_POINTS_AWARD = useMemo(() => 10, []);
+	const [points, setPoints] = useState(0);
+	const [pointsCoff, setPointsCoff] = useState(1);
 
 	useEffect(() => {
 		if (shuffledWords.length > 0) {
@@ -86,11 +89,14 @@ export function Game() {
 				right: [...result.right, word],
 				topRight: checkForTopRight(),
 			});
+			setPoints(points + DEFAULT_POINTS_AWARD * pointsCoff);
+			if ((streak + 1) % 3 === 0 && streak !== 0) setPointsCoff(pointsCoff + 1);
 			changeUserWord(word.id, 'sprint', 'right');
 		} else {
 			blink('red');
 			wrongAnswerAudio.play();
 			setStreak(0);
+			setPointsCoff(1);
 			setResult({
 				...result,
 				wrong: [...result.wrong, word],
@@ -98,8 +104,8 @@ export function Game() {
 			changeUserWord(word.id, 'sprint', 'wrong');
 		}
 		checkForNewWords();
-	}, [dispatch, endGame, result, shuffledWords,
-		translation, word, streak]);
+	}, [word, translation, shuffledWords,
+		dispatch, endGame, streak, result, points, DEFAULT_POINTS_AWARD, pointsCoff]);
 
 	useEffect(() => {
 		function handleKeyboardAnswer(event: KeyboardEvent) {
@@ -125,7 +131,9 @@ export function Game() {
 				<div ref={blinkerEl} className="blinker" />
 				<div className="sprint-game__col sprint-game__col_left col-4">
 					<div className="sprint-game__check sprint-game__check_1  icon icon--check sprint-game__row-1" />
-					<p className="sprint-game__curr-points p1 sprint-game__row-2">10 очков</p>
+					<p className="sprint-game__curr-points p1 sprint-game__row-2">
+						{`${DEFAULT_POINTS_AWARD * pointsCoff} очков`}
+					</p>
 					<h3 className="sprint-game__eng-word h3 sprint-game__row-3">
 						{
 							isLoading
@@ -150,13 +158,18 @@ export function Game() {
 				</div>
 				<div className="sprint-game__col sprint-game__col_center col-4">
 					<div className="sprint-game__check sprint-game__check_2 icon icon--check sprint-game__row-1" />
-					<p className="sprint-game__coff p1 sprint-game__row-2">x2</p>
+					<p className="sprint-game__coff p1 sprint-game__row-2">
+						{`x${pointsCoff}`}
+					</p>
 					<h3 className="sprint-game__question-mark h3 sprint-game__row-3">?</h3>
 					<Timer onEndCallback={endGame} />
 				</div>
 				<div className="sprint-game__col sprint-game__col_right col-4">
 					<div className="sprint-game__check sprint-game__check_3 icon icon--check sprint-game__row-1" />
-					<p className="sprint-game__overall-points p1 sprint-game__row-2">Всего очков: 20</p>
+					<p className="sprint-game__overall-points p1 sprint-game__row-2">
+						Всего очков:
+						{` ${points}`}
+					</p>
 					<h3 className="sprint-game__ru-word h3 sprint-game__row-3">
 						{
 							isLoading
