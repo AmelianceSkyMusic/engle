@@ -1,5 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable prefer-destructuring */
 import {
 	LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer,
 } from 'recharts';
@@ -18,32 +16,30 @@ export function LongTermStat() {
 
 	function concatArrayOfDates(obj: { [date: string]: string[] }) {
 		Object.entries(obj).forEach((el) => {
-			const res = {
-				name: '',
-				count: '',
-			};
 			if (Array.isArray(el[1])) {
-				res.name = el[0];
-				res.count = (el[1].length).toString();
+				const res = {
+					name: el[0],
+					count: (el[1].length).toString(),
+				};
+				(learnedWords).push(res);
 			}
-			(learnedWords).push(res);
 		});
 	}
 	concatArrayOfDates(context.optional.textBook.learnedWords);
 
 	function growingNumbersOfWords(obj: { [date: string]: string[] }) {
 		Object.entries(obj).forEach((el, index) => {
-			const curEl = {
-				name: '',
-				count: '',
-			};
 			if (growCountWords.length === 0) {
-				curEl.name = el[0];
-				curEl.count = (el[1].length).toString();
+				const curEl = {
+					name: el[0],
+					count: (el[1].length).toString(),
+				};
 				growCountWords.push(curEl);
 			} else if (growCountWords.length > 0) {
-				curEl.name = el[0];
-				curEl.count = ((el[1].length) + Number(growCountWords[index - 1].count)).toString();
+				const curEl = {
+					name: el[0],
+					count: ((el[1].length) + Number(growCountWords[index - 1].count)).toString(),
+				};
 				growCountWords.push(curEl);
 			}
 		});
