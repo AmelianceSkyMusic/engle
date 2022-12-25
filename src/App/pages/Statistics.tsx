@@ -24,6 +24,7 @@ export function Statistics() {
 				setLoading(false);
 			} catch (error) {
 				console.error(error);
+				setLoading(false);
 			}
 		};
 		fetchData();
