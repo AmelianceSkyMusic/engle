@@ -1,5 +1,3 @@
-@use "../globals/" as *;
-
 $iconsSet: (
 	icon--arrow-right,
 	icon--arrow-left,
@@ -11,11 +9,12 @@ $iconsSet: (
 	icon--sun,
 	icon--moon,
 	icon--sound,
-	icon--more-horizontal,
+	icon--more-horizontal
 );
 
 @each $icon in $iconsSet {
 	.#{$icon} {
-		@include useIcon($icon + ".svg");
+		mask-image: url("../../asmlib/asm-ui/assets/svg/" + $icon + ".svg");
+		-webkit-mask-image: url("../../asmlib/asm-ui/assets/svg/" + $icon + ".svg");
 	}
 } ;
