@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://app-learnwords.herokuapp.com/';
+export const BASE_URL = 'https://rslang-engle.onrender.com/';
