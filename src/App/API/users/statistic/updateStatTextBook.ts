@@ -2,6 +2,34 @@
 import { updateUserStatistics } from './axios/updateUserStatistic';
 import { IStatistic } from '../../../types/interfaces';
 
+type TOptional = {
+		textBook: {
+		learnedWords: {
+			[date: string]: string[];
+		};
+	};
+	audioCall: {
+		newWords: {
+			[date: string]: string[];
+		};
+		countNewWords: number;
+		countShowedWords: number;
+		countRight: number;
+		countWrong: number;
+		topRight: number;
+	};
+	sprint: {
+		newWords: {
+			[date: string]: string[];
+		};
+		countNewWords: number;
+		countShowedWords: number;
+		countRight: number;
+		countWrong: number;
+		topRight: number;
+	};
+}
+
 async function updateStatTextBook(
 	userId: string,
 	value: { learnedWords: string },
@@ -12,7 +40,8 @@ async function updateStatTextBook(
 	const dateNow = new Date().toLocaleDateString();
 	if ('textBook' in curStat.optional) {
 		if (!(dateNow in curStat.optional.textBook.learnedWords)) {
-			curStat.optional.textBook.learnedWords = { [dateNow]: [updateValue] };
+			const lastDates = JSON.parse(JSON.stringify(curStat.optional.textBook.learnedWords));
+			curStat.optional.textBook.learnedWords = { ...lastDates, [dateNow]: [updateValue] };
 			curStat.learnedWords += 1;
 		} else {
 			// eslint-disable-next-line max-len
@@ -20,7 +49,7 @@ async function updateStatTextBook(
 			curStat.learnedWords += 1;
 		}
 	} else {
-		curStat.optional.textBook = {
+		(curStat.optional as TOptional).textBook = {
 			learnedWords: {
 				[dateNow]: [updateValue],
 			},

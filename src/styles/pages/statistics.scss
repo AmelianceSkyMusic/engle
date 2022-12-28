@@ -24,5 +24,19 @@
 			flex-direction: column;
 			gap: calc(var(--col-gap) / 4);
 		}
+		.page-statistics__links-list {
+			display: flex;
+			flex-direction: row;
+			gap: calc(var(--col-gap) / 2);
+		}
+		.page-statistics__links-item {
+			font-size: 20px;
+		}
+		.page-statistics__links-item-link {
+			color: var(--color--h-2);
+		}
+		.page-statistics__links-item-link_active {
+			color: var(--color--a5-0);
+		}
 	}
 }
