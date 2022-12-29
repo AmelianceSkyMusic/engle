@@ -127,65 +127,82 @@ export function Game() {
 	return gameEnded
 		? <ModalResult result={result} game="sprint" />
 		: (
-			<div className="sprint-game row">
+			<>
 				<div ref={blinkerEl} className="blinker" />
-				<div className="sprint-game__col sprint-game__col_left col-4">
-					<div className="sprint-game__check sprint-game__check_1  icon icon--check sprint-game__row-1" />
-					<p className="sprint-game__curr-points p1 sprint-game__row-2">
-						{`${DEFAULT_POINTS_AWARD * pointsCoff} очков`}
-					</p>
-					<h3 className="sprint-game__eng-word h3 sprint-game__row-3">
-						{
-							isLoading
-								?	(
-									<div className="">
-										...
-										<Loader />
-									</div>
-								)
-
-								: word?.word
-						}
-					</h3>
-					<button
-						type="button"
-						className="sprint-game__wrong-btn button sprint-game__row-4"
-						onClick={() => handleAnswer(false)}
-					>
-						<span className="icon icon--arrow-left" />
-						Неверно
-					</button>
+				<div className="sprint-game">
+					<div className="score sprint-game__score sprint-game__row">
+						<div className="sprint-game__streak">
+							<div className="sprint-game__check sprint-game__check_1 icon icon--check" />
+							<div className="sprint-game__check sprint-game__check_2 icon icon--check" />
+							<div className="sprint-game__check sprint-game__check_3 icon icon--check" />
+						</div>
+						<div className="sprint-game__points sprint-game__row">
+							<div className="sprint-game__col sprint-game__col_left">
+								<p className="sprint-game__award p1">
+									{`${DEFAULT_POINTS_AWARD * pointsCoff} очков`}
+								</p>
+							</div>
+							<div className="sprint-game__col sprint-game__col_center">
+								<p className="sprint-game__coff p1">
+									{`x${pointsCoff}`}
+								</p>
+							</div>
+							<div className="sprint-game__col sprint-game__col_right">
+								<p className="sprint-game__total p1">
+									Всего очков:
+									{` ${points}`}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div className="sprint-game__words sprint-game__row">
+						<div className="sprint-game__col sprint-game__col_left">
+							<h3 className="sprint-game__eng-word h3">
+								{isLoading
+									? (
+										<div className="">
+											...
+											<Loader />
+										</div>
+									)
+									: word?.word}
+							</h3>
+						</div>
+						<h3 className="sprint-game__question-mark sprint-game__col sprint-game__col_center h3">?</h3>
+						<div className="sprint-game__col sprint-game__col_right">
+							<h3 className="sprint-game__ru-word h3">
+								{isLoading
+									? '...'
+									: translation}
+							</h3>
+						</div>
+					</div>
+					<div className="sprint-game__controls sprint-game__row">
+						<div className="sprint-game__col sprint-game__col_left">
+							<button
+								type="button"
+								className="sprint-game__wrong-btn button"
+								onClick={() => handleAnswer(false)}
+							>
+								<span className="icon icon--arrow-left" />
+								Неверно
+							</button>
+						</div>
+						<div className="sprint-game__col sprint-game__col_center">
+							<Timer onEndCallback={endGame} />
+						</div>
+						<div className="sprint-game__col sprint-game__col_right">
+							<button
+								type="button"
+								className="sprint-game__correct-btn button"
+								onClick={() => handleAnswer(true)}
+							>
+								Верно
+								<span className="icon icon--arrow-right" />
+							</button>
+						</div>
+					</div>
 				</div>
-				<div className="sprint-game__col sprint-game__col_center col-4">
-					<div className="sprint-game__check sprint-game__check_2 icon icon--check sprint-game__row-1" />
-					<p className="sprint-game__coff p1 sprint-game__row-2">
-						{`x${pointsCoff}`}
-					</p>
-					<h3 className="sprint-game__question-mark h3 sprint-game__row-3">?</h3>
-					<Timer onEndCallback={endGame} />
-				</div>
-				<div className="sprint-game__col sprint-game__col_right col-4">
-					<div className="sprint-game__check sprint-game__check_3 icon icon--check sprint-game__row-1" />
-					<p className="sprint-game__overall-points p1 sprint-game__row-2">
-						Всего очков:
-						{` ${points}`}
-					</p>
-					<h3 className="sprint-game__ru-word h3 sprint-game__row-3">
-						{
-							isLoading
-								?	'...'
-								: translation
-						}
-					</h3>
-					<button
-						type="button"
-						className="sprint-game__correct-btn button sprint-game__row-4"
-						onClick={() => handleAnswer(true)}
-					>
-						Верно
-						<span className="icon icon--arrow-right" />
-					</button>
-				</div>
-			</div>
+			</>
 		);
 }
