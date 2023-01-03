@@ -24,7 +24,6 @@ async function changeUserWord(wordId: string, game: 'audioCall' | 'sprint', valu
 			},
 		};
 		const newUserWord = await API.createUserWord(userId, wordId, newWord) as IUserWordWithId;
-		console.log(newUserWord);
 		delete newUserWord.id;
 		delete newUserWord.wordId;
 		switch (game) {
@@ -41,7 +40,6 @@ async function changeUserWord(wordId: string, game: 'audioCall' | 'sprint', valu
 	} else {
 		delete userWord.id;
 		delete userWord.wordId;
-		console.log(userWord);
 		switch (game) {
 		case 'audioCall':
 			await updateWordAudiocall(userId, wordId, value, userWord);

@@ -84,7 +84,6 @@ export function WordCard({
 		rerenderCards();
 	}
 
-	console.log(word);
 
 	return (
 		<li className="word-card">

@@ -33,13 +33,13 @@ export function Main() {
 							<div className="mascot__img mascot__img_thinker" />
 						</div>
 						<div className="hero__scroll-down col-12">
-							<a href="#next-block" className="hero__scroll-down-button">
+							<a href="#about" className="hero__scroll-down-button">
 								<div className="hero__scroll-down-img" />
 							</a>
 						</div>
 					</section>
 
-					<section className="about-us row">
+					<section id="about" className="about-us row">
 						<div className="col-12">
 							<h2 className="h2">Создатели:</h2>
 						</div>

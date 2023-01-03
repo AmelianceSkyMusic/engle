@@ -57,12 +57,20 @@
 		}
 
 		&__level {
-			width: 80px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 32px;
+			min-width: 80px;
 			height: 80px;
 			background-color: skyblue;
-			padding: 18.5px 16.5px;
 			border-radius: 100%;
 			text-transform: uppercase;
+		}
+
+		&__name {
+			font-size: 22px;
+			text-align: start;
 		}
 	}
 
