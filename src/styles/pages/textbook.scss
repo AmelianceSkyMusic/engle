@@ -140,7 +140,7 @@
 					position: absolute;
 					top: 0;
 					right: 5px;
-					@include bgImgSVG("../../assets/svg/icon--check.svg", 60px, 60px);
+					@include bgImgSVG("../../assets/svg/icon--checkmark.svg", 60px, 60px);
 					background-color: var(--color--a3-1);
 				}
 			}

@@ -5,22 +5,35 @@
 		.container {
 		}
 	}
+
 	.sprint-game {
-		flex-wrap: nowrap;
+		display: flex;
+		flex-direction: column;
+		row-gap: calc(var(--col-gap) * 2);
+		&__row {
+			display: flex;
+			justify-content: space-between;
+			row-gap: calc(var(--col-gap) / 2);
+			width: 100%;
+			align-items: center;
+		}
+
 		&__col {
 			display: flex;
-			flex-direction: column;
-			width: auto;
 			&_left {
-				align-items: flex-end;
+				flex-basis: 40%;
+				justify-content: flex-end;
 			}
 			&_center {
-				align-items: center;
+				flex-basis: 20%;
+				justify-content: center;
 			}
 			&_right {
-				align-items: flex-start;
+				flex-basis: 40%;
+				justify-content: flex-start;
 			}
 		}
+
 		&__wrong-btn {
 			color: var(--color--f2-1);
 			background-color: var(--color--a5-1);
@@ -37,14 +50,26 @@
 			}
 		}
 
-		&__row-1 {
-			margin-bottom: calc(var(--col-gap) / 2);
+		&__streak {
+			display: flex;
+			justify-content: center;
+			column-gap: 36px;
 		}
-		&__row-2,
-		&__row-3 {
-			margin-bottom: calc(var(--col-gap) * 2);
+
+		&__checkmark{
+			background-color: #C8C8C8;
+			&_active {
+				background-color: #000;
+			}
 		}
 	}
+
+	.score {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
 }
 
 .blinker {
