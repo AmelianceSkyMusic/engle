@@ -16,14 +16,26 @@ import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
 
 export function Game() {
+	const DEFAULT_POINTS_AWARD = useMemo(() => 10, []);
+	const ANSWERS_TO_PROGRESS = useMemo(() => 3, []);
+
 	const dispatch = useTypedDispatch();
 	const { userPageWords, isLoading } = useTypedSelector((state) => state.words);
 	const shuffledWords = useMemo(() => shuffleArray(userPageWords), [userPageWords]);
 	const [word, setWord] = useState<IUserPageWord>(shuffledWords[0]);
 	const [translation, setTranslation] = useState('');
-	const DEFAULT_POINTS_AWARD = useMemo(() => 10, []);
+
 	const [points, setPoints] = useState(0);
 	const [pointsCoff, setPointsCoff] = useState(1);
+	const [streak, setStreak] = useState(0);
+	const [result, setResult] = useState<
+	{ right: IUserPageWord[]; wrong: IUserPageWord[]; topRight: number }
+	>({ right: [], wrong: [], topRight: 0 });
+
+	const [gameEnded, setGameEnded] = useState(false);
+	const endGame = useCallback(() => {
+		setGameEnded(true);
+	}, []);
 
 	useEffect(() => {
 		if (shuffledWords.length > 0) {
@@ -50,16 +62,6 @@ export function Game() {
 			});
 		}
 	}
-
-	const [streak, setStreak] = useState(0);
-	const [result, setResult] = useState<
-	{ right: IUserPageWord[]; wrong: IUserPageWord[]; topRight: number }
-	>({ right: [], wrong: [], topRight: 0 });
-
-	const [gameEnded, setGameEnded] = useState(false);
-	const endGame = useCallback(() => {
-		setGameEnded(true);
-	}, []);
 
 	const handleAnswer = useCallback((answer: boolean) => {
 		const correctAnswerAudio = new Audio(correctAnswerSound);
@@ -90,7 +92,7 @@ export function Game() {
 				topRight: checkForTopRight(),
 			});
 			setPoints(points + DEFAULT_POINTS_AWARD * pointsCoff);
-			if ((streak + 1) % 3 === 0 && streak !== 0) setPointsCoff(pointsCoff + 1);
+			if ((streak + 1) % ANSWERS_TO_PROGRESS === 0 && streak !== 0) setPointsCoff(pointsCoff + 1);
 			changeUserWord(word.id, 'sprint', 'right');
 		} else {
 			blink('red');
@@ -104,8 +106,8 @@ export function Game() {
 			changeUserWord(word.id, 'sprint', 'wrong');
 		}
 		checkForNewWords();
-	}, [word, translation, shuffledWords,
-		dispatch, endGame, streak, result, points, DEFAULT_POINTS_AWARD, pointsCoff]);
+	}, [word, translation, shuffledWords, dispatch, endGame, streak,
+		result, points, DEFAULT_POINTS_AWARD, pointsCoff, ANSWERS_TO_PROGRESS]);
 
 	useEffect(() => {
 		function handleKeyboardAnswer(event: KeyboardEvent) {
@@ -132,9 +134,14 @@ export function Game() {
 				<div className="sprint-game">
 					<div className="score sprint-game__score sprint-game__row">
 						<div className="sprint-game__streak">
-							<div className="sprint-game__check sprint-game__check_1 icon icon--check" />
-							<div className="sprint-game__check sprint-game__check_2 icon icon--check" />
-							<div className="sprint-game__check sprint-game__check_3 icon icon--check" />
+							{Array(ANSWERS_TO_PROGRESS).fill(1).map((el, idx) => (
+								<div
+									// eslint-disable-next-line react/no-array-index-key
+									key={idx}
+									className={`sprint-game__checkmark icon icon--checkmark 
+										${streak % ANSWERS_TO_PROGRESS >= idx + 1 ? 'sprint-game__checkmark_active' : ''}`}
+								/>
+							))}
 						</div>
 						<div className="sprint-game__points sprint-game__row">
 							<div className="sprint-game__col sprint-game__col_left">

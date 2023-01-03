@@ -55,6 +55,13 @@
 			justify-content: center;
 			column-gap: 36px;
 		}
+
+		&__checkmark{
+			background-color: #C8C8C8;
+			&_active {
+				background-color: #000;
+			}
+		}
 	}
 
 	.score {
