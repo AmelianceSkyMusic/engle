@@ -3,9 +3,10 @@ import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 
 interface ITimerProps {
   onEndCallback: () => void;
+	duration: number;
 }
-export function Timer({ onEndCallback }: ITimerProps) {
-	const [seconds, setSeconds] = useState(60);
+export function Timer({ onEndCallback, duration }: ITimerProps) {
+	const [seconds, setSeconds] = useState(duration);
 	const { isLoading } = useTypedSelector((state) => state.words);
 
 	useEffect((): undefined | (() => void) => {

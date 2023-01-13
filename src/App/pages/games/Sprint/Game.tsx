@@ -15,9 +15,11 @@ import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../store/hooks/useTypedDispatch';
 import { getWordsAction } from '../../../store/reducers/words/actions/getWordsAction';
 
+const DEFAULT_POINTS_AWARD = 10;
+const ANSWERS_TO_PROGRESS = 3;
+const GAME_DURATION = 60;
+
 export function Game() {
-	const DEFAULT_POINTS_AWARD = useMemo(() => 10, []);
-	const ANSWERS_TO_PROGRESS = useMemo(() => 3, []);
 
 	const dispatch = useTypedDispatch();
 	const { userPageWords, isLoading } = useTypedSelector((state) => state.words);
@@ -106,8 +108,7 @@ export function Game() {
 			changeUserWord(word.id, 'sprint', 'wrong');
 		}
 		checkForNewWords();
-	}, [word, translation, shuffledWords, dispatch, endGame, streak,
-		result, points, DEFAULT_POINTS_AWARD, pointsCoff, ANSWERS_TO_PROGRESS]);
+	}, [word, translation, shuffledWords, dispatch, endGame, streak, result, points, pointsCoff]);
 
 	useEffect(() => {
 		function handleKeyboardAnswer(event: KeyboardEvent) {
@@ -126,6 +127,17 @@ export function Game() {
 		return () => document.removeEventListener('keydown', handleKeyboardAnswer);
 	}, [handleAnswer, gameEnded]);
 
+	function createCheckMarks() {
+		return Array(ANSWERS_TO_PROGRESS).fill(1).map((el, idx) => (
+			<div
+				// eslint-disable-next-line react/no-array-index-key
+				key={idx}
+				className={`sprint-game__checkmark icon icon--checkmark 
+					${streak % ANSWERS_TO_PROGRESS >= idx + 1 ? 'sprint-game__checkmark_active' : ''}`}
+			/>
+		));
+	}
+
 	return gameEnded
 		? <ModalResult result={result} game="sprint" />
 		: (
@@ -134,14 +146,7 @@ export function Game() {
 				<div className="sprint-game">
 					<div className="score sprint-game__score sprint-game__row">
 						<div className="sprint-game__streak">
-							{Array(ANSWERS_TO_PROGRESS).fill(1).map((el, idx) => (
-								<div
-									// eslint-disable-next-line react/no-array-index-key
-									key={idx}
-									className={`sprint-game__checkmark icon icon--checkmark 
-										${streak % ANSWERS_TO_PROGRESS >= idx + 1 ? 'sprint-game__checkmark_active' : ''}`}
-								/>
-							))}
+							{createCheckMarks()}
 						</div>
 						<div className="sprint-game__points sprint-game__row">
 							<div className="sprint-game__col sprint-game__col_left">
@@ -196,7 +201,7 @@ export function Game() {
 							</button>
 						</div>
 						<div className="sprint-game__col sprint-game__col_center">
-							<Timer onEndCallback={endGame} />
+							<Timer onEndCallback={endGame} duration={GAME_DURATION} />
 						</div>
 						<div className="sprint-game__col sprint-game__col_right">
 							<button
