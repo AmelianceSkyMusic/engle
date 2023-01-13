@@ -1,6 +1,6 @@
 import './index.scss';
 
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 
 import { Provider } from 'react-redux';
@@ -14,8 +14,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<Provider store={store}>
-		<HashRouter>
+		<BrowserRouter>
 			<App />
-		</HashRouter>
+		</BrowserRouter>
 	</Provider>,
 );
