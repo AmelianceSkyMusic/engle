@@ -39,6 +39,7 @@ async function updateStatGameAudioCall(userId: string, value: object, curStat: I
 			}
 			break;
 		default:
+			// eslint-disable-next-line no-console
 			console.log('unknown option');
 			break;
 		}

@@ -39,6 +39,7 @@ async function updateStatGameSprint(userId: string, value: object, curStat: ISta
 			}
 			break;
 		default:
+			// eslint-disable-next-line no-console
 			console.log('unknown option');
 			break;
 		}

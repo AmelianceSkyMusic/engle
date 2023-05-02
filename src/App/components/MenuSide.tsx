@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Navigation } from './Navigation';
 
 interface IMenuSideProps {

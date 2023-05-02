@@ -11,6 +11,7 @@ async function updateStatistic(
 ) {
 	const dateNow = new Date().toLocaleDateString();
 	let curStatUser = await getUserStatistics(userId)
+		// eslint-disable-next-line no-console
 		.catch((err) => console.error(err)) as IStatistic;
 	if (!curStatUser) {
 		curStatUser = {

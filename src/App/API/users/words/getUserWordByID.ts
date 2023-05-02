@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { BASE_URL } from '../../consts';
-import { IUserWord, IUserWordWithId } from '../../../types/interfaces';
+import { IUserWordWithId } from '../../../types/interfaces';
 
 export const getUserWordByID = async (userId: string, wordId: string): Promise<IUserWordWithId> => {
 	const token = `${localStorage.getItem('token')}`;

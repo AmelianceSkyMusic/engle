@@ -6,6 +6,7 @@ import { updateWordSprint } from './updateWordSprint';
 
 async function changeUserWord(wordId: string, game: 'audioCall' | 'sprint', value: 'wrong' | 'right') {
 	const { userId } = store.getState().user;
+	// eslint-disable-next-line no-console
 	const userWord = await API.getUserWordByID(userId, wordId).catch((err) => console.error(err));
 	if (!userWord) {
 		const newWord: IUserWordWithId = {
