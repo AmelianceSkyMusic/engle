@@ -8,7 +8,7 @@ async function updateStatGameSprint(userId: string, value: object, curStat: ISta
 		case 'newWords':
 			// eslint-disable-next-line no-case-declarations
 			const dateNow = new Date().toLocaleDateString();
-			if ('newWords' in curStat.optional.sprint) {
+			if (curStat.optional.sprint.newWords) {
 				if ((dateNow in curStat.optional.sprint.newWords)) {
 					// eslint-disable-next-line max-len
 					curStat.optional.sprint.newWords[dateNow] =	[...curStat.optional.sprint.newWords[dateNow], ...el[1] as string[]];
