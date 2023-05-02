@@ -11,6 +11,7 @@ async function updateWordSprint(userId: string, wordId: string, value: 'wrong' |
 		userWord.optional.sprint.right += 1;
 		break;
 	default:
+		// eslint-disable-next-line no-console
 		console.log('unknown opinion');
 		break;
 	}

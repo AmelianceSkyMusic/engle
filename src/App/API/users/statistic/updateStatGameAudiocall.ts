@@ -8,7 +8,7 @@ async function updateStatGameAudioCall(userId: string, value: object, curStat: I
 		case 'newWords':
 			// eslint-disable-next-line no-case-declarations
 			const dateNow = new Date().toLocaleDateString();
-			if ('newWords' in curStat.optional.audioCall) {
+			if (curStat.optional.audioCall.newWords) {
 				if ((dateNow in curStat.optional.audioCall.newWords)) {
 				// eslint-disable-next-line max-len
 					curStat.optional.audioCall.newWords[dateNow] =	[...curStat.optional.audioCall.newWords[dateNow], ...el[1] as string[]];
@@ -39,6 +39,7 @@ async function updateStatGameAudioCall(userId: string, value: object, curStat: I
 			}
 			break;
 		default:
+			// eslint-disable-next-line no-console
 			console.log('unknown option');
 			break;
 		}

@@ -11,6 +11,7 @@ async function updateWordAudiocall(userId: string, wordId: string, value: 'wrong
 		userWord.optional.audioCall.right += 1;
 		break;
 	default:
+		// eslint-disable-next-line no-console
 		console.log('unknown opinion');
 		break;
 	}
