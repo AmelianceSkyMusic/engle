@@ -15,7 +15,7 @@ export const useValidation = (
 		function validat() {
 			Object.entries(validations).forEach((el) => {
 				if (el[0] === 'minLength') {
-					if (value.length < el[1]) {
+					if ((value.length as number) < (el[1]as number)) {
 						setMinLengthError(true);
 					} else {
 						setMinLengthError(false);

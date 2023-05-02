@@ -3,26 +3,45 @@
 .page-statistics {
 	.main {
 		background-color: var(--color--bg-3);
+
 		.container {
 			padding-top: calc(var(--col-gap) / 2);
 			padding-bottom: calc(var(--col-gap) / 2);
 			flex-direction: column;
 			gap: var(--col-gap);
 		}
+
 		.page-statistics__header-block {
 			display: flex;
 			flex-direction: column;
 			gap: calc(var(--col-gap) / 2);
 		}
+
 		.page-statistics__container {
 			display: flex;
 			flex-direction: column;
 			gap: calc(var(--col-gap) / 2);
 		}
+
 		.page-statistics__section {
 			display: flex;
 			flex-direction: column;
 			gap: calc(var(--col-gap) / 4);
+		}
+
+		.page-statistics__links-list {
+			display: flex;
+			flex-direction: row;
+			gap: calc(var(--col-gap) / 2);
+		}
+
+		.page-statistics__links-item {
+			font-size: 20px;
+		}
+
+		.link_active {
+			padding-bottom: 4px;
+			border-bottom: 2px solid var(--color--f1-1);
 		}
 	}
 }
