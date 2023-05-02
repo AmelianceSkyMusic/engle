@@ -84,8 +84,6 @@ export function WordCard({
 		rerenderCards();
 	}
 
-	console.log(word);
-
 	return (
 		<li className="word-card">
 			<img className="word-card__img" src={imgUrl} alt={word.word} />

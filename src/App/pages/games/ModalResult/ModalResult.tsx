@@ -4,6 +4,7 @@ import { Modal } from '../../../../asmlib/asm-ui/components/Modal';
 import { updateStatistic } from '../../../API/users/statistic/updateStatistics';
 import { useTypedSelector } from '../../../store/hooks/useTypedSelector';
 import { IUserPageWord } from '../../../types/interfaces';
+import { BASE_URL } from '../../../API/consts';
 
 interface IModalResultProps {
 	result: { right: IUserPageWord[]; wrong: IUserPageWord[]; topRight: number };
@@ -68,7 +69,7 @@ export function ModalResult({ result, game }: IModalResultProps) {
 						<p key={word.id} className="p1" style={{ display: 'flex', gap: 'calc(var(--col-gap) / 4)' }}>
 							<audio id={`audio-${word.id}`}>
 								<track kind="captions" />
-								<source src={`https://app-learnwords.herokuapp.com/${word.audio}`} type="audio/mpeg" />
+								<source src={`${BASE_URL}${word.audio}`} type="audio/mpeg" />
 							</audio>
 							<button type="button" id={`bth-${word.id}`} className="icon click icon--sound" onClick={playButtonAudio}>{}</button>
 							<b>
@@ -92,7 +93,7 @@ export function ModalResult({ result, game }: IModalResultProps) {
 						<p key={word.id} className="p1" style={{ display: 'flex', gap: 'calc(var(--col-gap) / 4)' }}>
 							<audio id={`audio-${word.id}`}>
 								<track kind="captions" />
-								<source src={`https://app-learnwords.herokuapp.com/${word.audio}`} type="audio/mpeg" />
+								<source src={`${BASE_URL}${word.audio}`} type="audio/mpeg" />
 							</audio>
 							<button type="button" id={`bth-${word.id}`} className="icon click icon--sound" onClick={playButtonAudio}>{}</button>
 							<b>

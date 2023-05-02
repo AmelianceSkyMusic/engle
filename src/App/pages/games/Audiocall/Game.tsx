@@ -9,6 +9,7 @@ import { deleteWordFromLearned } from '../../../API/users/words/learningWords/de
 import { IUserPageWord } from '../../../types/interfaces';
 import { ModalResult } from '../ModalResult';
 import { playAudio } from './playAudio';
+import { BASE_URL } from '../../../API/consts';
 
 interface IGameProps {
 	words: IUserPageWord[];
@@ -187,13 +188,13 @@ export function Game({ words }: IGameProps) {
 					<div className="game">
 						<audio id="audio" autoPlay>
 							<track kind="captions" />
-							<source src={`https://app-learnwords.herokuapp.com/${correctWord.audio}`} type="audio/mpeg" />
+							<source src={`${BASE_URL}${correctWord.audio}`} type="audio/mpeg" />
 						</audio>
 						<div className="game__play-sound-button-container">
 							<button type="button" onClick={playAudio} className="game__play-sound-button button--sound">{}</button>
 							<span className="game__play-sound-button_hover">{}</span>
 							<span className="game__play-sound-button_playing">{}</span>
-							{isShowAnswerWord && <img src={`https://app-learnwords.herokuapp.com/${correctWord.image}`} alt={correctWord.image} className="game__image" />}
+							{isShowAnswerWord && <img src={`${BASE_URL}${correctWord.image}`} alt={correctWord.image} className="game__image" />}
 						</div>
 						{isShowAnswerWord && <h3 className="h3">{correctWord.word}</h3>}
 						{wordVariants.length > 0

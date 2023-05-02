@@ -1,8 +1,13 @@
+import { useOutletContext } from 'react-router-dom';
 import { IStatistic } from '../../types/interfaces';
 
-export function userCreateStatMarkup(data: IStatistic) {
+export function UserCreateStatMarkup() {
+	const data: IStatistic = useOutletContext();
 	const curDate = new Date().toLocaleDateString();
-	const countWordForDay = data.optional.textBook.learnedWords[curDate].length;
+	const countWordForDay = data.optional.textBook.learnedWords[curDate]
+		? data.optional.textBook.learnedWords[curDate].length
+		: 0;
+
 	return (
 		<div className="page-statistics__container">
 			<section className="page-statistics__section">
@@ -32,8 +37,8 @@ export function userCreateStatMarkup(data: IStatistic) {
 						Процент правильных ответов:
 						{' '}
 						{(data.optional.audioCall.countRight
-						/ (data.optional.audioCall.countRight + data.optional.audioCall.countWrong))
-						* 100 || 0 }
+					/ (data.optional.audioCall.countRight + data.optional.audioCall.countWrong))
+					* 100 || 0 }
 						%
 					</p>
 					<p className="p1">
@@ -55,8 +60,8 @@ export function userCreateStatMarkup(data: IStatistic) {
 						Процент правильных ответов:
 						{' '}
 						{(data.optional.sprint.countRight
-						/ (data.optional.sprint.countRight + data.optional.sprint.countWrong))
-						* 100 || 0 }
+					/ (data.optional.sprint.countRight + data.optional.sprint.countWrong))
+					* 100 || 0 }
 						%
 					</p>
 					<p className="p1">
@@ -65,6 +70,7 @@ export function userCreateStatMarkup(data: IStatistic) {
 						{data.optional.sprint.topRight}
 					</p>
 				</div>
+
 			</section>
 		</div>
 	);
