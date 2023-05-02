@@ -4,8 +4,8 @@ import { renderBlackout } from './renderBlackout';
 import { removeBlackout } from './removeBlackout';
 
 export default {
-  renderFullscreenPopup,
-  renderLoader,
-  renderBlackout,
-  removeBlackout,
+	renderFullscreenPopup,
+	renderLoader,
+	renderBlackout,
+	removeBlackout,
 };
