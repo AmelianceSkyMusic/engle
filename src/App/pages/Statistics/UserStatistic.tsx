@@ -36,9 +36,9 @@ export function UserCreateStatMarkup() {
 					<p className="p1">
 						Процент правильных ответов:
 						{' '}
-						{(data.optional.audioCall.countRight
-					/ (data.optional.audioCall.countRight + data.optional.audioCall.countWrong))
-					* 100 || 0 }
+						{Math.round((data.optional.audioCall.countRight
+							/ (data.optional.audioCall.countRight + data.optional.audioCall.countWrong))
+							* 100 || 0)}
 						%
 					</p>
 					<p className="p1">
@@ -59,9 +59,9 @@ export function UserCreateStatMarkup() {
 					<p className="p1">
 						Процент правильных ответов:
 						{' '}
-						{(data.optional.sprint.countRight
-					/ (data.optional.sprint.countRight + data.optional.sprint.countWrong))
-					* 100 || 0 }
+						{Math.round((data.optional.sprint.countRight
+							/ (data.optional.sprint.countRight + data.optional.sprint.countWrong))
+							* 100 || 0) }
 						%
 					</p>
 					<p className="p1">
