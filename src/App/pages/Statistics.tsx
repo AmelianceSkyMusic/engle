@@ -23,7 +23,6 @@ export function Statistics() {
 				setStateShort(response);
 				setLoading(false);
 			} catch (error) {
-				console.error(error);
 				setLoading(false);
 			}
 		};
@@ -31,8 +30,8 @@ export function Statistics() {
 	}, [userId]);
 
 	function isActive(pathStat: string) {
-		if (location.pathname.includes(pathStat)) return 'page-statistics__links-item-link_active';
-		return 'page-statistics__links-item-link';
+		if (location.pathname.includes(pathStat)) return 'link link_active';
+		return 'link';
 	}
 
 	return (
