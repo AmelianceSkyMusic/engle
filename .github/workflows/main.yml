@@ -31,9 +31,6 @@ jobs:
       - name: Build the app
         run: npm run build
         
-      - name: Build the app
-        run: npm run build
-        
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
