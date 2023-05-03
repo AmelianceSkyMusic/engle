@@ -4,6 +4,7 @@ import { store } from '../../../../store';
 
 export async function addWordToHard(wordId: string) {
 	const { userId } = store.getState().user;
+	// eslint-disable-next-line no-console
 	const word = await API.getUserWordByID(userId, wordId).catch((err) => console.error(err));
 	if (!word) {
 		const newWord: IUserWord = {
@@ -21,6 +22,7 @@ export async function addWordToHard(wordId: string) {
 				},
 			},
 		};
+		// eslint-disable-next-line no-console
 		await API.createUserWord(userId, wordId, newWord).catch((err) => console.error(err));
 	} else {
 		delete word.id;
@@ -28,6 +30,7 @@ export async function addWordToHard(wordId: string) {
 		if (word.difficulty === 'easy') {
 			word.difficulty = 'hard';
 			word.optional.isLearned = false;
+			// eslint-disable-next-line no-console
 			await API.updateUserWord(userId, wordId, word).catch((err) => console.error(err));
 		}
 	}

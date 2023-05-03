@@ -30,6 +30,3 @@ export function WordsModalError({ setOpenErrorModal }: IModalError) {
 		</Modal>
 	);
 }
-function useHistory() {
-	throw new Error('Function not implemented.');
-}

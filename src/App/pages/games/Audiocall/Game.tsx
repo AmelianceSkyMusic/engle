@@ -151,8 +151,7 @@ export function Game({ words }: IGameProps) {
 				chosenWordElem$.classList.add('wrong');
 			}
 		}
-		const game$ = document.querySelector('.game') as HTMLButtonElement;
-		const button$ = game$.querySelector('.button') as HTMLButtonElement;
+
 		if (!isShowAnswerWord) {
 			switch (event.key) {
 			case '1': checkKeysAnswer(1); break;

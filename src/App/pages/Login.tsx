@@ -17,8 +17,8 @@ export function Login() {
 	const password = useInput('', { isEmpty: true, minLength: 8 });
 	const [error, setError] = useState(false);
 	const [success, setSuccess] = useState(false);
-	const [openErrorModal, setOpenErrorModal] = useState(error);
-	const [openSuccessModal, setOpenSuccessModal] = useState(success);
+	const [, setOpenErrorModal] = useState(error);
+	const [, setOpenSuccessModal] = useState(success);
 	const [ErrorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
 
