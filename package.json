@@ -2,7 +2,7 @@
 	"name": "engle",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "/engle",
+	"homepage": "./engle",
 	"dependencies": {
 		"@redux-devtools/extension": "^3.2.3",
 		"@reduxjs/toolkit": "^1.8.5",
